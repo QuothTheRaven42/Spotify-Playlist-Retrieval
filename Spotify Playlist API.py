@@ -45,5 +45,3 @@ while True:
 
 with open("music.json", "w") as f:
     json.dump(songs, f, indent=4)
-
-# print(songs)
