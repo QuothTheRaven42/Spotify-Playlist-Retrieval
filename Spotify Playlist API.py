@@ -1,0 +1,60 @@
+"""Authenticate with Spotify
+Accept a playlist ID or URL as input
+Fetch the tracks — keeping in mind that Spotify's API returns a maximum of 100 tracks per request, so you'll need a loop to handle pagination
+Extract the four fields from each track object
+Write to a JSON file
+
+ Spotipy's playlist_items() method is what you'll want, and the response comes back as a nested dictionary.
+ The tracks are under a key called items, and each item has a track key that holds the actual song data.
+"""
+
+import spotipy
+from spotipy.oauth2 import SpotifyOAuth
+from dotenv import load_dotenv
+import os
+import json
+
+def ms_to_time(ms):
+    seconds, milliseconds = divmod(ms, 1000)
+    minutes, seconds = divmod(seconds, 60)
+    hours, minutes = divmod(minutes, 60)
+
+    return f"{minutes:02d}:{seconds:02d}"
+
+
+load_dotenv()
+
+scope = "playlist-read-public"
+
+client_id = os.getenv("SPOTIPY_CLIENT_ID")
+client_secret = os.getenv("SPOTIPY_CLIENT_SECRET")
+redirect_uri = os.getenv("SPOTIPY_REDIRECT_URI")
+
+sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
+    client_id=client_id,
+    client_secret=client_secret,
+    redirect_uri=redirect_uri
+))
+
+# The first time this runs, it will open a browser window for you to log in
+songs = []
+
+results = sp.playlist_tracks("2qOyhfKK44u2USaxUyqDVn")
+
+while True:
+    for num in range(len(results['items'])):
+        song = {}
+        song['song'] = results['items'][num]['item']['name']
+        song['artist'] = results['items'][num]['item']['artists'][0]['name']
+        song['album'] = results['items'][num]['item']['album']['name']
+        song['duration'] = ms_to_time(results['items'][num]['item']['duration_ms'])
+        songs.append(song)
+    if results['next']:
+        results = sp.next(results)
+    else:
+        break
+
+with open('music.json', 'w') as f:
+    json.dump(songs, f, indent=4)
+
+# print(songs)
