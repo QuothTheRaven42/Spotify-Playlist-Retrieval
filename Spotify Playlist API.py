@@ -26,10 +26,9 @@ sp = spotipy.Spotify(
 )
 
 # The first time this runs, it will open a browser window for you to log in
-songs = []
-
 results = sp.playlist_tracks("2qOyhfKK44u2USaxUyqDVn")
 
+songs = []
 while True:
     for num in range(len(results["items"])):
         song = {}
