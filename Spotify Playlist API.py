@@ -12,6 +12,7 @@ def ms_to_time(ms: int) -> str:
 
     return f"{minutes:02d}:{seconds:02d}"
 
+
 def main():
 
     load_dotenv()
@@ -46,5 +47,6 @@ def main():
     with open("music.json", "w") as f:
         json.dump(songs, f, indent=4)
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     main()
