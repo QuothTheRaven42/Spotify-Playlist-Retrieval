@@ -1,13 +1,3 @@
-"""Authenticate with Spotify
-Accept a playlist ID or URL as input
-Fetch the tracks — keeping in mind that Spotify's API returns a maximum of 100 tracks per request, so you'll need a loop to handle pagination
-Extract the four fields from each track object
-Write to a JSON file
-
- Spotipy's playlist_items() method is what you'll want, and the response comes back as a nested dictionary.
- The tracks are under a key called items, and each item has a track key that holds the actual song data.
-"""
-
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 from dotenv import load_dotenv
