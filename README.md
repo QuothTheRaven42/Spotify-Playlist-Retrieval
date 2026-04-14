@@ -62,8 +62,8 @@ playlist = "your_playlist_id_here"
 The playlist ID is the string at the end of a Spotify playlist URL:
 
 ```
-https://open.spotify.com/playlist/2qOyhfKK44u2USaxUyqDVn
-                                   ^^^^^^^^^^^^^^^^^^^^^^
+https://open.spotify.com/playlist/2qOyhfKK44u2USaxUyqDVn?si=c1a407e411294b71
+                                  ^^^^^^^^^^^^^^^^^^^^^^
                                    This is the playlist ID
 ```
 
