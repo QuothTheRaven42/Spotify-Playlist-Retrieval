@@ -64,7 +64,7 @@ The playlist ID is the string at the end of a Spotify playlist URL:
 ```
 https://open.spotify.com/playlist/2qOyhfKK44u2USaxUyqDVn?si=c1a407e411294b71
                                   ^^^^^^^^^^^^^^^^^^^^^^
-                                   This is the playlist ID
+                                  This is the playlist ID
 ```
 
 Then run the script:
