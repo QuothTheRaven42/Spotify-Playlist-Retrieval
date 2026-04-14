@@ -59,7 +59,7 @@ Set the playlist ID in `main()`:
 playlist = "your_playlist_id_here"
 ```
 
-The playlist ID is the string at the end of a Spotify playlist URL:
+The playlist ID is the string at the end of a Spotify playlist URL without the question mark or anything after it:
 
 ```
 https://open.spotify.com/playlist/2qOyhfKK44u2USaxUyqDVn?si=c1a407e411294b71
