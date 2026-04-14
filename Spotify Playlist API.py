@@ -25,7 +25,7 @@ def main():
     lastfm_api = os.getenv("LASTFM_API_ID")
 
     # Playlist ID to export — taken from the end of a Spotify playlist URL
-    playlist = "4oCMnGMB2N5OwAKU6zm02F"
+    playlist = input("Enter Spotify playlist ID: ")
 
     # Authenticate with Spotify — opens a browser window on first run
     sp = spotipy.Spotify(
