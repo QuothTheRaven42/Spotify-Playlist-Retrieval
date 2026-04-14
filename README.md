@@ -53,10 +53,10 @@ A Python script that exports all tracks from a Spotify playlist to a JSON file, 
 
 ## Usage
 
-Set the playlist ID in `main()`:
+Set the playlist ID via input:
 
 ```python
-playlist = "your_playlist_id_here"
+playlist = input("Enter Spotify playlist ID: ")
 ```
 
 The playlist ID is the string at the end of a Spotify playlist URL without the question mark or anything after it:
