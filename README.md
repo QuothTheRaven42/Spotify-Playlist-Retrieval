@@ -21,7 +21,7 @@ A Python script that exports all tracks from a Spotify playlist to a JSON file, 
 
 1. Clone this repository:
    ```
-   git clone https://github.com/yourusername/spotify-playlist-exporter
+   git clone https://github.com/QuothTheRaven42/Spotify-Playlist-Retrieval
    cd spotify-playlist-exporter
    ```
 
@@ -59,12 +59,12 @@ Set the playlist ID in `main()`:
 playlist = "your_playlist_id_here"
 ```
 
-The playlist ID is the string at the end of a Spotify playlist URL:
+The playlist ID is the string at the end of a Spotify playlist URL without the question mark or anything after it:
 
 ```
-https://open.spotify.com/playlist/2qOyhfKK44u2USaxUyqDVn
-                                   ^^^^^^^^^^^^^^^^^^^^^^
-                                   This is the playlist ID
+https://open.spotify.com/playlist/2qOyhfKK44u2USaxUyqDVn?si=c1a407e411294b71
+                                  ^^^^^^^^^^^^^^^^^^^^^^
+                                  This is the playlist ID
 ```
 
 Then run the script:
