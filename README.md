@@ -21,7 +21,7 @@ A Python script that exports all tracks from a Spotify playlist to a JSON file, 
 
 1. Clone this repository:
    ```
-   git clone https://github.com/yourusername/spotify-playlist-exporter
+   git clone https://github.com/QuothTheRaven42/Spotify-Playlist-Retrieval
    cd spotify-playlist-exporter
    ```
 
