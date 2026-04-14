@@ -17,20 +17,18 @@ def main():
 
     load_dotenv()
 
-    # playlist = input("Enter playlist ID: ")
+    playlist = input("Enter playlist ID: ")
     client_id = os.getenv("SPOTIPY_CLIENT_ID")
     client_secret = os.getenv("SPOTIPY_CLIENT_SECRET")
     redirect_uri = os.getenv("SPOTIPY_REDIRECT_URI")
-    lastfm_api = os.getenv("LASTFM_API_ID")
-    playlist = "4oCMnGMB2N5OwAKU6zm02F"
-    short_playlist = "1O0P1PNKtlc4SWYzAhxecN"
+    lastfm_api = os.getenv("LASTFM_API_KEY")
 
     sp = spotipy.Spotify(
         auth_manager=SpotifyOAuth(client_id=client_id, client_secret=client_secret, redirect_uri=redirect_uri)
     )
 
     # The first time this runs, it will open a browser window for you to log in
-    results = sp.playlist_tracks(short_playlist)
+    results = sp.playlist_tracks(playlist)
 
     songs = []
     unique_artists = set()
@@ -50,31 +48,32 @@ def main():
             break
     unique_artists = list(unique_artists)
 
+    print("Building artists list...")
     for artist in unique_artists:
         try:
             params = {"method": "artist.gettoptags", "artist": artist, "api_key": lastfm_api, "format": "json"}
             response = requests.get("https://ws.audioscrobbler.com/2.0/", params=params)
-            time.sleep(0.25)
+            time.sleep(0.5)
             tags = response.json()["toptags"]["tag"]
             genre = tags[0]["name"] if tags else "unknown"
             artists_genres[artist] = genre
         except (requests.exceptions.RequestException, json.JSONDecodeError, KeyError):
             artists_genres[artist] = "unknown"
 
+    print("Building songs list...")
     for song in songs:
         song["genre"] = artists_genres[song["artist"]]
 
+    print("Saving genres.json....")
     with open("genres.json", "w", encoding="utf-8") as f:
         json.dump(artists_genres, f, indent=4, ensure_ascii=False)
 
+    print("Saving music.json....")
     with open("music.json", "w", encoding="utf-8") as f:
         json.dump(songs, f, indent=4, ensure_ascii=False)
+
+    print("Saving complete!")
 
 
 if __name__ == "__main__":
     main()
-
-
-
-
-
