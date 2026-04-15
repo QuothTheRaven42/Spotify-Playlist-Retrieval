@@ -48,7 +48,7 @@ LASTFM_API_KEY=your_lastfm_api_key
 ## Usage
 Run the script and enter your playlist ID when prompted:
 ```bash
-python spotify_exporter.py
+python main.py
 ```
 The playlist ID is the string at the end of a Spotify playlist URL, without the question mark or anything after it: 
 ```
@@ -83,7 +83,7 @@ The script generates two files:
 ```json
 {
     "Anthrax": "thrash metal",
-    "Metallica": "thrash metal"
+    "Jefferson Airplane": "Psychedelic Rock"
 }
 ```
 
@@ -91,7 +91,8 @@ The script generates two files:
 - Genre data comes from Last.fm user-applied tags. The highest-voted tag is used. Artists with no tags default to `"unknown"`.
 - The `.env` and `.cache` files are excluded from version control via `.gitignore`. Never commit them to a public repository.
 - Errors are appended to `log.log` in the project directory.
-
+- Some bands have top tags that aren't informative, such as Metallica's being "Metallica."
+ 
 ## Dependencies
 - **Spotipy** — Python library for the Spotify Web API
 - **python-dotenv** — Loads environment variables from a `.env` file
