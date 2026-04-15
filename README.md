@@ -45,11 +45,10 @@ LASTFM_API_KEY=your_lastfm_api_key
 Run the script and enter your playlist ID when prompted:
 python spotify_exporter.py
 
-The playlist ID is the string at the end of a Spotify playlist URL, without the question mark or anything after it:
-https://open.spotify.com/playlist/2qOyhfKK44u2USaxUyqDVn?si=c1a407e411294b71
-                                  ^^^^^^^^^^^^^^^^^^^^^^
-                                  This is the playlist ID
-                                                                   
+The playlist ID is the string at the end of a Spotify playlist URL, without the question mark or anything after it: 
+https://open.spotify.com/playlist/2qOyhfKK44u2USaxUyqDVn?si=c1a407e411294b71   
+                                  ^^^^^^^^^^^^^^^^^^^^^^   
+                                  This is the playlist ID      
 
 On first run, a browser window will open asking you to log in to Spotify and authorize the app. A `.cache` file will be created to store your token for future runs.
 
