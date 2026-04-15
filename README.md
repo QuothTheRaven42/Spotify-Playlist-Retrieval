@@ -5,6 +5,8 @@ A Python script that exports all tracks from a Spotify playlist to a JSON file, 
 - Fetches all tracks from any Spotify playlist
 - Handles pagination automatically (playlists of any length)
 - Looks up genre for each unique artist via Last.fm
+- **Uses local caching to make subsequent API calls instantly fast**
+- **Displays a live progress bar during data fetching**
 - Exports track data to `music.json`
 - Exports artist-to-genre mapping to `genres.json`
 - Converts track duration from milliseconds to `MM:SS` format
@@ -24,7 +26,7 @@ cd spotify-playlist-retrieval
 ```
 2. Install dependencies:
 ```bash
-pip install spotipy python-dotenv requests
+pip install spotipy python-dotenv requests tqdm requests-cache
 ```
 3. Create a `.env` file in the project root with your credentials:
 ```
@@ -64,7 +66,7 @@ On first run, a browser window will open asking you to log in to Spotify and aut
 Genre lookup makes one API call per unique artist with a 1 second delay between requests. Expect 1-2 minutes per 100 songs.
 
 ## Output
-The script generates two files:
+The script generates two JSON data files:
 
 `music.json` — one entry per track:
 ```json
@@ -90,13 +92,15 @@ The script generates two files:
 ## Notes
 - Genre data comes from Last.fm user-applied tags. The highest-voted tag is used. Artists with no tags default to `"unknown"`.
 - Some bands have top tags that are less than informative, such as Metallica's being "metallica."
-- The `.env` and `.cache` files are excluded from version control via `.gitignore`.
+- The `.env`, `.cache`, and `lastfm_cache.sqlite` files are excluded from version control via `.gitignore`.
 - Errors are appended to `log.log` in the project directory.
  
 ## Dependencies
 - **Spotipy** — Python library for the Spotify Web API
 - **python-dotenv** — Loads environment variables from a `.env` file
 - **requests** — HTTP library for the Last.fm API calls
+- **tqdm** — Generates the CLI progress bar
+- **requests-cache** — Caches Last.fm API responses to prevent rate-limiting
 
 ## License
 MIT
