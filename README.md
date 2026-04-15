@@ -47,6 +47,7 @@ python spotify_exporter.py
 
 The playlist ID is the string at the end of a Spotify playlist URL, without the question mark or anything after it:
 https://open.spotify.com/playlist/2qOyhfKK44u2USaxUyqDVn?si=c1a407e411294b71
+
 This is the playlist ID           ^^^^^^^^^^^^^^^^^^^^^^ 
                                                                    
 
