@@ -34,6 +34,7 @@ def test_authenticate_missing_env_var(mock_load_dotenv, monkeypatch):
 def test_fetch_genres_success(mock_get):
     """Test successful genre fetching with mocked API response."""
     mock_response = Mock()
+    mock_response.from_cache = True
     mock_response.json.return_value = {
         "toptags": {"tag": [{"name": "thrash metal", "count": 100}, {"name": "metal", "count": 50}]}
     }
@@ -41,26 +42,25 @@ def test_fetch_genres_success(mock_get):
 
     songs = [{"artist": "Metallica"}]
     unique_artists = {"Metallica", "Anthrax"}
-    artists_genres = fetch_genres("fake_api_key", unique_artists, songs)
+    artists_genres = fetch_genres("fake_api_key", unique_artists)
 
     assert artists_genres["Metallica"] == "thrash metal"
     assert artists_genres["Anthrax"] == "thrash metal"
-    assert songs[0]["genre"] == "thrash metal"
 
 
 @patch("main.lastfm_session.get")  # Changed to lastfm_session!
 def test_fetch_genres_handles_missing_tags(mock_get):
     """Test that fetch_genres defaults to 'unknown' when no tags are found."""
     mock_response = Mock()
+    mock_response.from_cache = True
     mock_response.json.return_value = {"toptags": {"tag": []}}
     mock_get.return_value = mock_response
 
     songs = [{"artist": "Unknown Band"}]
     unique_artists = {"Unknown Band"}
-    artists_genres = fetch_genres("fake_api_key", unique_artists, songs)
+    artists_genres = fetch_genres("fake_api_key", unique_artists)
 
     assert artists_genres["Unknown Band"] == "unknown"
-    assert songs[0]["genre"] == "unknown"
 
 
 @patch("main.lastfm_session.get")  # Changed to lastfm_session!
@@ -70,7 +70,7 @@ def test_fetch_genres_handles_api_error(mock_get):
 
     songs = [{"artist": "Some Band"}]
     unique_artists = {"Some Band"}
-    artists_genres = fetch_genres("fake_api_key", unique_artists, songs)
+    artists_genres = fetch_genres("fake_api_key", unique_artists)
 
     assert "Some Band" in artists_genres
     assert artists_genres["Some Band"] == "unknown"
