@@ -25,10 +25,12 @@ cd spotify-playlist-exporter
 pip install spotipy python-dotenv requests
 
 3. Create a `.env` file in the project root with your credentials:
+```
 SPOTIPY_CLIENT_ID=your_spotify_client_id
 SPOTIPY_CLIENT_SECRET=your_spotify_client_secret
 SPOTIPY_REDIRECT_URI=http://127.0.0.1:8888/callback
 LASTFM_API_KEY=your_lastfm_api_key
+```
 
 ## Spotify Developer Setup
 1. Go to the Spotify Developer Dashboard and log in
