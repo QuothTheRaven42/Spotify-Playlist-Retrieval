@@ -83,7 +83,7 @@ def fetch_tracks(sp: spotipy.Spotify, playlist: str) -> tuple[list[dict], set[st
             else:
                 break
         return songs, unique_artists
-    except Exception as e:
+    except spotipy.exceptions.SpotifyException as e:
         logging.error(f"Failed to fetch tracks for {playlist}: {e}")
         return [], set()
 
@@ -91,6 +91,7 @@ def fetch_tracks(sp: spotipy.Spotify, playlist: str) -> tuple[list[dict], set[st
 def fetch_genres(lastfm_api: str, unique_artists: set, songs: list[dict]) -> dict[str, str]:
     """Look up the top genre tag for each artist via Last.fm and add it to each song dict. Returns artist-to-genre mapping."""
     artists_genres = {}
+
     # Look up the top genre tag for each unique artist via Last.fm
     # One API call per artist with a delay to avoid rate limiting
     for artist in unique_artists:
@@ -111,7 +112,7 @@ def fetch_genres(lastfm_api: str, unique_artists: set, songs: list[dict]) -> dic
             # avoids overloading last.fm's API, they will shut you down for over an hour
             time.sleep(1)
 
-        except Exception as e:
+        except requests.exceptions.RequestException as e:
             # If the request fails for any reason, default to "unknown"
             logging.error(f"Failed to get genre for {artist}: {e}")
             artists_genres[artist] = "unknown"
