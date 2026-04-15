@@ -30,23 +30,20 @@ def authenticate() -> tuple[spotipy.Spotify, str]:
     """Load credentials from .env file and return an authenticated Spotify client and Last.fm API key."""
     load_dotenv()
 
-    client_id = os.getenv("SPOTIPY_CLIENT_ID")
-    client_secret = os.getenv("SPOTIPY_CLIENT_SECRET")
-    redirect_uri = os.getenv("SPOTIPY_REDIRECT_URI")
-    lastfm_api = os.getenv("LASTFM_API_KEY")
-    api_responses = {
-        "SPOTIPY_CLIENT_ID": client_id,
-        "SPOTIPY_CLIENT_SECRET": client_secret,
-        "SPOTIPY_REDIRECT_URI": redirect_uri,
-        "LASTFM_API_KEY": lastfm_api,
-    }
-
-    # checks for None in any os.getenv calls
-    for key, value in api_responses.items():
-        if value is None:
-            raise EnvironmentError(
-                f"Error: Missing {key} environment variable. Check your .env file."
-            )
+    required_keys = [
+        "SPOTIPY_CLIENT_ID",
+        "SPOTIPY_CLIENT_SECRET",
+        "SPOTIPY_REDIRECT_URI",
+        "LASTFM_API_KEY",
+    ]
+    try:
+        client_id, client_secret, redirect_uri, lastfm_api = [
+            os.environ[key] for key in required_keys
+        ]
+    except KeyError as e:
+        raise EnvironmentError(
+            f"Error: Missing {e.args[0]} environment variable. Check your .env file."
+        )
 
     sp = spotipy.Spotify(
         auth_manager=SpotifyOAuth(
@@ -54,52 +51,46 @@ def authenticate() -> tuple[spotipy.Spotify, str]:
         )
     )
 
-    # proves to mypy that lastfm_api is definitely a string, not None
-    assert lastfm_api is not None
-
     return sp, lastfm_api
 
 
 def fetch_tracks(sp: spotipy.Spotify, playlist: str) -> tuple[list[dict], set[str]]:
     """Fetch all tracks from a Spotify playlist and return a list of song dicts and a set of unique artist names."""
-    try:
-        songs = []
-        unique_artists = set()
-        # Fetch the first page of tracks from the playlist
-        results = sp.playlist_items(playlist)
 
-        # Loop through all pages of results — Spotify returns max 50 tracks per request
-        while True:
-            for item in results["items"]:
-                track = item["item"]
-                if track is None:
-                    continue
+    songs = []
+    unique_artists = set()
+    # Fetch the first page of tracks from the playlist
+    results = sp.playlist_items(playlist)
 
-                # Build a dictionary for each track with the fields we want
-                song = {
-                    "song": track["name"],
-                    "artist": track["artists"][0]["name"],
-                    "album": track["album"]["name"],
-                    "duration": ms_to_time(track["duration_ms"]),
-                }
+    # Loop through all pages of results — Spotify returns max 50 tracks per request
+    while True:
+        for item in results["items"]:
+            track = item["item"]
+            if track is None:
+                continue
 
-                # Collect unique artist names for the genre lookup
-                unique_artists.add(track["artists"][0]["name"])
-                songs.append(song)
+            # Build a dictionary for each track with the fields we want
+            song = {
+                "song": track["name"],
+                "artist": track["artists"][0]["name"],
+                "album": track["album"]["name"],
+                "duration": ms_to_time(track["duration_ms"]),
+            }
 
-            # If there's another page of results, fetch it — otherwise stop
-            if results["next"]:
-                results = sp.next(results)
-            else:
-                break
-        return songs, unique_artists
-    except spotipy.exceptions.SpotifyException as e:
-        logging.error(f"Failed to fetch tracks for {playlist}: {e}")
-        return [], set()
+            # Collect unique artist names for the genre lookup
+            unique_artists.add(track["artists"][0]["name"])
+            songs.append(song)
+
+        # If there's another page of results, fetch it — otherwise stop
+        if results["next"]:
+            results = sp.next(results)
+        else:
+            break
+    return songs, unique_artists
 
 
-def fetch_genres(lastfm_api: str, unique_artists: set, songs: list[dict]) -> dict[str, str]:
-    """Look up the top genre tag for each artist via Last.fm and add it to each song dict. Returns artist-to-genre mapping."""
+def fetch_genres(lastfm_api: str, unique_artists: set[str]) -> dict[str, str]:
+    """Look up the top genre tag for each artist via Last.fm. Returns artist-to-genre mapping."""
     artists_genres = {}
 
     # Look up the top genre tag for each unique artist via Last.fm
@@ -123,27 +114,23 @@ def fetch_genres(lastfm_api: str, unique_artists: set, songs: list[dict]) -> dic
             artists_genres[artist] = genre
 
             # avoids overloading last.fm's API, they will shut you down for over an hour
-            time.sleep(1)
+            # if-statement checks for cached version to skip sleep, 'False' when nothing found to protect testing
+            if not getattr(response, "from_cache", False):
+                time.sleep(1)
 
         except requests.exceptions.RequestException as e:
             # If the request fails for any reason, default to "unknown"
             logging.error(f"Failed to get genre for {artist}: {e}")
             artists_genres[artist] = "unknown"
 
-    # Add genre to each song using the artist-to-genre dictionary
-    for song in songs:
-        song["genre"] = artists_genres[song["artist"]]
-
     return artists_genres
 
 
 def save_output(songs: list[dict], artists_genres: dict[str, str]):
     """Save the full track list to music.json and the artist-genre mapping to genres.json."""
-    # Save the artist-to-genre mapping for reference
     with open("genres.json", "w", encoding="utf-8") as f:
         json.dump(artists_genres, f, indent=4)
 
-    # Save the full track list with all fields
     with open("music.json", "w", encoding="utf-8") as f:
         json.dump(songs, f, indent=4)
 
@@ -160,11 +147,28 @@ def main():
     # Playlist ID to export — between "/" and "?" in the URL
     playlist = args.playlist_id if args.playlist_id else input("Enter Spotify playlist ID: ")
 
-    # fetches data from Spotify and Last.fm
-    songs, unique_artists = fetch_tracks(sp, playlist)
-    artists_genres = fetch_genres(lastfm_api, unique_artists, songs)
+    # Fetches data from Spotify, logs issues
+    try:
+        songs, unique_artists = fetch_tracks(sp, playlist)
+    except spotipy.exceptions.SpotifyException as e:
+        logging.error(f"Failed to fetch tracks for {playlist}: {e}")
+        print("Error: Could not retrieve playlist. Check the playlist ID.")
+        return
+
+    # Guards against valid but empty playlists
+    if not songs:
+        print("Playlist is empty. Nothing to export.")
+        return
+
+    # fetches from Last.fm
+    artists_genres = fetch_genres(lastfm_api, unique_artists)
+
+    # Maps genres to the songs
+    for song in songs:
+        song["genre"] = artists_genres.get(song["artist"], "unknown")
 
     save_output(songs, artists_genres)
+    print("Export complete! Files saved to music.json and genres.json.")
 
 
 if __name__ == "__main__":
@@ -172,9 +176,7 @@ if __name__ == "__main__":
 
 
 """
-Upcoming changes:
-- Unit Testing
-Write one or two pytest files to mock the Spotify API and verify that ms_to_time works correctly. 
-
-- CI/CD (GitHub Actions running tests automatically) 
+No guard after fetch_tracks in main: 
+if it hits the exception path and returns ([], set()), execution continues silently into fetch_genres and save_output, 
+writing empty JSON files with no indication anything went wrong. A simple early-exit check on songs there would prevent that.
 """
