@@ -173,10 +173,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-"""
-No guard after fetch_tracks in main: 
-if it hits the exception path and returns ([], set()), execution continues silently into fetch_genres and save_output, 
-writing empty JSON files with no indication anything went wrong. A simple early-exit check on songs there would prevent that.
-"""
