@@ -11,19 +11,21 @@ A Python script that exports all tracks from a Spotify playlist to a JSON file, 
 - Logs errors to `log.log`
 
 ## Requirements
-- Python 3.9+
+- Python 3.10+
 - A Spotify Developer account with a registered app
 - A Last.fm API account with an API key
 
 ## Installation
 
 1. Clone this repository:
+```bash
 git clone https://github.com/QuothTheRaven42/Spotify-Playlist-Retrieval
-cd spotify-playlist-exporter
-
+cd spotify-playlist-retrieval
+```
 2. Install dependencies:
+```bash
 pip install spotipy python-dotenv requests
-
+```
 3. Create a `.env` file in the project root with your credentials:
 ```
 SPOTIPY_CLIENT_ID=your_spotify_client_id
@@ -45,8 +47,9 @@ LASTFM_API_KEY=your_lastfm_api_key
 
 ## Usage
 Run the script and enter your playlist ID when prompted:
+```bash
 python spotify_exporter.py
-
+```
 The playlist ID is the string at the end of a Spotify playlist URL, without the question mark or anything after it: 
 ```
 https://open.spotify.com/playlist/2qOyhfKK44u2USaxUyqDVn?si=c1a407e411294b71
@@ -58,7 +61,7 @@ On first run, a browser window will open asking you to log in to Spotify and aut
 
 > **Note:** Spotify-curated playlists may return a 404 error and are not supported.
 
-Genre lookup makes one API call per unique artist with a 1 second delay between requests. For large playlists with many unique artists this may take a few minutes.
+Genre lookup makes one API call per unique artist with a 1 second delay between requests. Expect 2+ minutes per 100 songs.
 
 ## Output
 The script generates two files:
@@ -87,7 +90,7 @@ The script generates two files:
 ## Notes
 - Genre data comes from Last.fm user-applied tags. The highest-voted tag is used. Artists with no tags default to `"unknown"`.
 - The `.env` and `.cache` files are excluded from version control via `.gitignore`. Never commit them to a public repository.
-- Errors are logged to `log.log` in the project directory.
+- Errors are appended to `log.log` in the project directory.
 
 ## Dependencies
 - **Spotipy** — Python library for the Spotify Web API
