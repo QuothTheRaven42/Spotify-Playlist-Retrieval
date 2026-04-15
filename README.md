@@ -89,9 +89,9 @@ The script generates two files:
 
 ## Notes
 - Genre data comes from Last.fm user-applied tags. The highest-voted tag is used. Artists with no tags default to `"unknown"`.
-- The `.env` and `.cache` files are excluded from version control via `.gitignore`. Never commit them to a public repository.
+- Some bands have top tags that are less than informative, such as Metallica's being "metallica."
+- The `.env` and `.cache` files are excluded from version control via `.gitignore`.
 - Errors are appended to `log.log` in the project directory.
-- Some bands have top tags that aren't informative, such as Metallica's being "Metallica."
  
 ## Dependencies
 - **Spotipy** — Python library for the Spotify Web API
