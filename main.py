@@ -1,14 +1,21 @@
-import spotipy
-from spotipy.oauth2 import SpotifyOAuth
+import spotipy  # type: ignore
+from spotipy.oauth2 import SpotifyOAuth  # type: ignore
 from dotenv import load_dotenv
+import argparse
 import os
 import json
 import requests
 import time
 from datetime import timedelta
+from tqdm import tqdm
+import requests_cache
 import logging
 
 logging.basicConfig(filename="log.log", level=logging.ERROR)
+
+# adds a caching layer to reduce API calls and improve performance
+# 'CachedSession' prevents global side effects by scoping cache to session
+lastfm_session = requests_cache.CachedSession("lastfm_cache", expire_after=86400)
 
 
 def ms_to_time(ms: int) -> str:
@@ -46,6 +53,9 @@ def authenticate() -> tuple[spotipy.Spotify, str]:
             client_id=client_id, client_secret=client_secret, redirect_uri=redirect_uri
         )
     )
+
+    # proves to mypy that lastfm_api is definitely a string, not None
+    assert lastfm_api is not None
 
     return sp, lastfm_api
 
@@ -94,7 +104,8 @@ def fetch_genres(lastfm_api: str, unique_artists: set, songs: list[dict]) -> dic
 
     # Look up the top genre tag for each unique artist via Last.fm
     # One API call per artist with a delay to avoid rate limiting
-    for artist in unique_artists:
+    print("Fetching genres via Last.fm API...")
+    for artist in tqdm(unique_artists, desc="Artists Processed"):
         try:
             params = {
                 "method": "artist.gettoptags",
@@ -102,8 +113,10 @@ def fetch_genres(lastfm_api: str, unique_artists: set, songs: list[dict]) -> dic
                 "api_key": lastfm_api,
                 "format": "json",
             }
-            response = requests.get("https://ws.audioscrobbler.com/2.0/", params=params)
-            tags = response.json()["toptags"]["tag"]
+
+            response = lastfm_session.get("https://ws.audioscrobbler.com/2.0/", params=params)
+            data = response.json()
+            tags = data.get("toptags", {}).get("tag", [])
 
             # Take the highest-voted tag as the genre, or "unknown" if no tags exist
             genre = tags[0]["name"] if tags else "unknown"
@@ -137,13 +150,18 @@ def save_output(songs: list[dict], artists_genres: dict[str, str]):
 
 def main():
     """Orchestrate track fetching, genre lookup, and file output."""
+    # runs from CLI with playlist ID and adds --help functionality
+    parser = argparse.ArgumentParser(description="Export Spotify playlist tracks to JSON")
+    parser.add_argument("playlist_id", nargs="?", help="Spotify playlist ID")
+    args = parser.parse_args()
+
     sp, lastfm_api = authenticate()
 
     # Playlist ID to export — between "/" and "?" in the URL
-    playlist = input("Enter Spotify playlist ID: ")
+    playlist = args.playlist_id if args.playlist_id else input("Enter Spotify playlist ID: ")
 
+    # fetches data from Spotify and Last.fm
     songs, unique_artists = fetch_tracks(sp, playlist)
-
     artists_genres = fetch_genres(lastfm_api, unique_artists, songs)
 
     save_output(songs, artists_genres)
@@ -151,3 +169,12 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+"""
+Upcoming changes:
+- Unit Testing
+Write one or two pytest files to mock the Spotify API and verify that ms_to_time works correctly. 
+
+- CI/CD (GitHub Actions running tests automatically) 
+"""
