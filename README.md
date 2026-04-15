@@ -61,7 +61,7 @@ On first run, a browser window will open asking you to log in to Spotify and aut
 
 > **Note:** Spotify-curated playlists may return a 404 error and are not supported.
 
-Genre lookup makes one API call per unique artist with a 1 second delay between requests. Expect 2+ minutes per 100 artists.
+Genre lookup makes one API call per unique artist with a 1 second delay between requests. Expect 2+ minutes per 100 songs.
 
 ## Output
 The script generates two files:
@@ -90,7 +90,7 @@ The script generates two files:
 ## Notes
 - Genre data comes from Last.fm user-applied tags. The highest-voted tag is used. Artists with no tags default to `"unknown"`.
 - The `.env` and `.cache` files are excluded from version control via `.gitignore`. Never commit them to a public repository.
-- Errors are logged to `log.log` in the project directory.
+- Errors are appended to `log.log` in the project directory.
 
 ## Dependencies
 - **Spotipy** — Python library for the Spotify Web API
