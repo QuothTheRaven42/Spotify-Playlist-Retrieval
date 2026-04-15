@@ -61,7 +61,7 @@ On first run, a browser window will open asking you to log in to Spotify and aut
 
 > **Note:** Spotify-curated playlists may return a 404 error and are not supported.
 
-Genre lookup makes one API call per unique artist with a 1 second delay between requests. For large playlists with many unique artists this may take a few minutes.
+Genre lookup makes one API call per unique artist with a 1 second delay between requests. Expect 2+ minutes per 100 artists.
 
 ## Output
 The script generates two files:
