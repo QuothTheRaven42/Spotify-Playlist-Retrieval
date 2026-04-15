@@ -13,8 +13,8 @@ import logging
 
 logging.basicConfig(filename="log.log", level=logging.ERROR)
 
-# adds a caching layer to reduce API calls and improve performance
-# 'CachedSession' prevents global side effects by scoping cache to session
+# CachedSession scopes the cache to this session rather than patching requests globally,
+# which prevents side effects in other parts of the program or test suite
 lastfm_session = requests_cache.CachedSession("lastfm_cache", expire_after=86400)
 
 
@@ -36,6 +36,8 @@ def authenticate() -> tuple[spotipy.Spotify, str]:
         "SPOTIPY_REDIRECT_URI",
         "LASTFM_API_KEY",
     ]
+    # os.environ raises KeyError on missing keys; os.getenv would silently return None
+    # and produce a cryptic error later inside Spotipy — failing fast here is cleaner
     try:
         client_id, client_secret, redirect_uri, lastfm_api = [
             os.environ[key] for key in required_keys
@@ -59,17 +61,16 @@ def fetch_tracks(sp: spotipy.Spotify, playlist: str) -> tuple[list[dict], set[st
 
     songs = []
     unique_artists = set()
-    # Fetch the first page of tracks from the playlist
     results = sp.playlist_items(playlist)
 
-    # Loop through all pages of results — Spotify returns max 50 tracks per request
+    # Spotify returns a maximum of 50 tracks per request; results["next"] is None on the last page
     while True:
         for item in results["items"]:
             track = item["item"]
             if track is None:
+                # Spotify can return null entries for locally added or unavailable tracks
                 continue
 
-            # Build a dictionary for each track with the fields we want
             song = {
                 "song": track["name"],
                 "artist": track["artists"][0]["name"],
@@ -77,15 +78,17 @@ def fetch_tracks(sp: spotipy.Spotify, playlist: str) -> tuple[list[dict], set[st
                 "duration": ms_to_time(track["duration_ms"]),
             }
 
-            # Collect unique artist names for the genre lookup
+            # set() deduplicates artists so we only make one Last.fm call per artist
             unique_artists.add(track["artists"][0]["name"])
             songs.append(song)
 
-        # If there's another page of results, fetch it — otherwise stop
         if results["next"]:
             results = sp.next(results)
         else:
             break
+
+    # SpotifyException is intentionally not caught here — main() handles it so the
+    # error can be logged and reported to the user without a raw traceback
     return songs, unique_artists
 
 
@@ -93,8 +96,6 @@ def fetch_genres(lastfm_api: str, unique_artists: set[str]) -> dict[str, str]:
     """Look up the top genre tag for each artist via Last.fm. Returns artist-to-genre mapping."""
     artists_genres = {}
 
-    # Look up the top genre tag for each unique artist via Last.fm
-    # One API call per artist with a delay to avoid rate limiting
     print("Fetching genres via Last.fm API...")
     for artist in tqdm(unique_artists, desc="Artists Processed"):
         try:
@@ -109,17 +110,19 @@ def fetch_genres(lastfm_api: str, unique_artists: set[str]) -> dict[str, str]:
             data = response.json()
             tags = data.get("toptags", {}).get("tag", [])
 
-            # Take the highest-voted tag as the genre, or "unknown" if no tags exist
+            # Last.fm returns tags sorted by vote count — index 0 is the most agreed-upon genre
             genre = tags[0]["name"] if tags else "unknown"
             artists_genres[artist] = genre
 
-            # avoids overloading last.fm's API, they will shut you down for over an hour
-            # if-statement checks for cached version to skip sleep, 'False' when nothing found to protect testing
+            # Last.fm rate-limits aggressively; exceeding it causes lockouts of over an hour.
+            # getattr checks for a cached response so we skip the delay on cache hits —
+            # defaults to False to ensure the sleep runs when the attribute is absent
             if not getattr(response, "from_cache", False):
                 time.sleep(1)
 
         except requests.exceptions.RequestException as e:
-            # If the request fails for any reason, default to "unknown"
+            # A single failed lookup shouldn't abort the whole export —
+            # log it and continue with "unknown" so the rest of the data is still saved
             logging.error(f"Failed to get genre for {artist}: {e}")
             artists_genres[artist] = "unknown"
 
@@ -137,17 +140,16 @@ def save_output(songs: list[dict], artists_genres: dict[str, str]):
 
 def main():
     """Orchestrate track fetching, genre lookup, and file output."""
-    # runs from CLI with playlist ID and adds --help functionality
     parser = argparse.ArgumentParser(description="Export Spotify playlist tracks to JSON")
     parser.add_argument("playlist_id", nargs="?", help="Spotify playlist ID")
     args = parser.parse_args()
 
     sp, lastfm_api = authenticate()
 
-    # Playlist ID to export — between "/" and "?" in the URL
     playlist = args.playlist_id if args.playlist_id else input("Enter Spotify playlist ID: ")
 
-    # Fetches data from Spotify, logs issues
+    # SpotifyException is caught here rather than inside fetch_tracks so that main()
+    # controls user-facing output — log the error, print a clean message, exit gracefully
     try:
         songs, unique_artists = fetch_tracks(sp, playlist)
     except spotipy.exceptions.SpotifyException as e:
@@ -155,15 +157,16 @@ def main():
         print("Error: Could not retrieve playlist. Check the playlist ID.")
         return
 
-    # Guards against valid but empty playlists
+    # Distinguishes a valid but empty playlist from a fetch failure,
+    # since both would otherwise produce empty output with no explanation
     if not songs:
         print("Playlist is empty. Nothing to export.")
         return
 
-    # fetches from Last.fm
     artists_genres = fetch_genres(lastfm_api, unique_artists)
 
-    # Maps genres to the songs
+    # Genre mapping happens here rather than inside fetch_genres to keep
+    # that function focused on one job: talking to the API
     for song in songs:
         song["genre"] = artists_genres.get(song["artist"], "unknown")
 
