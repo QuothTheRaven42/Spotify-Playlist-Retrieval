@@ -12,7 +12,7 @@ logging.basicConfig(filename="log.log", level=logging.ERROR)
 
 
 def ms_to_time(ms: int) -> str:
-    """Convert milliseconds to a MM:SS formatted string."""
+    """Convert milliseconds to an MM:SS formatted string."""
     delta = timedelta(milliseconds=ms)
     seconds = int(delta.total_seconds())
     minutes, seconds = divmod(seconds, 60)
@@ -56,7 +56,7 @@ def fetch_tracks(sp: spotipy.Spotify, playlist: str) -> tuple[list[dict], set[st
         songs = []
         unique_artists = set()
         # Fetch the first page of tracks from the playlist
-        results = sp.playlist_tracks(playlist)
+        results = sp.playlist_items(playlist)
 
         # Loop through all pages of results — Spotify returns max 50 tracks per request
         while True:
