@@ -1,5 +1,6 @@
 spotipy
 python-dotenv
 requests
-tdqm
+tqdm
+types-tqdm
 requests-cache
