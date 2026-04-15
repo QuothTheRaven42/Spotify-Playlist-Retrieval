@@ -1,135 +1,51 @@
 [
     {
-        "song": "A.I.R.",
-        "artist": "Anthrax",
-        "album": "Spreading The Disease",
-        "duration": "05:45",
-        "genre": "thrash metal"
+        "song": "Jawbreaker - Remastered",
+        "artist": "Judas Priest",
+        "album": "Defenders of the Faith (30th Anniversary Edition) [Remastered]",
+        "duration": "03:26",
+        "genre": "heavy metal"
     },
     {
-        "song": "Lone Justice",
-        "artist": "Anthrax",
-        "album": "Spreading The Disease",
-        "duration": "04:36",
-        "genre": "thrash metal"
+        "song": "Some Heads Are Gonna Roll - Remastered",
+        "artist": "Judas Priest",
+        "album": "Defenders of the Faith (30th Anniversary Edition) [Remastered]",
+        "duration": "04:06",
+        "genre": "heavy metal"
     },
     {
-        "song": "Madhouse",
-        "artist": "Anthrax",
-        "album": "Spreading The Disease",
-        "duration": "04:19",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "S.S.C. / Stand Or Fall",
-        "artist": "Anthrax",
-        "album": "Spreading The Disease",
-        "duration": "04:08",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "The Enemy",
-        "artist": "Anthrax",
-        "album": "Spreading The Disease",
-        "duration": "05:25",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Aftershock",
-        "artist": "Anthrax",
-        "album": "Spreading The Disease",
-        "duration": "04:28",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Armed And Dangerous",
-        "artist": "Anthrax",
-        "album": "Spreading The Disease",
-        "duration": "05:43",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Medusa",
-        "artist": "Anthrax",
-        "album": "Spreading The Disease",
-        "duration": "04:44",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Gung-Ho",
-        "artist": "Anthrax",
-        "album": "Spreading The Disease",
-        "duration": "04:34",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Among The Living",
-        "artist": "Anthrax",
-        "album": "Among The Living",
-        "duration": "05:16",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Caught In A Mosh",
-        "artist": "Anthrax",
-        "album": "Among The Living",
-        "duration": "05:00",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "I Am The Law",
-        "artist": "Anthrax",
-        "album": "Among The Living",
-        "duration": "05:54",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Efilnikufesin (N.F.L.)",
-        "artist": "Anthrax",
-        "album": "Among The Living",
-        "duration": "04:55",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "A Skeleton In The Closet",
-        "artist": "Anthrax",
-        "album": "Among The Living",
-        "duration": "05:29",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Indians",
-        "artist": "Anthrax",
-        "album": "Among The Living",
-        "duration": "05:41",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "One World",
-        "artist": "Anthrax",
-        "album": "Among The Living",
-        "duration": "05:55",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Medley: A.D.I. / Horror Of It All",
-        "artist": "Anthrax",
-        "album": "Among The Living",
-        "duration": "07:49",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Imitation Of Life",
-        "artist": "Anthrax",
-        "album": "Among The Living",
-        "duration": "04:22",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Fight Fire With Fire (Remastered)",
+        "song": "To Live Is To Die",
         "artist": "Metallica",
-        "album": "Ride The Lightning (Remastered)",
-        "duration": "04:44",
+        "album": "...And Justice For All",
+        "duration": "09:48",
+        "genre": "metallica"
+    },
+    {
+        "song": "Seek & Destroy (Remastered)",
+        "artist": "Metallica",
+        "album": "Kill 'Em All (Deluxe Remaster)",
+        "duration": "06:54",
+        "genre": "metallica"
+    },
+    {
+        "song": "Blackened (Remastered)",
+        "artist": "Metallica",
+        "album": "...And Justice for All (Remastered Deluxe Box Set)",
+        "duration": "06:42",
+        "genre": "metallica"
+    },
+    {
+        "song": "No Remorse (Remastered)",
+        "artist": "Metallica",
+        "album": "Kill 'Em All (Deluxe Remaster)",
+        "duration": "06:26",
+        "genre": "metallica"
+    },
+    {
+        "song": "...And Justice for All (Remastered)",
+        "artist": "Metallica",
+        "album": "...And Justice for All (Remastered Deluxe Box Set)",
+        "duration": "09:45",
         "genre": "metallica"
     },
     {
@@ -147,27 +63,6 @@
         "genre": "metallica"
     },
     {
-        "song": "Fade To Black (Remastered)",
-        "artist": "Metallica",
-        "album": "Ride The Lightning (Remastered)",
-        "duration": "06:57",
-        "genre": "metallica"
-    },
-    {
-        "song": "Trapped Under Ice (Remastered)",
-        "artist": "Metallica",
-        "album": "Ride The Lightning (Remastered)",
-        "duration": "04:04",
-        "genre": "metallica"
-    },
-    {
-        "song": "Escape (Remastered)",
-        "artist": "Metallica",
-        "album": "Ride The Lightning (Remastered)",
-        "duration": "04:23",
-        "genre": "metallica"
-    },
-    {
         "song": "Creeping Death (Remastered)",
         "artist": "Metallica",
         "album": "Ride The Lightning (Remastered)",
@@ -175,521 +70,38 @@
         "genre": "metallica"
     },
     {
-        "song": "The Call Of Ktulu (Remastered)",
-        "artist": "Metallica",
-        "album": "Ride The Lightning (Remastered)",
-        "duration": "08:53",
-        "genre": "metallica"
+        "song": "Love You to Death",
+        "artist": "Judas Priest",
+        "album": "Ram It Down",
+        "duration": "04:36",
+        "genre": "heavy metal"
     },
     {
-        "song": "Blackened (Remastered)",
-        "artist": "Metallica",
-        "album": "...And Justice for All (Remastered Deluxe Box Set)",
-        "duration": "06:42",
-        "genre": "metallica"
-    },
-    {
-        "song": "...And Justice for All (Remastered)",
-        "artist": "Metallica",
-        "album": "...And Justice for All (Remastered Deluxe Box Set)",
-        "duration": "09:45",
-        "genre": "metallica"
-    },
-    {
-        "song": "Eye of the Beholder (Remastered)",
-        "artist": "Metallica",
-        "album": "...And Justice for All (Remastered Deluxe Box Set)",
-        "duration": "06:25",
-        "genre": "metallica"
-    },
-    {
-        "song": "One (Remastered)",
-        "artist": "Metallica",
-        "album": "...And Justice for All (Remastered Deluxe Box Set)",
-        "duration": "07:26",
-        "genre": "metallica"
-    },
-    {
-        "song": "The Shortest Straw (Remastered)",
-        "artist": "Metallica",
-        "album": "...And Justice for All (Remastered Deluxe Box Set)",
-        "duration": "06:35",
-        "genre": "metallica"
-    },
-    {
-        "song": "Harvester of Sorrow (Remastered)",
-        "artist": "Metallica",
-        "album": "...And Justice for All (Remastered Deluxe Box Set)",
-        "duration": "05:45",
-        "genre": "metallica"
-    },
-    {
-        "song": "The Frayed Ends of Sanity (Remastered)",
-        "artist": "Metallica",
-        "album": "...And Justice for All (Remastered Deluxe Box Set)",
-        "duration": "07:43",
-        "genre": "metallica"
-    },
-    {
-        "song": "To Live Is to Die (Remastered)",
-        "artist": "Metallica",
-        "album": "...And Justice for All (Remastered Deluxe Box Set)",
-        "duration": "09:48",
-        "genre": "metallica"
-    },
-    {
-        "song": "Dyers Eve (Remastered)",
-        "artist": "Metallica",
-        "album": "...And Justice for All (Remastered Deluxe Box Set)",
-        "duration": "05:13",
-        "genre": "metallica"
-    },
-    {
-        "song": "Hit The Lights (Remastered)",
-        "artist": "Metallica",
-        "album": "Kill 'Em All (Remastered)",
-        "duration": "04:15",
-        "genre": "metallica"
-    },
-    {
-        "song": "The Four Horsemen (Remastered)",
-        "artist": "Metallica",
-        "album": "Kill 'Em All (Remastered)",
-        "duration": "07:12",
-        "genre": "metallica"
-    },
-    {
-        "song": "Motorbreath (Remastered)",
-        "artist": "Metallica",
-        "album": "Kill 'Em All (Remastered)",
-        "duration": "03:07",
-        "genre": "metallica"
-    },
-    {
-        "song": "Jump In The Fire (Remastered)",
-        "artist": "Metallica",
-        "album": "Kill 'Em All (Remastered)",
-        "duration": "04:41",
-        "genre": "metallica"
-    },
-    {
-        "song": "(Anesthesia)--Pulling Teeth (Remastered)",
-        "artist": "Metallica",
-        "album": "Kill 'Em All (Remastered)",
+        "song": "Heartbreaker",
+        "artist": "Led Zeppelin",
+        "album": "The Complete Studio Albums",
         "duration": "04:14",
-        "genre": "metallica"
+        "genre": "classic rock"
     },
     {
-        "song": "Whiplash (Remastered)",
-        "artist": "Metallica",
-        "album": "Kill 'Em All (Remastered)",
-        "duration": "04:08",
-        "genre": "metallica"
-    },
-    {
-        "song": "Phantom Lord (Remastered)",
-        "artist": "Metallica",
-        "album": "Kill 'Em All (Remastered)",
-        "duration": "05:01",
-        "genre": "metallica"
-    },
-    {
-        "song": "No Remorse (Remastered)",
-        "artist": "Metallica",
-        "album": "Kill 'Em All (Remastered)",
-        "duration": "06:26",
-        "genre": "metallica"
-    },
-    {
-        "song": "Seek & Destroy (Remastered)",
-        "artist": "Metallica",
-        "album": "Kill 'Em All (Remastered)",
-        "duration": "06:54",
-        "genre": "metallica"
-    },
-    {
-        "song": "Metal Militia (Remastered)",
-        "artist": "Metallica",
-        "album": "Kill 'Em All (Remastered)",
-        "duration": "05:11",
-        "genre": "metallica"
-    },
-    {
-        "song": "Last Rites / Loved to Deth",
-        "artist": "Megadeth",
-        "album": "Killing Is My Business...And Business Is Good!",
-        "duration": "04:41",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Killing Is My Business...And Business Is Good!",
-        "artist": "Megadeth",
-        "album": "Killing Is My Business...And Business Is Good!",
-        "duration": "03:07",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "The Skull Beneath the Skin",
-        "artist": "Megadeth",
-        "album": "Killing Is My Business...And Business Is Good!",
-        "duration": "03:48",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Rattlehead",
-        "artist": "Megadeth",
-        "album": "Killing Is My Business...And Business Is Good!",
-        "duration": "03:43",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Chosen Ones",
-        "artist": "Megadeth",
-        "album": "Killing Is My Business...And Business Is Good!",
-        "duration": "02:55",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Looking Down the Cross",
-        "artist": "Megadeth",
-        "album": "Killing Is My Business...And Business Is Good!",
-        "duration": "05:02",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Mechanix",
-        "artist": "Megadeth",
-        "album": "Killing Is My Business...And Business Is Good!",
-        "duration": "04:25",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "These Boots",
-        "artist": "Megadeth",
-        "album": "Killing Is My Business...And Business Is Good!",
-        "duration": "03:36",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Wake Up Dead - Remastered 2011",
-        "artist": "Megadeth",
-        "album": "Peace Sells...But Who's Buying (Deluxe Edition - Remastered)",
-        "duration": "03:40",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "The Conjuring - Remastered 2011",
-        "artist": "Megadeth",
-        "album": "Peace Sells...But Who's Buying (Deluxe Edition - Remastered)",
-        "duration": "05:04",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Peace Sells - Remastered",
-        "artist": "Megadeth",
-        "album": "Peace Sells...But Who's Buying (Deluxe Edition - Remastered)",
-        "duration": "04:04",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Devils Island - Remastered",
-        "artist": "Megadeth",
-        "album": "Peace Sells...But Who's Buying (Deluxe Edition - Remastered)",
-        "duration": "05:06",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Good Mourning / Black Friday - Remastered",
-        "artist": "Megadeth",
-        "album": "Peace Sells...But Who's Buying (Deluxe Edition - Remastered)",
-        "duration": "06:41",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Bad Omen - Remastered",
-        "artist": "Megadeth",
-        "album": "Peace Sells...But Who's Buying (Deluxe Edition - Remastered)",
-        "duration": "04:04",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "I Ain't Superstitious - Remastered",
-        "artist": "Megadeth",
-        "album": "Peace Sells...But Who's Buying (Deluxe Edition - Remastered)",
-        "duration": "02:45",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "My Last Words - Remastered",
-        "artist": "Megadeth",
-        "album": "Peace Sells...But Who's Buying (Deluxe Edition - Remastered)",
-        "duration": "04:49",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "The Conjuring - Remastered",
-        "artist": "Megadeth",
-        "album": "Peace Sells...But Who's Buying (Deluxe Edition - Remastered)",
-        "duration": "05:21",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Deathrider",
+        "song": "Among The Living",
         "artist": "Anthrax",
-        "album": "Fistful of Metal",
-        "duration": "03:12",
+        "album": "Among The Living",
+        "duration": "05:16",
         "genre": "thrash metal"
     },
     {
-        "song": "Metal Thrashing Mad",
+        "song": "Room for One More",
         "artist": "Anthrax",
-        "album": "Fistful of Metal",
-        "duration": "02:42",
+        "album": "Sound of White Noise - Expanded Edition",
+        "duration": "04:55",
         "genre": "thrash metal"
     },
     {
-        "song": "I'm Eighteen",
+        "song": "Random Acts of Senseless Violence",
         "artist": "Anthrax",
-        "album": "Fistful of Metal",
-        "duration": "04:06",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Panic",
-        "artist": "Anthrax",
-        "album": "Fistful of Metal",
+        "album": "Stomp 442 - Expanded Edition",
         "duration": "04:02",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Subjugator",
-        "artist": "Anthrax",
-        "album": "Fistful of Metal",
-        "duration": "04:42",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Soldiers Of Metal",
-        "artist": "Anthrax",
-        "album": "Fistful of Metal",
-        "duration": "03:00",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Death From Above",
-        "artist": "Anthrax",
-        "album": "Fistful of Metal",
-        "duration": "05:10",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Anthrax",
-        "artist": "Anthrax",
-        "album": "Fistful of Metal",
-        "duration": "03:29",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Across The River",
-        "artist": "Anthrax",
-        "album": "Fistful of Metal",
-        "duration": "01:26",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Howling Furies",
-        "artist": "Anthrax",
-        "album": "Fistful of Metal",
-        "duration": "03:55",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Evil Has No Boundaries",
-        "artist": "Slayer",
-        "album": "Show No Mercy",
-        "duration": "03:09",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "The Antichrist",
-        "artist": "Slayer",
-        "album": "Show No Mercy",
-        "duration": "02:49",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Die by the Sword",
-        "artist": "Slayer",
-        "album": "Show No Mercy",
-        "duration": "03:36",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Fight Till Death",
-        "artist": "Slayer",
-        "album": "Show No Mercy",
-        "duration": "03:37",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Metal Storm / Face the Slayer",
-        "artist": "Slayer",
-        "album": "Show No Mercy",
-        "duration": "04:53",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Black Magic",
-        "artist": "Slayer",
-        "album": "Show No Mercy",
-        "duration": "04:03",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Tormentor",
-        "artist": "Slayer",
-        "album": "Show No Mercy",
-        "duration": "03:45",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "The Final Command",
-        "artist": "Slayer",
-        "album": "Show No Mercy",
-        "duration": "02:32",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Crionics",
-        "artist": "Slayer",
-        "album": "Show No Mercy",
-        "duration": "03:29",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Show No Mercy",
-        "artist": "Slayer",
-        "album": "Show No Mercy",
-        "duration": "03:06",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Angel Of Death",
-        "artist": "Slayer",
-        "album": "Reign In Blood (Expanded)",
-        "duration": "04:51",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Piece By Piece",
-        "artist": "Slayer",
-        "album": "Reign In Blood (Expanded)",
-        "duration": "02:02",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Necrophobic",
-        "artist": "Slayer",
-        "album": "Reign In Blood (Expanded)",
-        "duration": "01:40",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Altar Of Sacrifice",
-        "artist": "Slayer",
-        "album": "Reign In Blood (Expanded)",
-        "duration": "02:50",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Jesus Saves",
-        "artist": "Slayer",
-        "album": "Reign In Blood (Expanded)",
-        "duration": "02:54",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Criminally Insane",
-        "artist": "Slayer",
-        "album": "Reign In Blood (Expanded)",
-        "duration": "02:23",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Reborn",
-        "artist": "Slayer",
-        "album": "Reign In Blood (Expanded)",
-        "duration": "02:11",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Epidemic",
-        "artist": "Slayer",
-        "album": "Reign In Blood (Expanded)",
-        "duration": "02:23",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Postmortem",
-        "artist": "Slayer",
-        "album": "Reign In Blood (Expanded)",
-        "duration": "03:27",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Raining Blood",
-        "artist": "Slayer",
-        "album": "Reign In Blood (Expanded)",
-        "duration": "04:15",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Aggressive Perfector",
-        "artist": "Slayer",
-        "album": "Reign In Blood (Expanded)",
-        "duration": "02:29",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Criminally Insane - Remix",
-        "artist": "Slayer",
-        "album": "Reign In Blood (Expanded)",
-        "duration": "03:17",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "South Of Heaven",
-        "artist": "Slayer",
-        "album": "South Of Heaven",
-        "duration": "04:58",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Silent Scream",
-        "artist": "Slayer",
-        "album": "South Of Heaven",
-        "duration": "03:06",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Live Undead",
-        "artist": "Slayer",
-        "album": "South Of Heaven",
-        "duration": "03:50",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Behind The Crooked Cross",
-        "artist": "Slayer",
-        "album": "South Of Heaven",
-        "duration": "03:14",
-        "genre": "thrash metal"
-    },
-    {
-        "song": "Mandatory Suicide",
-        "artist": "Slayer",
-        "album": "South Of Heaven",
-        "duration": "04:05",
         "genre": "thrash metal"
     },
     {
@@ -700,31 +112,1046 @@
         "genre": "thrash metal"
     },
     {
-        "song": "Read Between The Lies",
+        "song": "Angel Of Death",
         "artist": "Slayer",
-        "album": "South Of Heaven",
-        "duration": "03:20",
+        "album": "Reign In Blood (Expanded)",
+        "duration": "04:51",
         "genre": "thrash metal"
     },
     {
-        "song": "Cleanse The Soul",
+        "song": "Silent Scream",
         "artist": "Slayer",
         "album": "South Of Heaven",
-        "duration": "03:02",
+        "duration": "03:06",
         "genre": "thrash metal"
+    },
+    {
+        "song": "Armed And Dangerous",
+        "artist": "Anthrax",
+        "album": "Spreading The Disease",
+        "duration": "05:43",
+        "genre": "thrash metal"
+    },
+    {
+        "song": "A.I.R.",
+        "artist": "Anthrax",
+        "album": "Spreading The Disease",
+        "duration": "05:45",
+        "genre": "thrash metal"
+    },
+    {
+        "song": "Madhouse",
+        "artist": "Anthrax",
+        "album": "Spreading The Disease",
+        "duration": "04:19",
+        "genre": "thrash metal"
+    },
+    {
+        "song": "Caught In A Mosh",
+        "artist": "Anthrax",
+        "album": "Among The Living",
+        "duration": "05:00",
+        "genre": "thrash metal"
+    },
+    {
+        "song": "Indians",
+        "artist": "Anthrax",
+        "album": "Among The Living",
+        "duration": "05:41",
+        "genre": "thrash metal"
+    },
+    {
+        "song": "Metal Thrashing Mad",
+        "artist": "Anthrax",
+        "album": "Fistful of Metal",
+        "duration": "02:42",
+        "genre": "thrash metal"
+    },
+    {
+        "song": "Medusa",
+        "artist": "Anthrax",
+        "album": "Spreading The Disease",
+        "duration": "04:44",
+        "genre": "thrash metal"
+    },
+    {
+        "song": "Efilnikufesin (N.F.L.)",
+        "artist": "Anthrax",
+        "album": "Among The Living",
+        "duration": "04:55",
+        "genre": "thrash metal"
+    },
+    {
+        "song": "Be All, End All",
+        "artist": "Anthrax",
+        "album": "State Of Euphoria",
+        "duration": "06:21",
+        "genre": "thrash metal"
+    },
+    {
+        "song": "Last Rites / Loved to Deth",
+        "artist": "Megadeth",
+        "album": "Killing Is My Business...And Business Is Good!",
+        "duration": "04:41",
+        "genre": "thrash metal"
+    },
+    {
+        "song": "Lonely Is the Word - 2021 Remaster",
+        "artist": "Black Sabbath",
+        "album": "Heaven and Hell (Deluxe Edition)",
+        "duration": "05:48",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Dirty Women - 2021 Remaster",
+        "artist": "Black Sabbath",
+        "album": "Technical Ecstasy (2021 Remaster)",
+        "duration": "07:06",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Neon Knights - 2021 Remaster",
+        "artist": "Black Sabbath",
+        "album": "Heaven and Hell (Deluxe Edition)",
+        "duration": "03:51",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Supernaut - 2020 Remaster",
+        "artist": "Black Sabbath",
+        "album": "Vol. 4 (2021 Remaster)",
+        "duration": "04:30",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Turn Up the Night - 2021 Remaster",
+        "artist": "Black Sabbath",
+        "album": "Mob Rules (Deluxe Edition)",
+        "duration": "03:42",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "You Won't Change Me - 2021 Remaster",
+        "artist": "Black Sabbath",
+        "album": "Technical Ecstasy (2021 Remaster)",
+        "duration": "06:35",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Megalomania - 2021 Remaster",
+        "artist": "Black Sabbath",
+        "album": "Sabotage (2021 Remaster)",
+        "duration": "09:41",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Wheels of Confusion / The Straightener - 2021 Remaster",
+        "artist": "Black Sabbath",
+        "album": "Vol. 4 (2021 Remaster)",
+        "duration": "07:47",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Symptom Of The Universe - 2021 Remaster",
+        "artist": "Black Sabbath",
+        "album": "Sabotage (2021 Remaster)",
+        "duration": "06:29",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Heaven and Hell - 2021 Remaster",
+        "artist": "Black Sabbath",
+        "album": "Heaven and Hell (Deluxe Edition)",
+        "duration": "06:57",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Die Young - 2021 Remaster",
+        "artist": "Black Sabbath",
+        "album": "Heaven and Hell (Deluxe Edition)",
+        "duration": "04:43",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Children of the Sea - 2021 Remaster",
+        "artist": "Black Sabbath",
+        "album": "Heaven and Hell (Deluxe Edition)",
+        "duration": "05:33",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "The Sign of the Southern Cross - 2021 Remaster",
+        "artist": "Black Sabbath",
+        "album": "Mob Rules (Deluxe Edition)",
+        "duration": "07:49",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "One (Remastered)",
+        "artist": "Metallica",
+        "album": "...And Justice for All (Remastered Deluxe Box Set)",
+        "duration": "07:26",
+        "genre": "metallica"
+    },
+    {
+        "song": "Master Of Puppets (Remastered)",
+        "artist": "Metallica",
+        "album": "Master of Puppets (Remastered)",
+        "duration": "08:35",
+        "genre": "metallica"
+    },
+    {
+        "song": "Blackened (Remastered)",
+        "artist": "Metallica",
+        "album": "...And Justice for All (Remastered)",
+        "duration": "06:42",
+        "genre": "metallica"
+    },
+    {
+        "song": "Fight Fire With Fire (Remastered)",
+        "artist": "Metallica",
+        "album": "Ride The Lightning (Deluxe Remaster)",
+        "duration": "04:44",
+        "genre": "metallica"
+    },
+    {
+        "song": "Damage, Inc. (Remastered)",
+        "artist": "Metallica",
+        "album": "Master of Puppets (Remastered Deluxe Box Set)",
+        "duration": "05:32",
+        "genre": "metallica"
+    },
+    {
+        "song": "Dyers Eve (Remastered)",
+        "artist": "Metallica",
+        "album": "...And Justice for All (Remastered)",
+        "duration": "05:13",
+        "genre": "metallica"
+    },
+    {
+        "song": "Lucretia - 2004 Remix",
+        "artist": "Megadeth",
+        "album": "Rust In Peace (2004 Remix / Expanded Edition)",
+        "duration": "03:56",
+        "genre": "thrash metal"
+    },
+    {
+        "song": "Dazed and Confused - 1990 Remaster",
+        "artist": "Led Zeppelin",
+        "album": "Led Zeppelin",
+        "duration": "06:26",
+        "genre": "classic rock"
+    },
+    {
+        "song": "Rock Bottom - 2007 Remaster",
+        "artist": "UFO",
+        "album": "Phenomenon (2007 Remaster)",
+        "duration": "06:29",
+        "genre": "hard rock"
+    },
+    {
+        "song": "La Villa Strangiato",
+        "artist": "Rush",
+        "album": "Hemispheres",
+        "duration": "09:34",
+        "genre": "Progressive rock"
+    },
+    {
+        "song": "The Sails of Charon - 2015 - Remaster",
+        "artist": "Scorpions",
+        "album": "Taken by Force",
+        "duration": "05:11",
+        "genre": "hard rock"
+    },
+    {
+        "song": "War Pigs / Luke's Wall - 2012 - Remaster",
+        "artist": "Black Sabbath",
+        "album": "Paranoid (Remaster)",
+        "duration": "07:54",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Stand Up and Shout",
+        "artist": "Dio",
+        "album": "Holy Diver",
+        "duration": "03:18",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "We Rock",
+        "artist": "Dio",
+        "album": "The Last in Line",
+        "duration": "04:35",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Don't Talk to Strangers",
+        "artist": "Dio",
+        "album": "Holy Diver",
+        "duration": "04:54",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Minstrel in the Gallery - 2002 Remaster",
+        "artist": "Jethro Tull",
+        "album": "Minstrel in the Gallery (2002 Remaster)",
+        "duration": "08:11",
+        "genre": "Progressive rock"
+    },
+    {
+        "song": "Mechanix",
+        "artist": "Megadeth",
+        "album": "Killing Is My Business...And Business Is Good!",
+        "duration": "04:25",
+        "genre": "thrash metal"
+    },
+    {
+        "song": "Devils Island - 2004 Remaster",
+        "artist": "Megadeth",
+        "album": "Peace Sells...But Who's Buying? (Expanded Edition - Remastered)",
+        "duration": "05:05",
+        "genre": "thrash metal"
+    },
+    {
+        "song": "Hook In Mouth - Remastered",
+        "artist": "Megadeth",
+        "album": "So Far, So Good...So What! (Expanded Edition - Remastered)",
+        "duration": "04:48",
+        "genre": "thrash metal"
+    },
+    {
+        "song": "Set The World Afire - Remastered 2004",
+        "artist": "Megadeth",
+        "album": "So Far, So Good...So What! (Expanded Edition - Remastered)",
+        "duration": "05:48",
+        "genre": "thrash metal"
+    },
+    {
+        "song": "My Last Words - Remastered",
+        "artist": "Megadeth",
+        "album": "Peace Sells...But Who's Buying? (Expanded Edition - Remastered)",
+        "duration": "04:55",
+        "genre": "thrash metal"
+    },
+    {
+        "song": "Ashes In Your Mouth - 2004 Remastered",
+        "artist": "Megadeth",
+        "album": "Countdown To Extinction (Expanded Edition - Remastered)",
+        "duration": "06:14",
+        "genre": "thrash metal"
+    },
+    {
+        "song": "Wake Up Dead - Remastered 2011",
+        "artist": "Megadeth",
+        "album": "Peace Sells...But Who's Buying (Deluxe Edition - Remastered)",
+        "duration": "03:40",
+        "genre": "thrash metal"
+    },
+    {
+        "song": "A Light In The Black",
+        "artist": "Rainbow",
+        "album": "Rising",
+        "duration": "08:11",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Kill The King",
+        "artist": "Rainbow",
+        "album": "Long Live Rock 'n' Roll",
+        "duration": "04:30",
+        "genre": "hard rock"
+    },
+    {
+        "song": "The Last in Line",
+        "artist": "Dio",
+        "album": "The Last in Line",
+        "duration": "05:44",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Victim Of Changes",
+        "artist": "Judas Priest",
+        "album": "Sad Wings Of Destiny",
+        "duration": "07:48",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Beyond the Realms of Death",
+        "artist": "Judas Priest",
+        "album": "Stained Class",
+        "duration": "06:49",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Exciter",
+        "artist": "Judas Priest",
+        "album": "Stained Class",
+        "duration": "05:32",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Freewheel Burning",
+        "artist": "Judas Priest",
+        "album": "Defenders Of The Faith",
+        "duration": "04:24",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "The Ripper",
+        "artist": "Judas Priest",
+        "album": "Sad Wings Of Destiny",
+        "duration": "02:50",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Electric Eye",
+        "artist": "Judas Priest",
+        "album": "Screaming For Vengeance (Expanded Edition)",
+        "duration": "03:42",
+        "genre": "heavy metal"
     },
     {
         "song": "Dissident Aggressor",
-        "artist": "Slayer",
-        "album": "South Of Heaven",
-        "duration": "02:35",
+        "artist": "Judas Priest",
+        "album": "Sin After Sin",
+        "duration": "03:06",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Ram It Down",
+        "artist": "Judas Priest",
+        "album": "Ram It Down",
+        "duration": "04:48",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Desert Plains",
+        "artist": "Judas Priest",
+        "album": "Point Of Entry",
+        "duration": "04:34",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Sinner",
+        "artist": "Judas Priest",
+        "album": "Sin After Sin",
+        "duration": "06:43",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Screaming for Vengeance",
+        "artist": "Judas Priest",
+        "album": "Screaming For Vengeance",
+        "duration": "04:43",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Hell Bent for Leather",
+        "artist": "Judas Priest",
+        "album": "Hell Bent For Leather",
+        "duration": "02:40",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Steeler",
+        "artist": "Judas Priest",
+        "album": "British Steel",
+        "duration": "04:29",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Flight of Icarus (2015 Remaster)",
+        "artist": "Iron Maiden",
+        "album": "Piece of Mind (2015 Remaster)",
+        "duration": "03:50",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Murders in the Rue Morgue (2015 Remaster)",
+        "artist": "Iron Maiden",
+        "album": "Killers (2015 Remaster)",
+        "duration": "04:18",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "2 Minutes to Midnight (2015 Remaster)",
+        "artist": "Iron Maiden",
+        "album": "Powerslave (2015 Remaster)",
+        "duration": "06:03",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Aces High (2015 Remaster)",
+        "artist": "Iron Maiden",
+        "album": "Powerslave (2015 Remaster)",
+        "duration": "04:31",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "The Trooper (2015 Remaster)",
+        "artist": "Iron Maiden",
+        "album": "Piece of Mind (2015 Remaster)",
+        "duration": "04:12",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Losfer Words (Big 'Orra) (2015 Remaster)",
+        "artist": "Iron Maiden",
+        "album": "Powerslave (2015 Remaster)",
+        "duration": "04:15",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "The Clairvoyant (2015 Remaster)",
+        "artist": "Iron Maiden",
+        "album": "Seventh Son of a Seventh Son (2015 Remaster)",
+        "duration": "04:27",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Revelations (2015 Remaster)",
+        "artist": "Iron Maiden",
+        "album": "Piece of Mind (2015 Remaster)",
+        "duration": "06:49",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Caught Somewhere in Time (2015 Remaster)",
+        "artist": "Iron Maiden",
+        "album": "Somewhere in Time (2015 Remaster)",
+        "duration": "07:27",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Seventh Son of a Seventh Son (2015 Remaster)",
+        "artist": "Iron Maiden",
+        "album": "Seventh Son of a Seventh Son (2015 Remaster)",
+        "duration": "09:54",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Alexander the Great (356-323) (2015 Remaster)",
+        "artist": "Iron Maiden",
+        "album": "Somewhere in Time (2015 Remaster)",
+        "duration": "08:37",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Powerslave (2015 Remaster)",
+        "artist": "Iron Maiden",
+        "album": "Powerslave (2015 Remaster)",
+        "duration": "07:11",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Phantom of the Opera (2015 Remaster)",
+        "artist": "Iron Maiden",
+        "album": "Iron Maiden (2015 Remaster)",
+        "duration": "07:21",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Hallowed Be Thy Name (2015 Remaster)",
+        "artist": "Iron Maiden",
+        "album": "The Number of the Beast (2015 Remaster)",
+        "duration": "07:11",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Rime of the Ancient Mariner (2015 Remaster)",
+        "artist": "Iron Maiden",
+        "album": "Powerslave (2015 Remaster)",
+        "duration": "13:38",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Orgasmatron",
+        "artist": "Mot\u00f6rhead",
+        "album": "Orgasmatron",
+        "duration": "05:24",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Overkill",
+        "artist": "Mot\u00f6rhead",
+        "album": "Overkill (Expanded Edition)",
+        "duration": "05:13",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Bomber",
+        "artist": "Mot\u00f6rhead",
+        "album": "Bomber",
+        "duration": "03:40",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Iron Fist",
+        "artist": "Mot\u00f6rhead",
+        "album": "Iron Fist",
+        "duration": "02:51",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "No One Like You",
+        "artist": "Scorpions",
+        "album": "Blackout",
+        "duration": "03:57",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Catch Your Train",
+        "artist": "Scorpions",
+        "album": "Virgin Killer",
+        "duration": "03:35",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Catch Your Train (Remastered 2023)",
+        "artist": "Scorpions",
+        "album": "Virgin Killer (Remastered 2023)",
+        "duration": "03:34",
+        "genre": "hard rock"
+    },
+    {
+        "song": "In Trance",
+        "artist": "Scorpions",
+        "album": "In Trance",
+        "duration": "04:42",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Fly to the Rainbow (Remastered 2023)",
+        "artist": "Scorpions",
+        "album": "Fly To The Rainbow (Remastered 2023)",
+        "duration": "09:37",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Speedy's Coming",
+        "artist": "Scorpions",
+        "album": "Fly to the Rainbow",
+        "duration": "03:34",
+        "genre": "hard rock"
+    },
+    {
+        "song": "We'll Burn the Sky - 2015 - Remaster",
+        "artist": "Scorpions",
+        "album": "Taken by Force",
+        "duration": "06:31",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Virgin Killer",
+        "artist": "Scorpions",
+        "album": "Virgin Killer",
+        "duration": "03:42",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Sun in My Hand",
+        "artist": "Scorpions",
+        "album": "In Trance",
+        "duration": "04:20",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Genocide",
+        "artist": "Judas Priest",
+        "album": "Sad Wings Of Destiny",
+        "duration": "05:48",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Wicked World - 2013 Remaster",
+        "artist": "Black Sabbath",
+        "album": "Black Sabbath (2014 Remaster)",
+        "duration": "04:45",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "A Bit of Finger / Sleeping Village / Warning - 2013 Remaster",
+        "artist": "Black Sabbath",
+        "album": "Black Sabbath (2014 Remaster)",
+        "duration": "14:13",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Stargazer",
+        "artist": "Rainbow",
+        "album": "Rising",
+        "duration": "08:26",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Rainbow in the Dark - 2022 Remaster",
+        "artist": "Dio",
+        "album": "Holy Diver (2022 Remaster)",
+        "duration": "04:14",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Rock Bottom - Live",
+        "artist": "UFO",
+        "album": "Strangers in the Night (Live) [2008 Remaster]",
+        "duration": "11:26",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Eruption - 2015 Remaster",
+        "artist": "Van Halen",
+        "album": "Van Halen (Remastered)",
+        "duration": "01:42",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Hot for Teacher - 2015 Remaster",
+        "artist": "Van Halen",
+        "album": "1984 (Remastered)",
+        "duration": "04:42",
+        "genre": "hard rock"
+    },
+    {
+        "song": "I'm the One - 2015 Remaster",
+        "artist": "Van Halen",
+        "album": "Van Halen (Remastered)",
+        "duration": "03:44",
+        "genre": "hard rock"
+    },
+    {
+        "song": "On Fire - 2015 Remaster",
+        "artist": "Van Halen",
+        "album": "Van Halen (Remastered)",
+        "duration": "03:00",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Romeo Delight - 2015 Remaster",
+        "artist": "Van Halen",
+        "album": "Women and Children First (Remastered)",
+        "duration": "04:19",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Mean Street - 2015 Remaster",
+        "artist": "Van Halen",
+        "album": "Fair Warning (Remastered)",
+        "duration": "05:00",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Spanish Fly - 2015 Remaster",
+        "artist": "Van Halen",
+        "album": "Van Halen II (Remastered)",
+        "duration": "01:01",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Highway Star",
+        "artist": "Deep Purple",
+        "album": "Machine Head",
+        "duration": "06:08",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Burn - 2002 Remaster",
+        "artist": "Deep Purple",
+        "album": "Burn (Expanded 2005 Remaster)",
+        "duration": "06:04",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Might Just Take Your Life",
+        "artist": "Deep Purple",
+        "album": "Burn (Expanded 2005 Remaster)",
+        "duration": "04:40",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Lay Down, Stay Down",
+        "artist": "Deep Purple",
+        "album": "Burn (Expanded 2005 Remaster)",
+        "duration": "04:20",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Sail Away",
+        "artist": "Deep Purple",
+        "album": "Burn (Expanded 2005 Remaster)",
+        "duration": "05:52",
+        "genre": "hard rock"
+    },
+    {
+        "song": "What's Going on Here",
+        "artist": "Deep Purple",
+        "album": "Burn (Expanded 2005 Remaster)",
+        "duration": "04:57",
+        "genre": "hard rock"
+    },
+    {
+        "song": "'A' 200",
+        "artist": "Deep Purple",
+        "album": "Burn (Expanded 2005 Remaster)",
+        "duration": "04:16",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Coronarias Redig - 2004 Remix",
+        "artist": "Deep Purple",
+        "album": "Burn (Expanded 2005 Remaster)",
+        "duration": "05:31",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Mistreated - 2004 Remix",
+        "artist": "Deep Purple",
+        "album": "Burn (Expanded 2005 Remaster)",
+        "duration": "07:29",
+        "genre": "hard rock"
+    },
+    {
+        "song": "You Fool No One - 2004 Remix",
+        "artist": "Deep Purple",
+        "album": "Burn (Expanded 2005 Remaster)",
+        "duration": "04:58",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Sail Away - 2004 Remix",
+        "artist": "Deep Purple",
+        "album": "Burn (Expanded 2005 Remaster)",
+        "duration": "05:36",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Stormbringer",
+        "artist": "Deep Purple",
+        "album": "Stormbringer",
+        "duration": "04:06",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Fireball",
+        "artist": "Deep Purple",
+        "album": "Fireball",
+        "duration": "03:24",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Speed King",
+        "artist": "Deep Purple",
+        "album": "Deep Purple in Rock",
+        "duration": "04:23",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Child in Time",
+        "artist": "Deep Purple",
+        "album": "Deep Purple in Rock",
+        "duration": "10:20",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Pictures of Home",
+        "artist": "Deep Purple",
+        "album": "Machine Head",
+        "duration": "05:06",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Gates Of Babylon",
+        "artist": "Rainbow",
+        "album": "Long Live Rock 'n' Roll",
+        "duration": "06:51",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Lights Out - 2008 Remaster",
+        "artist": "UFO",
+        "album": "Lights Out (2008 Remaster)",
+        "duration": "04:35",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Doctor Doctor - 2007 Remaster",
+        "artist": "UFO",
+        "album": "Phenomenon (2007 Remaster)",
+        "duration": "04:12",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Love to Love - 2008 Remaster",
+        "artist": "UFO",
+        "album": "Lights Out (2008 Remaster)",
+        "duration": "07:16",
+        "genre": "hard rock"
+    },
+    {
+        "song": "5150",
+        "artist": "Van Halen",
+        "album": "5150",
+        "duration": "05:42",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Push Comes to Shove - 2015 Remaster",
+        "artist": "Van Halen",
+        "album": "Fair Warning (Remastered)",
+        "duration": "03:48",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Now Your Ships Are Burned",
+        "artist": "Yngwie Malmsteen",
+        "album": "Yngwie J. Malmsteen's Rising Force",
+        "duration": "04:11",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Rising Force",
+        "artist": "Yngwie Malmsteen",
+        "album": "Odyssey",
+        "duration": "04:24",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Fire",
+        "artist": "Mother's Finest",
+        "album": "Mother's Finest",
+        "duration": "04:07",
+        "genre": "Funk Rock"
+    },
+    {
+        "song": "Mandrake Root",
+        "artist": "Deep Purple",
+        "album": "Shades of Deep Purple",
+        "duration": "06:09",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Machine Gun - Live",
+        "artist": "Jimi Hendrix",
+        "album": "Band Of Gypsys (50th Anniversary / Live At Fillmore East, 1970)",
+        "duration": "12:40",
+        "genre": "classic rock"
+    },
+    {
+        "song": "Crossroads - Live",
+        "artist": "Cream",
+        "album": "Wheels Of Fire",
+        "duration": "04:18",
+        "genre": "classic rock"
+    },
+    {
+        "song": "Rice Pudding",
+        "artist": "Jeff Beck",
+        "album": "Beck-Ola",
+        "duration": "07:22",
+        "genre": "classic rock"
+    },
+    {
+        "song": "All Along the Watchtower",
+        "artist": "Jimi Hendrix",
+        "album": "Electric Ladyland",
+        "duration": "04:00",
+        "genre": "classic rock"
+    },
+    {
+        "song": "Extrapolation",
+        "artist": "John McLaughlin",
+        "album": "Extrapolation",
+        "duration": "03:52",
+        "genre": "jazz"
+    },
+    {
+        "song": "25 or 6 to 4",
+        "artist": "Chicago",
+        "album": "Chicago IX: Chicago's Greatest Hits",
+        "duration": "04:53",
+        "genre": "classic rock"
+    },
+    {
+        "song": "Communication Breakdown - Remaster",
+        "artist": "Led Zeppelin",
+        "album": "Led Zeppelin (Remaster)",
+        "duration": "02:30",
+        "genre": "classic rock"
+    },
+    {
+        "song": "Wring That Neck",
+        "artist": "Deep Purple",
+        "album": "The Book of Taliesyn",
+        "duration": "05:13",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Willie The Pimp",
+        "artist": "Frank Zappa",
+        "album": "Hot Rats",
+        "duration": "09:23",
+        "genre": "Progressive rock"
+    },
+    {
+        "song": "Embryonic Journey",
+        "artist": "Jefferson Airplane",
+        "album": "Surrealistic Pillow",
+        "duration": "01:52",
+        "genre": "Psychedelic Rock"
+    },
+    {
+        "song": "Dreams Of Milk And Honey",
+        "artist": "Mountain",
+        "album": "Over The Top",
+        "duration": "03:33",
+        "genre": "hard rock"
+    },
+    {
+        "song": "Black Star",
+        "artist": "Yngwie Malmsteen",
+        "album": "Yngwie J. Malmsteen's Rising Force",
+        "duration": "04:53",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Far Beyond the Sun",
+        "artist": "Yngwie Malmsteen",
+        "album": "Yngwie J. Malmsteen's Rising Force",
+        "duration": "05:52",
+        "genre": "heavy metal"
+    },
+    {
+        "song": "Beat It",
+        "artist": "Michael Jackson",
+        "album": "Thriller",
+        "duration": "04:18",
+        "genre": "pop"
+    },
+    {
+        "song": "Tears Of Sahara",
+        "artist": "Tony MacAlpine",
+        "album": "Maximum Security",
+        "duration": "03:46",
+        "genre": "guitar virtuoso"
+    },
+    {
+        "song": "Dancing Madly Backwards (On A Sea Of Air)",
+        "artist": "Captain Beyond",
+        "album": "Captain Beyond",
+        "duration": "04:02",
+        "genre": "Progressive rock"
+    },
+    {
+        "song": "Five Magics",
+        "artist": "Megadeth",
+        "album": "Rust In Peace",
+        "duration": "05:42",
         "genre": "thrash metal"
     },
     {
-        "song": "Spill The Blood",
-        "artist": "Slayer",
-        "album": "South Of Heaven",
-        "duration": "04:49",
-        "genre": "thrash metal"
+        "song": "Remember Tomorrow (2015 Remaster)",
+        "artist": "Iron Maiden",
+        "album": "Iron Maiden (2015 Remaster)",
+        "duration": "05:28",
+        "genre": "heavy metal"
     }
 ]
