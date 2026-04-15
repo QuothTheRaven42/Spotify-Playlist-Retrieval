@@ -19,6 +19,37 @@ def ms_to_time(ms: int) -> str:
     return f"{minutes:02d}:{seconds:02d}"
 
 
+def authenticate() -> tuple[spotipy.Spotify, str]:
+    """Load credentials from .env file and return an authenticated Spotify client and Last.fm API key."""
+    load_dotenv()
+
+    client_id = os.getenv("SPOTIPY_CLIENT_ID")
+    client_secret = os.getenv("SPOTIPY_CLIENT_SECRET")
+    redirect_uri = os.getenv("SPOTIPY_REDIRECT_URI")
+    lastfm_api = os.getenv("LASTFM_API_KEY")
+    api_responses = {
+        "SPOTIPY_CLIENT_ID": client_id,
+        "SPOTIPY_CLIENT_SECRET": client_secret,
+        "SPOTIPY_REDIRECT_URI": redirect_uri,
+        "LASTFM_API_KEY": lastfm_api,
+    }
+
+    # checks for None in any os.getenv calls
+    for key, value in api_responses.items():
+        if value is None:
+            raise EnvironmentError(
+                f"Error: Missing {key} environment variable. Check your .env file."
+            )
+
+    sp = spotipy.Spotify(
+        auth_manager=SpotifyOAuth(
+            client_id=client_id, client_secret=client_secret, redirect_uri=redirect_uri
+        )
+    )
+
+    return sp, lastfm_api
+
+
 def fetch_tracks(sp: spotipy.Spotify, playlist: str) -> tuple[list[dict], set[str]]:
     """Fetch all tracks from a Spotify playlist and return a list of song dicts and a set of unique artist names."""
     try:
@@ -104,35 +135,11 @@ def save_output(songs: list[dict], artists_genres: dict[str, str]):
 
 
 def main():
-    """Load credentials, authenticate with Spotify, and orchestrate track fetching, genre lookup, and file output."""
-    # Load credentials from .env file
-    load_dotenv()
+    """Orchestrate track fetching, genre lookup, and file output."""
+    sp, lastfm_api = authenticate()
 
-    client_id = os.getenv("SPOTIPY_CLIENT_ID")
-    client_secret = os.getenv("SPOTIPY_CLIENT_SECRET")
-    redirect_uri = os.getenv("SPOTIPY_REDIRECT_URI")
-    lastfm_api = os.getenv("LASTFM_API_KEY")
-    api_responses = {
-        "SPOTIPY_CLIENT_ID": client_id,
-        "SPOTIPY_CLIENT_SECRET": client_secret,
-        "SPOTIPY_REDIRECT_URI": redirect_uri,
-        "LASTFM_API_KEY": lastfm_api}
-
-    # checks for None in any os.getenv calls
-    for key, value in api_responses.items():
-        if value is None:
-            print(f"Error: Missing {key} environment variable. Check your .env file.")
-            return
-
-    # Playlist ID to export — between "/" and "?"
+    # Playlist ID to export — between "/" and "?" in the URL
     playlist = input("Enter Spotify playlist ID: ")
-
-    # Authenticates with Spotify — opens a browser window on first run
-    sp = spotipy.Spotify(
-        auth_manager=SpotifyOAuth(
-            client_id=client_id, client_secret=client_secret, redirect_uri=redirect_uri
-        )
-    )
 
     songs, unique_artists = fetch_tracks(sp, playlist)
 
