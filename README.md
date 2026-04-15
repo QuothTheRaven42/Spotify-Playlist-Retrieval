@@ -48,7 +48,7 @@ LASTFM_API_KEY=your_lastfm_api_key
 ## Usage
 Run the script and enter your playlist ID when prompted:
 ```bash
-python spotify_exporter.py
+python main.py
 ```
 The playlist ID is the string at the end of a Spotify playlist URL, without the question mark or anything after it: 
 ```
