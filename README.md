@@ -66,7 +66,7 @@ On first run, a browser window will open asking you to log in to Spotify and aut
 Genre lookup makes one API call per unique artist with a 1 second delay between requests. Expect 1-2 minutes per 100 songs.
 
 ## Output
-The script generates two files:
+The script generates two JSON data files:
 
 `music.json` — one entry per track:
 ```json
