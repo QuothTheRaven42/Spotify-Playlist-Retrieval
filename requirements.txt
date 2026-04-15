@@ -4,3 +4,4 @@ requests
 tqdm
 types-tqdm
 requests-cache
+requests-cache
