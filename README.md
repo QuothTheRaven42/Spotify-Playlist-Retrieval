@@ -2,7 +2,7 @@
 A Python script that exports all tracks from a Spotify playlist to a JSON file, including song title, artist, album, duration, and genre. Genre data is sourced from Last.fm since Spotify has deprecated genre information from their API.
 
 ## Features
-- Fetches all tracks from any Spotify playlist
+- Fetches all tracks from any Spotify playlist (unless curated by Spotify itself)
 - Handles pagination automatically (playlists of any length)
 - Skips non-track playlist items (podcast episodes, unavailable tracks)
 - Looks up genre for each unique artist via Last.fm
