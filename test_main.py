@@ -24,7 +24,8 @@ def test_authenticate_missing_env_var(mock_load_dotenv, monkeypatch):
     monkeypatch.delenv("SPOTIPY_REDIRECT_URI", raising=False)
     monkeypatch.delenv("LASTFM_API_KEY", raising=False)
 
-    with pytest.raises(EnvironmentError) as exc_info:
+    monkeypatch.setattr("main.load_dotenv", lambda: None)
+    with pytest.raises(ValueError) as exc_info:
         authenticate()
 
     assert "SPOTIPY_CLIENT_ID" in str(exc_info.value)
