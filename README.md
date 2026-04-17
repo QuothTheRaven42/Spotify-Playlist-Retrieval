@@ -38,6 +38,25 @@ SPOTIPY_REDIRECT_URI=http://127.0.0.1:8888/callback
 LASTFM_API_KEY=your_lastfm_api_key
 ```
 
+## Architecture
+
+The script is organized as a linear pipeline of four functions orchestrated by `main()`:
+
+1. `authenticate()` — loads credentials from `.env` and returns an authorized Spotify client and Last.fm API key
+2. `fetch_tracks()` — pages through the playlist and returns a list of track dicts and a set of unique artist names
+3. `fetch_genres()` — queries Last.fm once per unique artist and returns an artist-to-genre mapping and error metrics
+4. `save_output()` — writes the enriched track list and genre mapping to JSON files
+
+Artist deduplication happens at the `fetch_tracks` stage so that a playlist with 50 Metallica songs only triggers one Last.fm API call. Genre enrichment — merging the mapping back into the track list — happens in `main()` after both fetches are complete.
+
+## Tradeoffs
+
+- **One genre per artist** — Last.fm returns a ranked list of tags, but only the top tag is used. Artists that span genres (e.g., Neil Young) get a single label that may not reflect their full catalog.
+- **Tag quality varies** — genre data is user-applied and crowdsourced. Some artists have well-agreed-upon tags; others have their own name as the top tag (e.g., "metallica" for Metallica).
+- **Caching trades freshness for speed** — Last.fm responses are cached for 24 hours. Artists whose tags change within that window will return stale data until the cache expires.
+- **1-second rate limit delay** — conservative but reliable. A large playlist takes time; roughly 2 minutes per 100 unique artists.
+- **First artist per track only** — for multi-artist tracks, only the primary artist is used for genre lookup and attribution.
+
 ## Development / Testing
 
 To install both runtime and test dependencies:

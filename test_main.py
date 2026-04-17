@@ -240,12 +240,10 @@ def test_fetch_genres_success(mock_get):
     }
     mock_get.return_value = mock_response
 
-    songs = [{"artist": "Metallica"}]
     unique_artists = {"Metallica", "Anthrax"}
-    artists_genres = fetch_genres("fake_api_key", unique_artists)
-
-    assert artists_genres["Metallica"] == "thrash metal"
-    assert artists_genres["Anthrax"] == "thrash metal"
+    artist_genre, _ = fetch_genres("fake_api_key", unique_artists)
+    assert artist_genre["Metallica"] == "thrash metal"
+    assert artist_genre["Anthrax"] == "thrash metal"
 
 
 @patch("main.lastfm_session.get")
@@ -256,11 +254,9 @@ def test_fetch_genres_handles_missing_tags(mock_get):
     mock_response.json.return_value = {"toptags": {"tag": []}}
     mock_get.return_value = mock_response
 
-    songs = [{"artist": "Unknown Band"}]
     unique_artists = {"Unknown Band"}
-    artists_genres = fetch_genres("fake_api_key", unique_artists)
-
-    assert artists_genres["Unknown Band"] == "unknown"
+    artist_genre, _ = fetch_genres("fake_api_key", unique_artists)
+    assert artist_genre["Unknown Band"] == "unknown"
 
 
 @patch("main.lastfm_session.get")
@@ -268,12 +264,11 @@ def test_fetch_genres_handles_api_error(mock_get):
     """Test that fetch_genres logs errors and continues gracefully."""
     mock_get.side_effect = requests.exceptions.RequestException("Network error")
 
-    songs = [{"artist": "Some Band"}]
     unique_artists = {"Some Band"}
-    artists_genres = fetch_genres("fake_api_key", unique_artists)
+    artist_genre, _ = fetch_genres("fake_api_key", unique_artists)
 
-    assert "Some Band" in artists_genres
-    assert artists_genres["Some Band"] == "unknown"
+    assert "Some Band" in artist_genre
+    assert artist_genre["Some Band"] == "unknown"
 
 
 @patch("main.lastfm_session.get")
@@ -317,9 +312,9 @@ def test_fetch_genres_per_artist_error_continues(mock_get):
     }
     mock_get.return_value = mock_response
 
-    artists_genres = fetch_genres("fake_api_key", {"Nonexistent Band"})
+    artist_genre, _ = fetch_genres("fake_api_key", {"Nonexistent Band"})
 
-    assert artists_genres["Nonexistent Band"] == "unknown"
+    assert artist_genre["Nonexistent Band"] == "unknown"
 
 
 @patch("main.lastfm_session.get")

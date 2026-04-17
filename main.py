@@ -48,7 +48,7 @@ def authenticate() -> tuple[spotipy.Spotify, str]:
             client_id=client_id,
             client_secret=client_secret,
             redirect_uri=redirect_uri,
-            scope="playlist-read-private",
+            scope="playlist-read-private playlist-read-collaborative",
         )
     )
 
@@ -91,9 +91,12 @@ def fetch_tracks(sp: spotipy.Spotify, playlist: str) -> tuple[list[dict], set[st
     return songs, unique_artists
 
 
-def fetch_genres(lastfm_api: str, unique_artists: set[str]) -> dict[str, str]:
+def fetch_genres(
+    lastfm_api: str, unique_artists: set[str]
+) -> tuple[dict[str, str], dict[str, float | int]]:
     """Look up the top genre tag for each artist via Last.fm. Returns artist-to-genre mapping."""
     artists_genres = {}
+    error_count = 0
 
     # Last.fm error codes that indicate a global failure affecting all requests,
     # not just a single artist lookup. Continuing would just repeat the same error.
@@ -136,13 +139,19 @@ def fetch_genres(lastfm_api: str, unique_artists: set[str]) -> dict[str, str]:
                 # Per-artist errors (e.g., artist not found) — log and continue
                 logging.error(f"Last.fm API error for {artist}: {error_code} - {message}")
                 artists_genres[artist] = "unknown"
+                print(f"Genre-lookup failure for {artist} via Last.fm API.")
+                error_count += 1
                 continue
 
             tags = data.get("toptags", {}).get("tag", [])
 
             # Last.fm returns tags sorted by vote count — index 0 is the most agreed-upon genre
-            genre = tags[0]["name"] if tags else "unknown"
-            artists_genres[artist] = genre
+            if tags:
+                genre = tags[0]["name"]
+                artists_genres[artist] = genre
+            else:
+                artists_genres[artist] = "unknown"
+                error_count += 1
 
             # Last.fm rate-limits aggressively; exceeding it causes lockouts of over an hour.
             # getattr checks for a cached response so we skip the delay on cache hits —
@@ -154,9 +163,14 @@ def fetch_genres(lastfm_api: str, unique_artists: set[str]) -> dict[str, str]:
             # A single failed lookup shouldn't abort the whole export —
             # log it and continue with "unknown" so the rest of the data is still saved
             logging.error(f"Failed to get genre for {artist}: {e}")
+            error_count += 1
             artists_genres[artist] = "unknown"
 
-    return artists_genres
+    return artists_genres, {
+        "error_count": error_count,
+        "total": len(unique_artists),
+        "error_rate": error_count / len(unique_artists) if unique_artists else 0,
+    }
 
 
 def save_output(songs: list[dict], artists_genres: dict[str, str]) -> None:
@@ -205,7 +219,7 @@ def main() -> None:
     # fetch_genres() contains a long-running tqdm loop — Ctrl+C would otherwise print
     # a full traceback, making it look like a crash rather than a deliberate cancellation
     try:
-        artists_genres = fetch_genres(lastfm_api, unique_artists)
+        artists_genres, genre_metrics = fetch_genres(lastfm_api, unique_artists)
     except KeyboardInterrupt:
         print("Export cancelled.")
         return
@@ -214,6 +228,14 @@ def main() -> None:
         print(f"Error: {e}")
         print("Genre lookup aborted. Please try again or check your Last.fm API key.")
         return
+
+    if unique_artists:
+        print(
+            f"{genre_metrics['error_rate'] * 100:.1f}% genre lookup failure rate "
+            f"({genre_metrics['error_count']}/{genre_metrics['total']})"
+        )
+    else:
+        print("No artists to process.")
 
     # Genre mapping happens here rather than inside fetch_genres to keep
     # that function focused on one job: talking to the API
@@ -234,3 +256,21 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+"""
+Future Improvements:
+- Replace song dicts with a Track dataclass
+Dataclasses have autocomplete, catch typos at definition time, and make data contract explicit.
+
+- Standardize logging (add INFO + structured messages)
+Only logging at error level, so there's no visibility into normal execution. 
+Adding INFO logs at key milestones (authenticated, fetched N tracks, saved output) would make debugging less blind. 
+Structured messages (including the playlist ID, counts, etc.) would make the log file more useful.
+
+- Add CLI flags (argparse upgrade)
+'--output-dir' or '--no-genres' would make the tool meaningfully more flexible.
+
+- Add retry/backoff for API calls (even simple exponential)
+A simple exponential backoff on transient Last.fm errors (codes 8, 16 especially) 
+would make the tool more robust on longer playlists.
+"""
