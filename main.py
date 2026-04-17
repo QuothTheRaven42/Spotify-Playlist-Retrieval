@@ -270,7 +270,14 @@ Structured messages (including the playlist ID, counts, etc.) would make the log
 - Add CLI flags (argparse upgrade)
 '--output-dir' or '--no-genres' would make the tool meaningfully more flexible.
 
-- Add retry/backoff for API calls (even simple exponential)
+- Add retry/backoff for API calls
 A simple exponential backoff on transient Last.fm errors (codes 8, 16 especially) 
 would make the tool more robust on longer playlists.
+
+- No performance thinking
+Sequential API calls = scalability blind spot
+asyncio or concurrent.futures with rate limiting?
+
+- No setup.py or pyproject.toml
+Not installable, not reusable
 """

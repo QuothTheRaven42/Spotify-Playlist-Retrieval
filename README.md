@@ -51,7 +51,7 @@ Artist deduplication happens at the `fetch_tracks` stage so that a playlist with
 
 ## Tradeoffs
 
-- **One genre per artist** — Last.fm returns a ranked list of tags, but only the top tag is used. Artists that span genres (e.g., Neil Young) get a single label that may not reflect their full catalog.
+- **One genre per artist** — Last.fm returns a ranked list of tags, but only the top tag is used. Artists that span genres (e.g., Neil Young) get a single label that may not reflect the current song.
 - **Tag quality varies** — genre data is user-applied and crowdsourced. Some artists have well-agreed-upon tags; others have their own name as the top tag (e.g., "metallica" for Metallica).
 - **Caching trades freshness for speed** — Last.fm responses are cached for 24 hours. Artists whose tags change within that window will return stale data until the cache expires.
 - **1-second rate limit delay** — conservative but reliable. A large playlist takes time; roughly 2 minutes per 100 unique artists.
