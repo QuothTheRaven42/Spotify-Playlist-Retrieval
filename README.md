@@ -26,11 +26,23 @@ A Python script that exports all tracks from a Spotify playlist to a JSON file, 
 git clone https://github.com/QuothTheRaven42/Spotify-Playlist-Retrieval
 cd Spotify-Playlist-Retrieval
 ```
-2. Install dependencies:
+2. Create and activate a virtual environment:
 ```bash
-pip install -r requirements.txt
+python -m venv .venv
 ```
-3. Create a `.env` file in the project root with your credentials:
+```bash
+# Windows PowerShell
+.\.venv\Scripts\Activate.ps1
+```
+```bash
+# macOS / Linux
+source .venv/bin/activate
+```
+3. Install the project:
+```bash
+pip install .
+```
+4. Create a `.env` file in the project root with your credentials:
 ```
 SPOTIPY_CLIENT_ID=your_spotify_client_id
 SPOTIPY_CLIENT_SECRET=your_spotify_client_secret
@@ -52,7 +64,7 @@ Artist deduplication happens at the `fetch_tracks` stage so that a playlist with
 ## Tradeoffs
 
 - **One genre per artist** — Last.fm returns a ranked list of tags, but only the top tag is used. Artists that span genres (e.g., Neil Young) get a single label that may not reflect the current song.
-- **Tag quality varies** — genre data is user-applied and crowdsourced. Some artists have well-agreed-upon tags; others have their own name as the top tag (e.g., "metallica" for Metallica).
+- **Tag quality varies** — genre data is user-applied and crowdsourced. Some artists have well-agreed-upon tags; others have less than informative tags, such as their own name or country (e.g., "metallica" for Metallica).
 - **Caching trades freshness for speed** — Last.fm responses are cached for 24 hours. Artists whose tags change within that window will return stale data until the cache expires.
 - **1-second rate limit delay** — conservative but reliable. A large playlist takes time; roughly 2 minutes per 100 unique artists.
 - **First artist per track only** — for multi-artist tracks, only the primary artist is used for genre lookup and attribution.
@@ -61,12 +73,17 @@ Artist deduplication happens at the `fetch_tracks` stage so that a playlist with
 
 To install both runtime and test dependencies:
 ```bash
+pip install -e ".[dev]"
+```
+
+If you prefer using the compatibility file:
+```bash
 pip install -r requirements-dev.txt
 ```
 
 Run the test suite:
 ```bash
-pytest
+python -m pytest
 ```
 
 Tests are also run automatically on push and pull request via GitHub Actions (`.github/workflows/tests.yml`).
@@ -84,6 +101,10 @@ Tests are also run automatically on push and pull request via GitHub Actions (`.
 
 ## Usage
 Run the script and enter your playlist ID when prompted:
+```bash
+spotify-playlist-retrieval
+```
+You can also run it without installing the console command:
 ```bash
 python main.py
 ```
@@ -126,7 +147,6 @@ The script generates two JSON data files:
 
 ## Notes
 - Genre data comes from Last.fm user-applied tags. The highest-voted tag is used. Artists with no tags default to `"unknown"`.
-- Some bands have top tags that are less than informative, such as Metallica's being "metallica."
 - Playlists containing podcast episodes or other non-track items will have those items silently skipped -- only tracks are exported.
 - Global Last.fm API failures such as an invalid API key, suspended key, or rate limiting will stop the genre lookup and display an error rather than silently exporting `"unknown"` for every artist.
 - The `.env`, `.cache`, `lastfm_cache.sqlite`, `.venv/`, `.pytest_cache/`, and `.mypy_cache/` are excluded from version control via `.gitignore`.

@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spotify-playlist-retrieval"
+version = "0.1.0"
+description = "Export Spotify playlist tracks to JSON with Last.fm genre enrichment."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "python-dotenv",
+    "requests",
+    "requests-cache",
+    "spotipy",
+    "tqdm",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8,<9",
+    "types-tqdm",
+]
+
+[project.scripts]
+spotify-playlist-retrieval = "main:main"
+
+[project.urls]
+Repository = "https://github.com/QuothTheRaven42/Spotify-Playlist-Retrieval"
+
+[tool.setuptools]
+py-modules = ["main"]
+
+[tool.pytest.ini_options]
+python_files = ["test_*.py"]
+testpaths = ["."]
+norecursedirs = [
+    ".venv",
+    ".pytest_cache",
+    ".pytest_tmp",
+    ".pytest_tmp*",
+    "__pycache__",
+    ".mypy_cache",
+    "pytest-cache-files-*",
+]

@@ -1,5 +1,5 @@
 import pytest
-from unittest.mock import Mock, MagicMock, patch
+from unittest.mock import Mock, MagicMock, call, mock_open, patch
 import json
 import os
 import requests
@@ -343,8 +343,8 @@ def test_fetch_genres_rate_limit_error_aborts(mock_get):
 # ──────────────────────────────────────────────────────────────────────
 
 
-def test_save_output_creates_files(tmp_path):
-    """Test that save_output creates both JSON files correctly."""
+def test_save_output_creates_files():
+    """Test that save_output writes both JSON outputs with the expected data."""
     songs = [
         {
             "song": "Test Song",
@@ -356,22 +356,17 @@ def test_save_output_creates_files(tmp_path):
     ]
     genres = {"Test Artist": "test genre"}
 
-    old_cwd = os.getcwd()
-    os.chdir(tmp_path)
-
-    try:
+    with patch("builtins.open", mock_open()) as mocked_open, patch("main.json.dump") as mock_dump:
         save_output(songs, genres)
 
-        assert (tmp_path / "music.json").exists()
-        music_data = json.loads((tmp_path / "music.json").read_text())
-        assert len(music_data) == 1
-        assert music_data[0]["song"] == "Test Song"
-
-        assert (tmp_path / "genres.json").exists()
-        genre_data = json.loads((tmp_path / "genres.json").read_text())
-        assert genre_data["Test Artist"] == "test genre"
-    finally:
-        os.chdir(old_cwd)
+    assert mocked_open.call_args_list == [
+        call("genres.json", "w", encoding="utf-8"),
+        call("music.json", "w", encoding="utf-8"),
+    ]
+    assert mock_dump.call_args_list[0].args[0] == genres
+    assert mock_dump.call_args_list[0].kwargs == {"indent": 4}
+    assert mock_dump.call_args_list[1].args[0] == songs
+    assert mock_dump.call_args_list[1].kwargs == {"indent": 4}
 
 
 @patch("main.fetch_genres", side_effect=RuntimeError("Last.fm API error 29: Rate limit exceeded"))
