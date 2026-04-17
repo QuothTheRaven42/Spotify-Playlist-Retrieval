@@ -1,13 +1,12 @@
 import spotipy  # type: ignore
-from spotipy.oauth2 import SpotifyOAuth  # type: ignore
+from spotipy.oauth2 import SpotifyOAuth, SpotifyOauthError  # type: ignore
 from dotenv import load_dotenv
 import argparse
 import os
 import json
-import requests
+import requests # type: ignore[import-untyped]
 import time
-from datetime import timedelta
-from tqdm import tqdm
+from tqdm import tqdm # type: ignore[import-untyped]
 import requests_cache
 import logging
 
@@ -20,9 +19,8 @@ lastfm_session = requests_cache.CachedSession("lastfm_cache", expire_after=86400
 
 def ms_to_time(ms: int) -> str:
     """Convert milliseconds to an MM:SS formatted string."""
-    delta = timedelta(milliseconds=ms)
-    seconds = int(delta.total_seconds())
-    minutes, seconds = divmod(seconds, 60)
+    total_seconds = ms // 1000
+    minutes, seconds = divmod(total_seconds, 60)
     return f"{minutes:02d}:{seconds:02d}"
 
 
@@ -43,13 +41,14 @@ def authenticate() -> tuple[spotipy.Spotify, str]:
             os.environ[key] for key in required_keys
         ]
     except KeyError as e:
-        raise EnvironmentError(
-            f"Error: Missing {e.args[0]} environment variable. Check your .env file."
-        )
+        raise ValueError(f"Error: Missing {e.args[0]} environment variable. Check your .env file.")
 
     sp = spotipy.Spotify(
         auth_manager=SpotifyOAuth(
-            client_id=client_id, client_secret=client_secret, redirect_uri=redirect_uri
+            client_id=client_id,
+            client_secret=client_secret,
+            redirect_uri=redirect_uri,
+            scope="playlist-read-private",
         )
     )
 
@@ -106,7 +105,9 @@ def fetch_genres(lastfm_api: str, unique_artists: set[str]) -> dict[str, str]:
                 "format": "json",
             }
 
-            response = lastfm_session.get("https://ws.audioscrobbler.com/2.0/", params=params)
+            response = lastfm_session.get(
+                "https://ws.audioscrobbler.com/2.0/", params=params, timeout=10
+            )
             data = response.json()
             tags = data.get("toptags", {}).get("tag", [])
 
@@ -120,7 +121,7 @@ def fetch_genres(lastfm_api: str, unique_artists: set[str]) -> dict[str, str]:
             if not getattr(response, "from_cache", False):
                 time.sleep(1)
 
-        except requests.exceptions.RequestException as e:
+        except (requests.exceptions.RequestException, json.JSONDecodeError) as e:
             # A single failed lookup shouldn't abort the whole export —
             # log it and continue with "unknown" so the rest of the data is still saved
             logging.error(f"Failed to get genre for {artist}: {e}")
@@ -129,7 +130,7 @@ def fetch_genres(lastfm_api: str, unique_artists: set[str]) -> dict[str, str]:
     return artists_genres
 
 
-def save_output(songs: list[dict], artists_genres: dict[str, str]):
+def save_output(songs: list[dict], artists_genres: dict[str, str]) -> None:
     """Save the full track list to music.json and the artist-genre mapping to genres.json."""
     with open("genres.json", "w", encoding="utf-8") as f:
         json.dump(artists_genres, f, indent=4)
@@ -138,13 +139,20 @@ def save_output(songs: list[dict], artists_genres: dict[str, str]):
         json.dump(songs, f, indent=4)
 
 
-def main():
+def main() -> None:
     """Orchestrate track fetching, genre lookup, and file output."""
     parser = argparse.ArgumentParser(description="Export Spotify playlist tracks to JSON")
     parser.add_argument("playlist_id", nargs="?", help="Spotify playlist ID")
     args = parser.parse_args()
 
-    sp, lastfm_api = authenticate()
+    # authenticate() can raise ValueError if .env keys are missing, or SpotifyOauthError
+    # if credentials are malformed or OAuth flow fails — both produce raw tracebacks without this
+    try:
+        sp, lastfm_api = authenticate()
+    except (SpotifyOauthError, ValueError) as e:
+        logging.error(f"Failed to authenticate Spotify authorization: {e}")
+        print("Error: Could not authenticate API data. Please check the .env file.")
+        return
 
     playlist = args.playlist_id if args.playlist_id else input("Enter Spotify playlist ID: ")
 
@@ -163,14 +171,28 @@ def main():
         print("Playlist is empty. Nothing to export.")
         return
 
-    artists_genres = fetch_genres(lastfm_api, unique_artists)
+    # fetch_genres() contains a long-running tqdm loop — Ctrl+C would otherwise print
+    # a full traceback, making it look like a crash rather than a deliberate cancellation
+    try:
+        artists_genres = fetch_genres(lastfm_api, unique_artists)
+    except KeyboardInterrupt:
+        print("Export cancelled.")
+        return
 
     # Genre mapping happens here rather than inside fetch_genres to keep
     # that function focused on one job: talking to the API
     for song in songs:
         song["genre"] = artists_genres.get(song["artist"], "unknown")
 
-    save_output(songs, artists_genres)
+    # OSError covers PermissionError and FileNotFoundError — if either file can't be written
+    # after a full successful fetch, log the cause and exit cleanly rather than crashing
+    try:
+        save_output(songs, artists_genres)
+    except OSError as e:
+        logging.error(f"Failed to save output for {playlist}: {e}")
+        print("Unable to save file.")
+        return
+
     print("Export complete! Files saved to music.json and genres.json.")
 
 
