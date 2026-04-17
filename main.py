@@ -4,9 +4,9 @@ from dotenv import load_dotenv
 import argparse
 import os
 import json
-import requests # type: ignore[import-untyped]
+import requests  # type: ignore[import-untyped]
 import time
-from tqdm import tqdm # type: ignore[import-untyped]
+from tqdm import tqdm  # type: ignore[import-untyped]
 import requests_cache
 import logging
 
@@ -66,7 +66,7 @@ def fetch_tracks(sp: spotipy.Spotify, playlist: str) -> tuple[list[dict], set[st
     while True:
         for item in results["items"]:
             track = item["item"]
-            if track is None:
+            if track is None or track.get("type") != "track":
                 # Spotify can return null entries for locally added or unavailable tracks
                 continue
 
@@ -95,6 +95,21 @@ def fetch_genres(lastfm_api: str, unique_artists: set[str]) -> dict[str, str]:
     """Look up the top genre tag for each artist via Last.fm. Returns artist-to-genre mapping."""
     artists_genres = {}
 
+    # Last.fm error codes that indicate a global failure affecting all requests,
+    # not just a single artist lookup. Continuing would just repeat the same error.
+    # See: https://www.last.fm/api/errorcodes
+    GLOBAL_ERROR_CODES = {
+        2,  # Invalid service
+        3,  # Invalid authentication method
+        4,  # Authentication failed (bad API key)
+        8,  # Operation failed (temporary backend error)
+        10,  # Invalid API key
+        11,  # Service offline
+        16,  # Temporary error - try again
+        26,  # API key suspended
+        29,  # Rate limit exceeded
+    }
+
     print("Fetching genres via Last.fm API...")
     for artist in tqdm(unique_artists, desc="Artists Processed"):
         try:
@@ -108,7 +123,21 @@ def fetch_genres(lastfm_api: str, unique_artists: set[str]) -> dict[str, str]:
             response = lastfm_session.get(
                 "https://ws.audioscrobbler.com/2.0/", params=params, timeout=10
             )
+            response.raise_for_status()
             data = response.json()
+
+            if "error" in data:
+                error_code = data.get("error")
+                message = data.get("message", "Unknown Last.fm error")
+
+                if error_code in GLOBAL_ERROR_CODES:
+                    raise RuntimeError(f"Last.fm API error {error_code}: {message}")
+
+                # Per-artist errors (e.g., artist not found) — log and continue
+                logging.error(f"Last.fm API error for {artist}: {error_code} - {message}")
+                artists_genres[artist] = "unknown"
+                continue
+
             tags = data.get("toptags", {}).get("tag", [])
 
             # Last.fm returns tags sorted by vote count — index 0 is the most agreed-upon genre
@@ -162,7 +191,9 @@ def main() -> None:
         songs, unique_artists = fetch_tracks(sp, playlist)
     except spotipy.exceptions.SpotifyException as e:
         logging.error(f"Failed to fetch tracks for {playlist}: {e}")
-        print("Error: Could not retrieve playlist. Check the playlist ID.")
+        print(
+            "Error: Could not retrieve playlist. Verify the playlist ID and that your account has access to it."
+        )
         return
 
     # Distinguishes a valid but empty playlist from a fetch failure,
@@ -177,6 +208,11 @@ def main() -> None:
         artists_genres = fetch_genres(lastfm_api, unique_artists)
     except KeyboardInterrupt:
         print("Export cancelled.")
+        return
+    except RuntimeError as e:
+        logging.error(f"Last.fm API failure: {e}")
+        print(f"Error: {e}")
+        print("Genre lookup aborted. Please try again or check your Last.fm API key.")
         return
 
     # Genre mapping happens here rather than inside fetch_genres to keep
