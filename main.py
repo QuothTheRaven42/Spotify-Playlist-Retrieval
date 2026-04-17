@@ -251,7 +251,7 @@ def main() -> None:
         print("Unable to save file.")
         return
 
-    print("Export complete! Files saved to music.json and genres.json.")
+    print("Export complete! Playlist data saved to music.json and genres.json.")
 
 
 if __name__ == "__main__":
@@ -277,7 +277,4 @@ would make the tool more robust on longer playlists.
 - No performance thinking
 Sequential API calls = scalability blind spot
 asyncio or concurrent.futures with rate limiting?
-
-- No setup.py or pyproject.toml
-Not installable, not reusable
 """
