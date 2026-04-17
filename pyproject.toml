@@ -40,6 +40,7 @@ norecursedirs = [
     ".pytest_cache",
     ".pytest_tmp",
     ".pytest_tmp*",
+    "tmp*",
     "__pycache__",
     ".mypy_cache",
     "pytest-cache-files-*",
