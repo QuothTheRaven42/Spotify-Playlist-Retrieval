@@ -1,975 +1,1143 @@
 [
     {
-        "song": "Houdini - RAC Remix",
-        "artist": "Foster The People",
-        "album": "Torches X (Deluxe Edition)",
-        "duration": "03:55",
-        "genre": "indie"
+        "song": "Summer Fog",
+        "artist": "The Album Leaf",
+        "album": "A Chorus of Storytellers",
+        "duration": "04:43",
+        "genre": "post-rock"
     },
     {
-        "song": "When I'm Small - RAC Remix",
-        "artist": "Phantogram",
-        "album": "Eyelid Movies (Expanded Edition)",
-        "duration": "04:00",
-        "genre": "trip-hop"
-    },
-    {
-        "song": "Africa - RAC Remix",
-        "artist": "Weezer",
-        "album": "Africa (RAC Remix)",
-        "duration": "04:10",
-        "genre": "alternative rock"
-    },
-    {
-        "song": "Blue Jeans - RAC Mix",
-        "artist": "Lana Del Rey",
-        "album": "Blue Jeans Remixes",
-        "duration": "03:38",
-        "genre": "indie"
-    },
-    {
-        "song": "Next Year - RAC Remix",
-        "artist": "Two Door Cinema Club",
-        "album": "Next Year (Remixes)",
-        "duration": "04:46",
-        "genre": "indie"
-    },
-    {
-        "song": "Let Go",
-        "artist": "RAC",
-        "album": "Strangers",
-        "duration": "04:40",
-        "genre": "electronic"
-    },
-    {
-        "song": "I Wanna Get Better - RAC Mix",
-        "artist": "Bleachers",
-        "album": "I Wanna Get Better (RAC Mix)",
-        "duration": "02:49",
-        "genre": "indie pop"
-    },
-    {
-        "song": "Maybes - RAC Mix",
-        "artist": "Giraffage",
-        "album": "Too Real (Remixes)",
-        "duration": "03:54",
-        "genre": "chillwave"
-    },
-    {
-        "song": "Hollywood",
-        "artist": "RAC",
-        "album": "Strangers",
-        "duration": "03:17",
-        "genre": "electronic"
-    },
-    {
-        "song": "Second Summer - RAC Remix",
-        "artist": "YACHT",
-        "album": "Second Summer",
-        "duration": "04:34",
-        "genre": "electronic"
-    },
-    {
-        "song": "Wolves - RAC Remix",
-        "artist": "Digitalism",
-        "album": "Wolves (Remixes)",
-        "duration": "05:05",
-        "genre": "electronic"
-    },
-    {
-        "song": "High Enough - RAC Remix",
-        "artist": "K.Flay",
-        "album": "High Enough (RAC Remix)",
-        "duration": "03:28",
-        "genre": "Hip-Hop"
-    },
-    {
-        "song": "Passion",
-        "artist": "RAC",
-        "album": "BOY",
-        "duration": "02:12",
-        "genre": "electronic"
-    },
-    {
-        "song": "Classic (feat. POWERS) - RAC Remix",
-        "artist": "The Knocks",
-        "album": "Classic (feat. POWERS) [Remixes]",
-        "duration": "04:22",
-        "genre": "electronic"
-    },
-    {
-        "song": "Lights - RAC Mix",
-        "artist": "Ellie Goulding",
-        "album": "Lights (The Remixes Part 2)",
-        "duration": "05:44",
-        "genre": "female vocalists"
-    },
-    {
-        "song": "Be Good (RAC Remix)",
-        "artist": "Tokyo Police Club",
-        "album": "Smith",
-        "duration": "02:45",
-        "genre": "indie rock"
-    },
-    {
-        "song": "Say My Name - RAC Mix",
-        "artist": "ODESZA",
-        "album": "Say My Name Remixes",
-        "duration": "04:03",
-        "genre": "chillwave"
-    },
-    {
-        "song": "This Song",
-        "artist": "RAC",
-        "album": "EGO",
-        "duration": "04:07",
-        "genre": "electronic"
-    },
-    {
-        "song": "Nostalgia - RAC Mix",
-        "artist": "RAC",
-        "album": "Nostalgia (RAC Mix)",
-        "duration": "04:16",
-        "genre": "electronic"
-    },
-    {
-        "song": "A Stranger Love - Rac Remix",
-        "artist": "Classixx",
-        "album": "A Stranger Love",
-        "duration": "05:16",
-        "genre": "electronic"
-    },
-    {
-        "song": "Dancing With Myself - RAC Remix",
-        "artist": "Billy Idol",
-        "album": "Dancing With Myself (RAC Remix)",
-        "duration": "03:33",
-        "genre": "rock"
-    },
-    {
-        "song": "Strong - RAC Remix",
-        "artist": "London Grammar",
-        "album": "If You Wait - Remixes",
-        "duration": "04:07",
-        "genre": "indie pop"
-    },
-    {
-        "song": "On Top Of The World - RAC Remix",
-        "artist": "Imagine Dragons",
-        "album": "Night Visions (Expanded Edition / Super Deluxe)",
-        "duration": "03:37",
-        "genre": "indie"
-    },
-    {
-        "song": "#1 - RAC Remix",
-        "artist": "Madison",
-        "album": "The Remixes Some People Make - EP",
-        "duration": "03:27",
-        "genre": "heavy metal"
-    },
-    {
-        "song": "Heartbreak Summer",
-        "artist": "RAC",
-        "album": "EGO",
-        "duration": "03:52",
-        "genre": "electronic"
-    },
-    {
-        "song": "Back of the Car",
-        "artist": "RAC",
-        "album": "Back of the Car",
-        "duration": "04:12",
-        "genre": "electronic"
-    },
-    {
-        "song": "Missing Piece - RAC Remix",
-        "artist": "Vance Joy",
-        "album": "Missing Piece (RAC Remix)",
-        "duration": "03:19",
-        "genre": "folk"
-    },
-    {
-        "song": "Olivia - RAC Mix",
-        "artist": "Hotel Garuda",
-        "album": "Olivia (RAC Mix)",
-        "duration": "03:02",
-        "genre": "electronic"
-    },
-    {
-        "song": "Airbrushed - RAC Remix",
-        "artist": "Anamanaguchi",
-        "album": "Airbrushed",
-        "duration": "04:14",
-        "genre": "chiptune"
-    },
-    {
-        "song": "Could You Be Loved - RAC Remix",
-        "artist": "Bob Marley & The Wailers",
-        "album": "Legend Remixed",
-        "duration": "04:04",
-        "genre": "reggae"
-    },
-    {
-        "song": "Oakland",
-        "artist": "RAC",
-        "album": "BOY",
-        "duration": "02:26",
-        "genre": "electronic"
-    },
-    {
-        "song": "I Should've Guessed",
-        "artist": "RAC",
-        "album": "Strangers",
-        "duration": "04:07",
-        "genre": "electronic"
-    },
-    {
-        "song": "Ello Ello",
-        "artist": "RAC",
-        "album": "Strangers",
-        "duration": "03:06",
-        "genre": "electronic"
-    },
-    {
-        "song": "Tear You Down",
-        "artist": "RAC",
-        "album": "Strangers",
-        "duration": "03:38",
-        "genre": "electronic"
-    },
-    {
-        "song": "No One Has To Know",
-        "artist": "RAC",
-        "album": "EGO",
-        "duration": "04:22",
-        "genre": "electronic"
-    },
-    {
-        "song": "One House",
-        "artist": "RAC",
-        "album": "One House",
-        "duration": "02:53",
-        "genre": "electronic"
-    },
-    {
-        "song": "Stuck On You",
-        "artist": "RAC",
-        "album": "BOY",
-        "duration": "03:12",
-        "genre": "electronic"
-    },
-    {
-        "song": "Guess I'm Jaded (RAC Mix)",
-        "artist": "Goldroom",
-        "album": "Guess I'm Jaded (The Remixes)",
-        "duration": "03:07",
-        "genre": "nu disco"
-    },
-    {
-        "song": "Peaches (RAC Mix)",
-        "artist": "CRAY",
-        "album": "Peaches (RAC Mix)",
-        "duration": "03:15",
+        "song": "Weightless Memories",
+        "artist": "Ulrich Schnauss",
+        "album": "Ulrich Schnauss and Jonas Munk",
+        "duration": "06:15",
         "genre": "ambient"
     },
     {
-        "song": "Memorized",
-        "artist": "Mat Kearney",
-        "album": "CRAZYTALK",
-        "duration": "03:26",
-        "genre": "singer-songwriter"
+        "song": "Newman: American Beauty: No. 12, Any Other Name",
+        "artist": "Thomas Newman",
+        "album": "Classical Chillout",
+        "duration": "04:08",
+        "genre": "Soundtrack"
     },
     {
-        "song": "Alright - RAC Mix",
-        "artist": "KYTES",
-        "album": "Alright (RAC Mix)",
-        "duration": "03:15",
-        "genre": "indie"
+        "song": "Blank Pages",
+        "artist": "The Album Leaf",
+        "album": "A Chorus of Storytellers",
+        "duration": "04:28",
+        "genre": "post-rock"
     },
     {
-        "song": "Cool Kids - RAC Mix",
-        "artist": "Echosmith",
-        "album": "Cool Kids (RAC Mix)",
-        "duration": "04:19",
-        "genre": "indie"
+        "song": "Song From A Secret Garden",
+        "artist": "Rolf L\u00f8vland",
+        "album": "Songs From A Secret Garden",
+        "duration": "03:34",
+        "genre": "instrumental"
     },
     {
-        "song": "Hymnals - RAC Mix",
-        "artist": "Grizfolk",
-        "album": "Hymnals (RAC Mix)",
-        "duration": "03:39",
-        "genre": "indie pop"
+        "song": "Summer Nursery Rhyme, No. 2",
+        "artist": "Yann Tiersen",
+        "album": "Cascade Street",
+        "duration": "02:13",
+        "genre": "instrumental"
     },
     {
-        "song": "Get Over You (RAC Mix)",
-        "artist": "Joel Blackmon",
-        "album": "Get Over You (RAC Mix)",
-        "duration": "02:57",
-        "genre": "unknown"
+        "song": "Place Gun to Head",
+        "artist": "Proem",
+        "album": "Socially Inept",
+        "duration": "06:06",
+        "genre": "idm"
     },
     {
-        "song": "Better - RAC Mix",
-        "artist": "Penguin Prison",
-        "album": "Better (RAC Mix)",
-        "duration": "03:13",
-        "genre": "electronic"
+        "song": "They Move on Tracks of Never-Ending Light",
+        "artist": "This Will Destroy You",
+        "album": "S/T",
+        "duration": "06:56",
+        "genre": "post-rock"
     },
     {
-        "song": "Feed Me Diamonds - RAC Mix",
-        "artist": "MNDR",
-        "album": "Feed Me Diamonds (Remixes)",
-        "duration": "04:11",
-        "genre": "synthpop"
-    },
-    {
-        "song": "Tearing Me Up - RAC Mix",
-        "artist": "Bob Moses",
-        "album": "Tearing Me Up (RAC Mix)",
-        "duration": "05:28",
-        "genre": "deep house"
-    },
-    {
-        "song": "Boy - RAC Mix",
-        "artist": "Ra Ra Riot",
-        "album": "The Orchard (10th Anniversary Edition)",
-        "duration": "03:51",
-        "genre": "indie"
-    },
-    {
-        "song": "waves - RAC Mix",
-        "artist": "Miguel",
-        "album": "Rogue Waves",
-        "duration": "04:49",
-        "genre": "rnb"
-    },
-    {
-        "song": "MIA",
-        "artist": "RAC",
-        "album": "BOY",
-        "duration": "02:32",
-        "genre": "electronic"
-    },
-    {
-        "song": "Victorious - RAC Mix",
-        "artist": "Panic! At The Disco",
-        "album": "Victorious (RAC Mix)",
-        "duration": "03:05",
-        "genre": "alternative"
-    },
-    {
-        "song": "Synchronize - RAC Mix",
-        "artist": "Milky Chance",
-        "album": "Synchronize (RAC Mix)",
-        "duration": "02:40",
-        "genre": "indie"
-    },
-    {
-        "song": "Drifting - RAC Mix",
-        "artist": "On An On",
-        "album": "Drifting (RAC Mix)",
-        "duration": "04:15",
-        "genre": "dream pop"
-    },
-    {
-        "song": "Psycho - RAC Mix",
-        "artist": "LVCRFT",
-        "album": "The Sequel (The Remixes)",
-        "duration": "03:11",
-        "genre": "american"
-    },
-    {
-        "song": "Come Down - RAC Mix",
-        "artist": "Noah Kahan",
-        "album": "Come Down (RAC Mix)",
-        "duration": "03:21",
-        "genre": "indie"
-    },
-    {
-        "song": "Come On Out - RAC Mix",
-        "artist": "The Airborne Toxic Event",
-        "album": "Come On Out (RAC Mix)",
-        "duration": "04:24",
-        "genre": "indie rock"
-    },
-    {
-        "song": "Laura Palmer - RAC Mix",
-        "artist": "Bastille",
-        "album": "Remixed",
-        "duration": "03:11",
-        "genre": "indie"
-    },
-    {
-        "song": "Walking The Dog - RAC Mix",
-        "artist": "fun.",
-        "album": "Aim and Ignite (Deluxe Version)",
-        "duration": "04:38",
-        "genre": "indie pop"
-    },
-    {
-        "song": "All The Pretty Girls - RAC Mix",
-        "artist": "fun.",
-        "album": "Aim and Ignite (Deluxe Version)",
-        "duration": "04:31",
-        "genre": "indie pop"
-    },
-    {
-        "song": "Sea Of Voices - RAC Mix",
-        "artist": "Porter Robinson",
-        "album": "Sea Of Voices (RAC Mix)",
-        "duration": "06:07",
-        "genre": "electro house"
-    },
-    {
-        "song": "Obsession (feat. Jon Bellion) - RAC Mix",
-        "artist": "Vice",
-        "album": "Obsession (feat. Jon Bellion) [RAC Mix]",
-        "duration": "03:45",
-        "genre": "hardcore"
-    },
-    {
-        "song": "Hurt - RAC Mix",
-        "artist": "Oliver Tree",
-        "album": "Hurt (RAC Mix)",
-        "duration": "02:33",
-        "genre": "electronic"
-    },
-    {
-        "song": "When the Summer Ends - RAC Mix",
-        "artist": "Savoir Adore",
-        "album": "When the Summer Ends (RAC Mix)",
-        "duration": "03:39",
-        "genre": "indie"
-    },
-    {
-        "song": "Imaginary Friends - RAC Mix",
-        "artist": "Japanese Wallpaper",
-        "album": "Imaginary Friends (RAC Mix)",
-        "duration": "03:26",
-        "genre": "electronic"
-    },
-    {
-        "song": "Too Darn Hot - RAC Mix",
-        "artist": "Ella Fitzgerald",
-        "album": "Verve Remixed: The First Ladies",
-        "duration": "03:10",
-        "genre": "jazz"
-    },
-    {
-        "song": "WILD - RAC Mix",
-        "artist": "Troye Sivan",
-        "album": "Blue Neighbourhood (The Remixes)",
-        "duration": "04:01",
-        "genre": "pop"
-    },
-    {
-        "song": "Can We Work It Out - RAC Mix",
-        "artist": "Gordi",
-        "album": "Can We Work It Out (Reworks)",
-        "duration": "04:09",
-        "genre": "indie pop"
-    },
-    {
-        "song": "Young Blood - RAC Mix",
-        "artist": "Saint Raymond",
-        "album": "Young Blood (RAC Mix)",
-        "duration": "03:28",
-        "genre": "british"
-    },
-    {
-        "song": "Waves - RAC Mix",
-        "artist": "Luna Shadows",
-        "album": "Waves - EP",
-        "duration": "03:28",
-        "genre": "pop"
-    },
-    {
-        "song": "On The 5 - RAC Mix",
-        "artist": "Winnetka Bowling League",
-        "album": "On The 5 (RAC Mix)",
-        "duration": "02:58",
-        "genre": "indie"
-    },
-    {
-        "song": "Holding On - RAC Mix",
-        "artist": "Robotaki",
-        "album": "The Grand Mirage (Remixes)",
+        "song": "Nanou2",
+        "artist": "Aphex Twin",
+        "album": "Drukqs",
         "duration": "03:25",
         "genre": "electronic"
     },
     {
-        "song": "Higher - RAC Mix",
-        "artist": "The Naked And Famous",
-        "album": "Higher (RAC Mix)",
-        "duration": "04:30",
-        "genre": "indie"
-    },
-    {
-        "song": "Safe And Sound - RAC Mix",
-        "artist": "Capital Cities",
-        "album": "Safe and Sound Remix EP",
-        "duration": "04:12",
-        "genre": "electronic"
-    },
-    {
-        "song": "Back in Your Head - RAC Mix",
-        "artist": "Tegan and Sara",
-        "album": "Back in Your Head - The Complete Collection",
-        "duration": "03:24",
-        "genre": "indie"
-    },
-    {
-        "song": "Repeating Motion",
-        "artist": "RAC",
-        "album": "Strangers",
-        "duration": "04:22",
-        "genre": "electronic"
-    },
-    {
-        "song": "Make Me Like You - RAC Mix",
-        "artist": "Gwen Stefani",
-        "album": "Make Me Like You (The Remixes)",
-        "duration": "03:29",
-        "genre": "pop"
-    },
-    {
-        "song": "We Come Running - RAC Mix",
-        "artist": "Youngblood Hawke",
-        "album": "We Come Running (Remixes)",
-        "duration": "04:01",
-        "genre": "indie"
-    },
-    {
-        "song": "Coloring Outside The Lines - RAC Mix",
-        "artist": "MisterWives",
-        "album": "Coloring Outside The Lines (RAC Mix)",
-        "duration": "05:29",
-        "genre": "indie"
-    },
-    {
-        "song": "Ordinary Madness - RAC Mix [Edit]",
-        "artist": "Joe Goddard",
-        "album": "Ordinary Madness (RAC Mix)",
-        "duration": "03:42",
-        "genre": "electronic"
-    },
-    {
-        "song": "The Struggle - RAC Mix",
-        "artist": "Grizfolk",
-        "album": "The Struggle (RAC Mix)",
-        "duration": "04:14",
-        "genre": "indie pop"
-    },
-    {
-        "song": "Stuck (RAC Mix)",
-        "artist": "The Aces",
-        "album": "Stuck (RAC Mix)",
-        "duration": "04:27",
-        "genre": "pop"
-    },
-    {
-        "song": "Boulevard (RAC Mix)",
-        "artist": "Swaine Delgado",
-        "album": "Boulevard (RAC Mix)",
-        "duration": "03:15",
-        "genre": "unknown"
-    },
-    {
-        "song": "Float - RAC Mix",
-        "artist": "Pacific Air",
-        "album": "Float Remix EP",
-        "duration": "03:44",
-        "genre": "indie pop"
-    },
-    {
-        "song": "Ghost Of A Chance - RAC Mix",
-        "artist": "Young & Sick",
-        "album": "Ghost Fetish EP",
-        "duration": "04:01",
-        "genre": "electronic"
-    },
-    {
-        "song": "Tourist",
-        "artist": "RAC",
-        "album": "Strangers",
-        "duration": "03:04",
-        "genre": "electronic"
-    },
-    {
-        "song": "Hard To Hold",
-        "artist": "RAC",
-        "album": "Strangers",
-        "duration": "03:31",
-        "genre": "electronic"
-    },
-    {
-        "song": "It\u2019s A Shame",
-        "artist": "RAC",
-        "album": "EGO",
-        "duration": "03:00",
-        "genre": "electronic"
-    },
-    {
-        "song": "How Hard I Try - RAC Mix",
-        "artist": "filous",
-        "album": "How Hard I Try (Remixes)",
-        "duration": "03:40",
-        "genre": "electronic"
-    },
-    {
-        "song": "Cherry Hearts - RAC Mix",
-        "artist": "The Shins",
-        "album": "Cherry Hearts",
-        "duration": "04:52",
-        "genre": "indie"
-    },
-    {
-        "song": "Halls Of Sarah - RAC Mix",
-        "artist": "Neko Case",
-        "album": "Halls Of Sarah (RAC Mix)",
-        "duration": "03:52",
-        "genre": "Alt-country"
-    },
-    {
-        "song": "LOVE 3X - RAC Mix",
-        "artist": "ZZ Ward",
-        "album": "LOVE 3X Remixes",
-        "duration": "03:12",
-        "genre": "soul"
-    },
-    {
-        "song": "Walking Home to You (RAC Mix)",
-        "artist": "Nick Leng",
-        "album": "Walking Home to You (RAC Mix)",
-        "duration": "03:36",
-        "genre": "electronic"
-    },
-    {
-        "song": "Beautiful Heartbeat - RAC Mix",
-        "artist": "MORTEN",
-        "album": "Beautiful Heartbeat",
-        "duration": "03:52",
-        "genre": "denmark"
-    },
-    {
-        "song": "3am",
-        "artist": "RAC",
-        "album": "3am",
-        "duration": "03:12",
-        "genre": "electronic"
-    },
-    {
-        "song": "We Belong",
-        "artist": "RAC",
-        "album": "Strangers",
-        "duration": "06:28",
-        "genre": "electronic"
-    },
-    {
-        "song": "Sail into the Sun (Rac Mix)",
-        "artist": "Gentlemen Hall",
-        "album": "Sail into the Sun (Rac Mix)",
-        "duration": "03:48",
-        "genre": "indie pop"
-    },
-    {
-        "song": "Diggy - RAC Mix",
-        "artist": "Spencer Ludwig",
-        "album": "Diggy (RAC Mix)",
-        "duration": "03:17",
-        "genre": "trumpet"
-    },
-    {
-        "song": "Sweater",
-        "artist": "RAC",
-        "album": "BOY",
-        "duration": "03:28",
-        "genre": "electronic"
-    },
-    {
-        "song": "Do You Ever? - RAC Mix",
-        "artist": "Phil Good",
-        "album": "Do You Ever? (RAC Mix)",
-        "duration": "02:33",
-        "genre": "pop"
-    },
-    {
-        "song": "Lose My Cool - RAC Mix",
-        "artist": "Amber Mark",
-        "album": "3:33am (Remixes)",
-        "duration": "03:58",
-        "genre": "soul"
-    },
-    {
-        "song": "Restless - RAC Mix",
-        "artist": "New Order",
-        "album": "Restless",
-        "duration": "06:44",
-        "genre": "new wave"
-    },
-    {
-        "song": "Free My Mind (RAC Mix) [feat. RAC]",
-        "artist": "Katie Herzig",
-        "album": "Free My Mind (RAC Mix) [feat. RAC]",
-        "duration": "05:58",
-        "genre": "folk"
-    },
-    {
-        "song": "What You Talking About? - RAC Mix",
-        "artist": "Peter Bjorn and John",
-        "album": "What You Talking About? (RAC Mix)",
-        "duration": "03:24",
-        "genre": "indie"
-    },
-    {
-        "song": "The Way I Loved You (RAC Mix)",
-        "artist": "REYNA",
-        "album": "The Way I Loved You (RAC Mix)",
-        "duration": "03:05",
-        "genre": "female vocalists"
-    },
-    {
-        "song": "The Beautiful Game",
-        "artist": "RAC",
-        "album": "EGO",
-        "duration": "04:32",
-        "genre": "electronic"
-    },
-    {
-        "song": "Heavy",
-        "artist": "RAC",
-        "album": "EGO",
-        "duration": "04:41",
-        "genre": "electronic"
-    },
-    {
-        "song": "Sleepy Eyes (RAC Mix)",
-        "artist": "Elohim",
-        "album": "Elohim (Deluxe Edition)",
-        "duration": "03:19",
-        "genre": "electronic"
-    },
-    {
-        "song": "Broken (with Au/Ra) (RAC Mix)",
-        "artist": "OTR",
-        "album": "Broken (with Au/Ra) (RAC Mix)",
-        "duration": "03:51",
-        "genre": "electronic"
-    },
-    {
-        "song": "Perfect World - RAC Mix",
-        "artist": "Gossip",
-        "album": "A Joyful Noise RMX EP",
-        "duration": "04:13",
-        "genre": "indie"
-    },
-    {
-        "song": "Cheap Sunglasses - Two Friends Remix",
-        "artist": "RAC",
-        "album": "Cheap Sunglasses (Remixes)",
-        "duration": "04:23",
-        "genre": "electronic"
-    },
-    {
-        "song": "All I Got",
-        "artist": "RAC",
-        "album": "Strangers",
-        "duration": "04:45",
-        "genre": "electronic"
-    },
-    {
-        "song": "Fire Sign (RAC Mix)",
-        "artist": "TRY",
-        "album": "Fire Sign (RAC Mix)",
-        "duration": "03:40",
-        "genre": "krautrock"
-    },
-    {
-        "song": "Get A Life",
-        "artist": "RAC",
-        "album": "BOY",
-        "duration": "02:49",
-        "genre": "electronic"
-    },
-    {
-        "song": "Kiss Me Again (RAC Mix)",
-        "artist": "The Drums",
-        "album": "Kiss Me Again (RAC Mix)",
-        "duration": "04:07",
-        "genre": "indie"
-    },
-    {
-        "song": "Pink & Blue (RAC Mix)",
-        "artist": "Tycho",
-        "album": "Pink & Blue (RAC Mix)",
-        "duration": "03:37",
+        "song": "Part 3",
+        "artist": "Rhian Sheehan",
+        "album": "Standing in Silence",
+        "duration": "05:13",
         "genre": "ambient"
     },
     {
-        "song": "Dangerous",
-        "artist": "RAC",
-        "album": "Fair Trade",
-        "duration": "04:18",
-        "genre": "electronic"
+        "song": "Radio Ballet",
+        "artist": "Eluvium",
+        "album": "Copia",
+        "duration": "03:12",
+        "genre": "ambient"
     },
     {
-        "song": "I Still Wanna Know",
-        "artist": "RAC",
-        "album": "EGO",
-        "duration": "04:43",
-        "genre": "electronic"
+        "song": "Ataraxia",
+        "artist": "Pelican",
+        "album": "Ataraxia/Taraxis",
+        "duration": "03:21",
+        "genre": "Post-Metal"
     },
     {
-        "song": "Carefree",
-        "artist": "RAC",
-        "album": "BOY",
-        "duration": "02:32",
-        "genre": "electronic"
+        "song": "Moonlight Sonata: Adagio Sostenuto",
+        "artist": "Ludwig van Beethoven",
+        "album": "Classical Best Of",
+        "duration": "05:28",
+        "genre": "Classical"
     },
     {
-        "song": "Lying To You - RAC Mix",
-        "artist": "Goldroom",
-        "album": "West Of The West (Remixes)",
-        "duration": "03:51",
-        "genre": "nu disco"
+        "song": "Hope",
+        "artist": "Message To Bears",
+        "album": "Departures",
+        "duration": "04:39",
+        "genre": "post-rock"
     },
     {
-        "song": "Boomerang",
-        "artist": "RAC",
-        "album": "BOY",
-        "duration": "04:07",
-        "genre": "electronic"
+        "song": "Story of the Makers",
+        "artist": "Jesper Kyd",
+        "album": "Darksiders II Original Soundtrack",
+        "duration": "02:10",
+        "genre": "Soundtrack"
     },
     {
-        "song": "Next To You",
-        "artist": "RAC",
-        "album": "BOY",
-        "duration": "03:19",
-        "genre": "electronic"
+        "song": "Signaling Through the Flames (Ambient)",
+        "artist": "The American Dollar",
+        "album": "Music for Focus and Creativity",
+        "duration": "05:01",
+        "genre": "post-rock"
     },
     {
-        "song": "Toulouse",
-        "artist": "RAC",
-        "album": "BOY",
-        "duration": "02:43",
-        "genre": "electronic"
+        "song": "Phase",
+        "artist": "Beck",
+        "album": "Morning Phase",
+        "duration": "01:07",
+        "genre": "alternative"
     },
     {
-        "song": "Together",
-        "artist": "RAC",
-        "album": "BOY",
-        "duration": "03:01",
-        "genre": "electronic"
+        "song": "WEIGHTLESS",
+        "artist": "Marconi Union",
+        "album": "SPA THERAPY ALBUM (EXCLUSIVE)",
+        "duration": "08:09",
+        "genre": "ambient"
     },
     {
-        "song": "Solo",
-        "artist": "RAC",
-        "album": "BOY",
-        "duration": "03:07",
-        "genre": "electronic"
+        "song": "Sleepless",
+        "artist": "Marconi Union",
+        "album": "Distance",
+        "duration": "05:41",
+        "genre": "ambient"
     },
     {
-        "song": "Change The Story",
-        "artist": "RAC",
-        "album": "BOY",
-        "duration": "02:52",
-        "genre": "electronic"
+        "song": "Ambre",
+        "artist": "Nils Frahm",
+        "album": "Erased Tapes Collection II",
+        "duration": "03:47",
+        "genre": "piano"
     },
     {
-        "song": "Better Days",
-        "artist": "RAC",
-        "album": "BOY",
-        "duration": "04:48",
-        "genre": "electronic"
+        "song": "Threnody",
+        "artist": "Goldmund",
+        "album": "The Malady Of Elegance",
+        "duration": "04:41",
+        "genre": "ambient"
     },
     {
-        "song": "Seventeen",
-        "artist": "RAC",
-        "album": "Strangers",
-        "duration": "04:35",
-        "genre": "electronic"
+        "song": "Thaw",
+        "artist": "Jim Perkins",
+        "album": "Spring 2014",
+        "duration": "02:13",
+        "genre": "instrumental"
     },
     {
-        "song": "Ready For It",
-        "artist": "RAC",
-        "album": "Strangers",
-        "duration": "02:47",
-        "genre": "electronic"
-    },
-    {
-        "song": "405",
-        "artist": "RAC",
-        "album": "Strangers",
-        "duration": "04:04",
-        "genre": "electronic"
-    },
-    {
-        "song": "Fever",
-        "artist": "RAC",
-        "album": "EGO",
-        "duration": "05:13",
-        "genre": "electronic"
-    },
-    {
-        "song": "Nobody",
-        "artist": "RAC",
-        "album": "EGO",
-        "duration": "04:43",
-        "genre": "electronic"
-    },
-    {
-        "song": "Unusual",
-        "artist": "RAC",
-        "album": "EGO",
+        "song": "Phantoms",
+        "artist": "Jim Perkins",
+        "album": "Emergence",
         "duration": "03:45",
-        "genre": "electronic"
+        "genre": "instrumental"
     },
     {
-        "song": "Johnny Cash",
-        "artist": "RAC",
-        "album": "EGO",
-        "duration": "04:00",
-        "genre": "electronic"
+        "song": "For You My Love - Part 1",
+        "artist": "boyChild",
+        "album": "For You My Love EP",
+        "duration": "02:36",
+        "genre": "experimental"
     },
     {
-        "song": "Be",
-        "artist": "RAC",
-        "album": "EGO",
-        "duration": "05:11",
-        "genre": "electronic"
-    },
-    {
-        "song": "Find A Way",
-        "artist": "RAC",
-        "album": "EGO",
-        "duration": "03:51",
-        "genre": "electronic"
-    },
-    {
-        "song": "Ether",
-        "artist": "RAC",
-        "album": "HYPER",
+        "song": "For You My Love - Part 2",
+        "artist": "boyChild",
+        "album": "For You My Love EP",
         "duration": "03:10",
-        "genre": "electronic"
+        "genre": "experimental"
     },
     {
-        "song": "Fine",
-        "artist": "RAC",
-        "album": "HYPER",
-        "duration": "03:26",
-        "genre": "electronic"
+        "song": "Dogs",
+        "artist": "Beware of Safety",
+        "album": "Dogs",
+        "duration": "02:45",
+        "genre": "post-rock"
     },
     {
-        "song": "Killer",
-        "artist": "RAC",
-        "album": "HYPER",
-        "duration": "03:23",
-        "genre": "electronic"
+        "song": "Don't Go Where I Can't Find You",
+        "artist": "Eraldo Bernocchi",
+        "album": "Winter Garden",
+        "duration": "04:53",
+        "genre": "ambient"
     },
     {
-        "song": "Easy",
-        "artist": "RAC",
-        "album": "HYPER",
+        "song": "Don't Bother They're Here",
+        "artist": "Stars Of The Lid",
+        "album": "And Their Refinement of the Decline",
+        "duration": "10:10",
+        "genre": "ambient"
+    },
+    {
+        "song": "Maenam (Jami Sieber)",
+        "artist": "Sieber, Kammen, Fulton and Schatz",
+        "album": "Music from Braid",
+        "duration": "05:39",
+        "genre": "instrumental"
+    },
+    {
+        "song": "Holding On",
+        "artist": "Tracey Chattaway",
+        "album": "Nightsky",
+        "duration": "04:46",
+        "genre": "ambient"
+    },
+    {
+        "song": "Dance Of The Gray Whales",
+        "artist": "A Fine Frenzy",
+        "album": "PINES",
+        "duration": "02:50",
+        "genre": "female vocalists"
+    },
+    {
+        "song": "Emerald and Stone",
+        "artist": "Brian Eno",
+        "album": "Small Craft On A Milk Sea",
+        "duration": "02:12",
+        "genre": "ambient"
+    },
+    {
+        "song": "The Warmth of the Old Tavern",
+        "artist": "Those Who Ride With Giants",
+        "album": "Those Who Ride With Giants [Deluxe]",
+        "duration": "06:46",
+        "genre": "post-rock"
+    },
+    {
+        "song": "Weightless",
+        "artist": "Marconi Union",
+        "album": "The Ambient Zone Just Music Cafe Vol 4",
+        "duration": "08:00",
+        "genre": "ambient"
+    },
+    {
+        "song": "Weightless Part 1",
+        "artist": "Marconi Union",
+        "album": "Weightless (Ambient Transmission Vol. 2)",
+        "duration": "08:06",
+        "genre": "ambient"
+    },
+    {
+        "song": "Weightless Part 3",
+        "artist": "Marconi Union",
+        "album": "Weightless (Ambient Transmission Vol. 2)",
+        "duration": "07:38",
+        "genre": "ambient"
+    },
+    {
+        "song": "Weightless Part 4",
+        "artist": "Marconi Union",
+        "album": "Weightless (Ambient Transmission Vol. 2)",
+        "duration": "07:17",
+        "genre": "ambient"
+    },
+    {
+        "song": "Weightless Part 5",
+        "artist": "Marconi Union",
+        "album": "Weightless (Ambient Transmission Vol. 2)",
+        "duration": "07:20",
+        "genre": "ambient"
+    },
+    {
+        "song": "The Big Sleep",
+        "artist": "A Produce",
+        "album": "Smile On The Void",
+        "duration": "08:59",
+        "genre": "ambient"
+    },
+    {
+        "song": "The Empty Room",
+        "artist": "Yann Tiersen",
+        "album": "Cascade Street",
+        "duration": "01:42",
+        "genre": "instrumental"
+    },
+    {
+        "song": "For the Asking",
+        "artist": "John R. Burr",
+        "album": "Sundown: A Windam Hill Piano Collection",
+        "duration": "03:50",
+        "genre": "piano"
+    },
+    {
+        "song": "Emancipation",
+        "artist": "Helios",
+        "album": "Eingya",
+        "duration": "02:34",
+        "genre": "ambient"
+    },
+    {
+        "song": "Maybe They Will Sing for Us Tomorrow",
+        "artist": "Hammock",
+        "album": "An Introduction to Hammock",
+        "duration": "05:10",
+        "genre": "post-rock"
+    },
+    {
+        "song": "Lazy Calm",
+        "artist": "Cocteau Twins",
+        "album": "Victorialand",
+        "duration": "06:36",
+        "genre": "dream pop"
+    },
+    {
+        "song": "Rapture",
+        "artist": "Aquasonic",
+        "album": "Rapture",
+        "duration": "02:40",
+        "genre": "unknown"
+    },
+    {
+        "song": "Subtext",
+        "artist": "John Foxx",
+        "album": "Translucence + Drift Music",
+        "duration": "05:59",
+        "genre": "new wave"
+    },
+    {
+        "song": "Lust",
+        "artist": "Syndrome",
+        "album": "The Local Boy Tape",
+        "duration": "02:58",
+        "genre": "ambient"
+    },
+    {
+        "song": "Air",
+        "artist": "The White Birch",
+        "album": "Star Is Just A Sun",
+        "duration": "02:24",
+        "genre": "post-rock"
+    },
+    {
+        "song": "The Annointing",
+        "artist": "Constance Demby",
+        "album": "Spirit Trance",
+        "duration": "09:50",
+        "genre": "new age"
+    },
+    {
+        "song": "Dynamite",
+        "artist": "Miller & Bronx",
+        "album": "Session 1",
+        "duration": "03:16",
+        "genre": "unknown"
+    },
+    {
+        "song": "Moments",
+        "artist": "Deep Watch",
+        "album": "Endless Fragments of Time",
+        "duration": "03:35",
+        "genre": "ambient"
+    },
+    {
+        "song": "Scene Suspended",
+        "artist": "Jon Hopkins",
+        "album": "Scene Suspended",
+        "duration": "04:07",
+        "genre": "ambient"
+    },
+    {
+        "song": "Shell Game - Original Mix",
+        "artist": "DMX Krew",
+        "album": "Glad To Be Sad",
+        "duration": "02:03",
+        "genre": "electro"
+    },
+    {
+        "song": "Fyrsta",
+        "artist": "\u00d3lafur Arnalds",
+        "album": "Living Room Songs",
+        "duration": "04:16",
+        "genre": "ambient"
+    },
+    {
+        "song": "One Man's Dream",
+        "artist": "Yanni",
+        "album": "The Essential Yanni",
+        "duration": "02:43",
+        "genre": "new age"
+    },
+    {
+        "song": "In The Morning Light",
+        "artist": "Yanni",
+        "album": "The Essential Yanni",
+        "duration": "03:48",
+        "genre": "new age"
+    },
+    {
+        "song": "Teardrop",
+        "artist": "Vitamin String Quartet",
+        "album": "VSQ Performs Massive Attack",
+        "duration": "04:02",
+        "genre": "instrumental"
+    },
+    {
+        "song": "Danger in the Forest",
+        "artist": "TPR",
+        "album": "A Melancholy Tribute to Final Fantasy IX",
+        "duration": "05:56",
+        "genre": "United Kingdom"
+    },
+    {
+        "song": "The Last Airbender",
+        "artist": "Sweetboikyle",
+        "album": "Chillbending",
+        "duration": "02:42",
+        "genre": "lofi"
+    },
+    {
+        "song": "cornteen",
+        "artist": "OMXS",
+        "album": "TBD",
+        "duration": "02:37",
+        "genre": "unknown"
+    },
+    {
+        "song": "fix you",
+        "artist": "owlh",
+        "album": "take cover",
+        "duration": "03:01",
+        "genre": "lofi"
+    },
+    {
+        "song": "Progression",
+        "artist": "LAV8",
+        "album": "Jukebox",
+        "duration": "02:57",
+        "genre": "Chill-Hop"
+    },
+    {
+        "song": "Heated Blanket",
+        "artist": "takeo",
+        "album": "Cozy Winter",
         "duration": "02:30",
+        "genre": "Lo-Fi"
+    },
+    {
+        "song": "The Unforgiven",
+        "artist": "Executioners",
+        "album": "The Unforgiven",
+        "duration": "02:17",
+        "genre": "garage 60"
+    },
+    {
+        "song": "Stratus",
+        "artist": "Kaitlyn Aurelia Smith",
+        "album": "EARS",
+        "duration": "03:04",
+        "genre": "ambient"
+    },
+    {
+        "song": "Clear Blue Sky",
+        "artist": "Tibeauthetraveler",
+        "album": "Leaving This Place",
+        "duration": "01:40",
         "genre": "electronic"
+    },
+    {
+        "song": "Melt",
+        "artist": "eze east",
+        "album": "Melt",
+        "duration": "02:06",
+        "genre": "unknown"
+    },
+    {
+        "song": "Under A Wishing Sky",
+        "artist": "Lilac",
+        "album": "Lanterns",
+        "duration": "01:12",
+        "genre": "instrumental hip-hop"
+    },
+    {
+        "song": "trusting hands",
+        "artist": "Towerz",
+        "album": "At Long Last",
+        "duration": "02:20",
+        "genre": "Lo-Fi"
+    },
+    {
+        "song": "Thinking Back",
+        "artist": "Nothingtosay",
+        "album": "Cold Thoughts",
+        "duration": "02:10",
+        "genre": "Lo-Fi"
+    },
+    {
+        "song": "Contenance",
+        "artist": "S\u00e1tyr",
+        "album": "Better Together",
+        "duration": "01:55",
+        "genre": "instrumental"
+    },
+    {
+        "song": "In Front Of Me",
+        "artist": "Swink",
+        "album": "Like a Necessity",
+        "duration": "02:04",
+        "genre": "lofi-hiphop"
+    },
+    {
+        "song": "Now We Know",
+        "artist": "Charlee Nguyen",
+        "album": "The meaning of love",
+        "duration": "02:27",
+        "genre": "instrumental"
+    },
+    {
+        "song": "Lance",
+        "artist": "Sepia Tapes",
+        "album": "Lance",
+        "duration": "02:06",
+        "genre": "unknown"
+    },
+    {
+        "song": "dew slate",
+        "artist": "Tatami Construct",
+        "album": "lost and forgotten",
+        "duration": "02:12",
+        "genre": "lofi"
+    },
+    {
+        "song": "Your Innocent Eyes",
+        "artist": "Pierson Booth",
+        "album": "The Beginning",
+        "duration": "02:16",
+        "genre": "unknown"
+    },
+    {
+        "song": "Fading Light",
+        "artist": "mtch.",
+        "album": "Blissful Dreams",
+        "duration": "02:18",
+        "genre": "lofi"
+    },
+    {
+        "song": "A Lesson to Be Learned",
+        "artist": "Kainbeats",
+        "album": "Path to Shing",
+        "duration": "01:59",
+        "genre": "instrumental hip-hop"
+    },
+    {
+        "song": "November Sun",
+        "artist": "Tibeauthetraveler",
+        "album": "Fairy Tales",
+        "duration": "02:03",
+        "genre": "electronic"
+    },
+    {
+        "song": "Amu",
+        "artist": "Ahe Bane",
+        "album": "Amu",
+        "duration": "02:18",
+        "genre": "Lo-Fi"
+    },
+    {
+        "song": "Cloud Surfing",
+        "artist": "S N U G",
+        "album": "Lofi Dreams 2",
+        "duration": "01:34",
+        "genre": "Lo-Fi"
+    },
+    {
+        "song": "A Second Worth",
+        "artist": "slowburn",
+        "album": "Poles Apart",
+        "duration": "02:11",
+        "genre": "hardcore"
+    },
+    {
+        "song": "Lazy Evening",
+        "artist": "lukayo",
+        "album": "Lazy Evening",
+        "duration": "01:49",
+        "genre": "lofi"
+    },
+    {
+        "song": "Cascades",
+        "artist": "Tibeauthetraveler",
+        "album": "Cascades",
+        "duration": "02:12",
+        "genre": "electronic"
+    },
+    {
+        "song": "Dreamwisp",
+        "artist": "idylla",
+        "album": "Blissful Dreams",
+        "duration": "02:48",
+        "genre": "instrumental"
+    },
+    {
+        "song": "My Heart Longs For The Sea",
+        "artist": "Lenny Loops",
+        "album": "Longing For The Sea",
+        "duration": "01:53",
+        "genre": "instrumental"
+    },
+    {
+        "song": "Summer Rain",
+        "artist": "lukayo",
+        "album": "Summer Rain",
+        "duration": "01:54",
+        "genre": "lofi"
+    },
+    {
+        "song": "Illuminate",
+        "artist": "Kinissue",
+        "album": "The Realization",
+        "duration": "03:05",
+        "genre": "electronic"
+    },
+    {
+        "song": "Back2Bed",
+        "artist": "S\u00e1tyr",
+        "album": "Aiode",
+        "duration": "02:48",
+        "genre": "instrumental"
+    },
+    {
+        "song": "Berlin",
+        "artist": "Sebastian Kamae",
+        "album": "Skylines",
+        "duration": "02:53",
+        "genre": "instrumental"
+    },
+    {
+        "song": "Bouncin in Space",
+        "artist": "Ambulo",
+        "album": "Sea Forest",
+        "duration": "02:02",
+        "genre": "finland"
+    },
+    {
+        "song": "rooftops",
+        "artist": "Angry Apple",
+        "album": "Ambros\u00eda",
+        "duration": "01:51",
+        "genre": "beats"
+    },
+    {
+        "song": "Dreamer",
+        "artist": "lukayo",
+        "album": "Dreamer",
+        "duration": "02:02",
+        "genre": "lofi"
+    },
+    {
+        "song": "Y\u014dna",
+        "artist": "smbdy/else",
+        "album": "Y\u014dna",
+        "duration": "02:01",
+        "genre": "unknown"
+    },
+    {
+        "song": "Endless Everything",
+        "artist": "Tibeauthetraveler",
+        "album": "Moving On",
+        "duration": "02:55",
+        "genre": "electronic"
+    },
+    {
+        "song": "Floating with you",
+        "artist": "Nadav Cohen",
+        "album": "Lofi Girl \u2013 chill beats for LEGO building",
+        "duration": "02:56",
+        "genre": "ambient"
+    },
+    {
+        "song": "Farewell",
+        "artist": "Kinissue",
+        "album": "The Realization",
+        "duration": "02:46",
+        "genre": "electronic"
+    },
+    {
+        "song": "Frosty",
+        "artist": "Noji",
+        "album": "Frosty",
+        "duration": "01:51",
+        "genre": "unknown"
+    },
+    {
+        "song": "town life",
+        "artist": "Hype Right",
+        "album": "town life",
+        "duration": "01:57",
+        "genre": "unknown"
+    },
+    {
+        "song": "Through The Garden",
+        "artist": "eze east",
+        "album": "Through The Garden",
+        "duration": "02:06",
+        "genre": "unknown"
+    },
+    {
+        "song": "The Discovery",
+        "artist": "Tibeauthetraveler",
+        "album": "Fairy Tales",
+        "duration": "02:34",
+        "genre": "electronic"
+    },
+    {
+        "song": "Sleeping Remedy",
+        "artist": "iTaZe",
+        "album": "Chillax",
+        "duration": "01:48",
+        "genre": "unknown"
+    },
+    {
+        "song": "Candy Leaf",
+        "artist": "Rudy Raw",
+        "album": "Candy Leaf",
+        "duration": "02:05",
+        "genre": "germany"
+    },
+    {
+        "song": "Laying Besides you",
+        "artist": "Nadav Cohen",
+        "album": "Morning Coffee",
+        "duration": "01:42",
+        "genre": "ambient"
+    },
+    {
+        "song": "be glossy",
+        "artist": "Hype Right",
+        "album": "double espresso",
+        "duration": "01:34",
+        "genre": "unknown"
+    },
+    {
+        "song": "New Light",
+        "artist": "slowburn",
+        "album": "Poles Apart",
+        "duration": "01:59",
+        "genre": "hardcore"
+    },
+    {
+        "song": "4 Months",
+        "artist": "dryhope",
+        "album": "Blissful Dreams",
+        "duration": "03:07",
+        "genre": "Lo-Fi"
+    },
+    {
+        "song": "Pointe Rouge",
+        "artist": "Socrab",
+        "album": "Autumn Woodlands 2022",
+        "duration": "02:08",
+        "genre": "unknown"
+    },
+    {
+        "song": "Set Sail",
+        "artist": "Krynoze",
+        "album": "Finding Answers",
+        "duration": "02:24",
+        "genre": "india"
+    },
+    {
+        "song": "Bread & Butter",
+        "artist": "Flying Demond",
+        "album": "Bread & Butter",
+        "duration": "01:24",
+        "genre": "unknown"
+    },
+    {
+        "song": "Numb",
+        "artist": "Men I Trust",
+        "album": "Numb",
+        "duration": "03:39",
+        "genre": "dream pop"
+    },
+    {
+        "song": "Twilight Journey",
+        "artist": "H.1",
+        "album": "Twilight Journey",
+        "duration": "02:08",
+        "genre": "chillhop"
+    },
+    {
+        "song": "Civilisation",
+        "artist": "Dosi",
+        "album": "Arodasio",
+        "duration": "02:03",
+        "genre": "instrumental hip-hop"
+    },
+    {
+        "song": "Introspection",
+        "artist": "Elijah Lee",
+        "album": "Vanishing Journey",
+        "duration": "02:14",
+        "genre": "Lo-Fi"
+    },
+    {
+        "song": "Smile From A Friend",
+        "artist": "fourwalls",
+        "album": "Staring Contest",
+        "duration": "02:34",
+        "genre": "Lo-Fi"
+    },
+    {
+        "song": "nymph\u2019s spell",
+        "artist": "idylla",
+        "album": "midnight at the lake",
+        "duration": "03:00",
+        "genre": "instrumental"
+    },
+    {
+        "song": "Shimmers of a Dream",
+        "artist": "No Spirit",
+        "album": "Blissful Dreams",
+        "duration": "02:27",
+        "genre": "Lo-Fi"
+    },
+    {
+        "song": "Puddles",
+        "artist": "S N U G",
+        "album": "Quietude",
+        "duration": "02:54",
+        "genre": "Lo-Fi"
+    },
+    {
+        "song": "Light Years Away",
+        "artist": "Laffey",
+        "album": "Out Of Orbit",
+        "duration": "02:30",
+        "genre": "Lo-Fi"
+    },
+    {
+        "song": "clear eyes, blind sight",
+        "artist": "idylla",
+        "album": "blindsighted",
+        "duration": "02:20",
+        "genre": "instrumental"
+    },
+    {
+        "song": "Flying Away",
+        "artist": "Elijah Lee",
+        "album": "My Memoir",
+        "duration": "02:26",
+        "genre": "Lo-Fi"
+    },
+    {
+        "song": "Hillside Tree",
+        "artist": "Kainbeats",
+        "album": "Finding Beauty",
+        "duration": "02:29",
+        "genre": "instrumental hip-hop"
+    },
+    {
+        "song": "Luminosity",
+        "artist": "No Spirit",
+        "album": "Blissful Dreams",
+        "duration": "02:12",
+        "genre": "Lo-Fi"
+    },
+    {
+        "song": "Sleepy",
+        "artist": "luv pug",
+        "album": "Sunset",
+        "duration": "01:52",
+        "genre": "chill"
+    },
+    {
+        "song": "somebody lovely",
+        "artist": "Blurred Figures",
+        "album": "the art of noticing",
+        "duration": "02:36",
+        "genre": "instrumental"
+    },
+    {
+        "song": "a story once told",
+        "artist": "idylla",
+        "album": "midnight at the lake",
+        "duration": "02:34",
+        "genre": "instrumental"
+    },
+    {
+        "song": "Pillows",
+        "artist": "Towerz",
+        "album": "Lazy Sunday",
+        "duration": "02:46",
+        "genre": "Lo-Fi"
+    },
+    {
+        "song": "At Peace",
+        "artist": "brillion.",
+        "album": "Bedtime Stories Pt.4",
+        "duration": "02:55",
+        "genre": "electronic"
+    },
+    {
+        "song": "Respite",
+        "artist": "Kainbeats",
+        "album": "Finding Beauty",
+        "duration": "02:19",
+        "genre": "instrumental hip-hop"
+    },
+    {
+        "song": "Dreamfield",
+        "artist": "slowburn",
+        "album": "Blissful Dreams",
+        "duration": "02:03",
+        "genre": "hardcore"
+    },
+    {
+        "song": "Moonlight Glaze",
+        "artist": "sinnr",
+        "album": "Sunday Morning",
+        "duration": "01:41",
+        "genre": "Lo-Fi"
+    },
+    {
+        "song": "finding peace",
+        "artist": "idylla",
+        "album": "born in the sky",
+        "duration": "02:44",
+        "genre": "instrumental"
+    },
+    {
+        "song": "Deep Sleep",
+        "artist": "KioKo",
+        "album": "Deep Sleep",
+        "duration": "02:12",
+        "genre": "post-rock"
+    },
+    {
+        "song": "As Far As I Can See",
+        "artist": "m\u00f8ndberg",
+        "album": "Living Free",
+        "duration": "02:34",
+        "genre": "unknown"
+    },
+    {
+        "song": "With Each Step",
+        "artist": "Kainbeats",
+        "album": "Path to Shing",
+        "duration": "02:19",
+        "genre": "instrumental hip-hop"
+    },
+    {
+        "song": "Dozy",
+        "artist": "LUQ\u0118T",
+        "album": "Blissful Dreams",
+        "duration": "02:08",
+        "genre": "chillout"
+    },
+    {
+        "song": "stargazing",
+        "artist": "idylla",
+        "album": "born in the sky",
+        "duration": "02:34",
+        "genre": "instrumental"
+    },
+    {
+        "song": "As It Was",
+        "artist": "slowburn",
+        "album": "Poles Apart",
+        "duration": "02:27",
+        "genre": "hardcore"
+    },
+    {
+        "song": "Light for My Path",
+        "artist": "Pierson Booth",
+        "album": "The Beginning",
+        "duration": "02:49",
+        "genre": "unknown"
+    },
+    {
+        "song": "Patience Brings Prosperity",
+        "artist": "Kainbeats",
+        "album": "Path to Shing",
+        "duration": "01:53",
+        "genre": "instrumental hip-hop"
+    },
+    {
+        "song": "from me to you",
+        "artist": "Towerz",
+        "album": "At Long Last",
+        "duration": "02:50",
+        "genre": "Lo-Fi"
+    },
+    {
+        "song": "polaris",
+        "artist": "stream_error",
+        "album": "polaris",
+        "duration": "01:59",
+        "genre": "beats"
+    },
+    {
+        "song": "beacon in the sky",
+        "artist": "idylla",
+        "album": "born in the sky",
+        "duration": "02:29",
+        "genre": "instrumental"
+    },
+    {
+        "song": "Cosy Bed",
+        "artist": "Nadav Cohen",
+        "album": "Blissful Dreams",
+        "duration": "03:12",
+        "genre": "ambient"
+    },
+    {
+        "song": "Sushi Night",
+        "artist": "Kainbeats",
+        "album": "Path to Shing",
+        "duration": "02:18",
+        "genre": "instrumental hip-hop"
+    },
+    {
+        "song": "Backyard Memories",
+        "artist": "m\u00f8ndberg",
+        "album": "Living Free",
+        "duration": "02:33",
+        "genre": "unknown"
+    },
+    {
+        "song": "Mirroring",
+        "artist": "Loafy Building",
+        "album": "Aquilla",
+        "duration": "02:14",
+        "genre": "Lo-Fi"
+    },
+    {
+        "song": "mystical nights",
+        "artist": "idylla",
+        "album": "midnight at the lake",
+        "duration": "02:41",
+        "genre": "instrumental"
+    },
+    {
+        "song": "Into the Reverie",
+        "artist": "Tenno",
+        "album": "Blissful Dreams",
+        "duration": "02:36",
+        "genre": "instrumental hip-hop"
+    },
+    {
+        "song": "Floating Island",
+        "artist": "Dimension 32",
+        "album": "Aeolia",
+        "duration": "02:57",
+        "genre": "Lo-Fi"
+    },
+    {
+        "song": "Underwater",
+        "artist": "Nothingtosay",
+        "album": "Cold Thoughts",
+        "duration": "02:26",
+        "genre": "Lo-Fi"
+    },
+    {
+        "song": "Book of Shadows",
+        "artist": "Solar Body",
+        "album": "The Otherworld",
+        "duration": "02:02",
+        "genre": "unknown"
+    },
+    {
+        "song": "a portal to the clouds",
+        "artist": "idylla",
+        "album": "born in the sky",
+        "duration": "02:46",
+        "genre": "instrumental"
+    },
+    {
+        "song": "Burgundy",
+        "artist": "Tin.",
+        "album": "Palette",
+        "duration": "01:59",
+        "genre": "unknown"
+    },
+    {
+        "song": "Michael",
+        "artist": "luv pug",
+        "album": "Sunset",
+        "duration": "02:17",
+        "genre": "chill"
+    },
+    {
+        "song": "(dream)",
+        "artist": "salvia palth",
+        "album": "melanchole",
+        "duration": "01:24",
+        "genre": "Lo-Fi"
+    },
+    {
+        "song": "Cail\u00edn",
+        "artist": "kokoro",
+        "album": "The Way Home",
+        "duration": "03:33",
+        "genre": "noise"
+    },
+    {
+        "song": "Epok",
+        "artist": "Ky akasha",
+        "album": "Seeing Beauty in Everything",
+        "duration": "02:42",
+        "genre": "switzerland"
+    },
+    {
+        "song": "Evermore",
+        "artist": "brillion.",
+        "album": "Bedtime Stories Pt.4",
+        "duration": "02:00",
+        "genre": "electronic"
+    },
+    {
+        "song": "Glow",
+        "artist": "DLJ",
+        "album": "After Life",
+        "duration": "02:48",
+        "genre": "salsa"
+    },
+    {
+        "song": "Quiet as the Moon",
+        "artist": "stream_error",
+        "album": "Sleepless Night",
+        "duration": "02:44",
+        "genre": "beats"
+    },
+    {
+        "song": "Orange Leaves",
+        "artist": "TABAL",
+        "album": "Rainy Days",
+        "duration": "02:40",
+        "genre": "Lo-Fi"
+    },
+    {
+        "song": "Treefingers",
+        "artist": "Radiohead",
+        "album": "Kid A",
+        "duration": "03:42",
+        "genre": "rock"
     }
 ]

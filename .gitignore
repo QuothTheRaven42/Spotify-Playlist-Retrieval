@@ -1,6 +1,9 @@
 .env
 *.log
 __pycache__/
+.pytest_cache/
 *.pyc
 .cache/
 lastfm_cache.sqlite
+.venv/
+.mypy_cache/
