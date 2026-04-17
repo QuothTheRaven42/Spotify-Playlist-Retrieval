@@ -3,7 +3,9 @@
 __pycache__/
 .pytest_cache/
 *.pyc
-.cache/
+.cache
 lastfm_cache.sqlite
 .venv/
 .mypy_cache/
+music.json
+genres.json

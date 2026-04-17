@@ -4,7 +4,9 @@ A Python script that exports all tracks from a Spotify playlist to a JSON file, 
 ## Features
 - Fetches all tracks from any Spotify playlist
 - Handles pagination automatically (playlists of any length)
+- Skips non-track playlist items (podcast episodes, unavailable tracks)
 - Looks up genre for each unique artist via Last.fm
+- Detects global Last.fm API failures (invalid key, rate limiting) and stops with a clear error
 - **Uses local caching to make subsequent API calls instantly fast**
 - **Displays a live progress bar during data fetching**
 - Exports track data to `music.json`
@@ -22,11 +24,11 @@ A Python script that exports all tracks from a Spotify playlist to a JSON file, 
 1. Clone this repository:
 ```bash
 git clone https://github.com/QuothTheRaven42/Spotify-Playlist-Retrieval
-cd spotify-playlist-retrieval
+cd Spotify-Playlist-Retrieval
 ```
 2. Install dependencies:
 ```bash
-pip install spotipy python-dotenv requests tqdm requests-cache
+pip install -r requirements.txt
 ```
 3. Create a `.env` file in the project root with your credentials:
 ```
@@ -35,6 +37,20 @@ SPOTIPY_CLIENT_SECRET=your_spotify_client_secret
 SPOTIPY_REDIRECT_URI=http://127.0.0.1:8888/callback
 LASTFM_API_KEY=your_lastfm_api_key
 ```
+
+## Development / Testing
+
+To install both runtime and test dependencies:
+```bash
+pip install -r requirements-dev.txt
+```
+
+Run the test suite:
+```bash
+pytest
+```
+
+Tests are also run automatically on push and pull request via GitHub Actions (`.github/workflows/tests.yml`).
 
 ## Spotify Developer Setup
 1. Go to the Spotify Developer Dashboard and log in
@@ -52,7 +68,7 @@ Run the script and enter your playlist ID when prompted:
 ```bash
 python main.py
 ```
-The playlist ID is the string at the end of a Spotify playlist URL, without the question mark or anything after it: 
+The playlist ID is the string at the end of a Spotify playlist URL, without the question mark or anything after it:
 ```
 https://open.spotify.com/playlist/2qOyhfKK44u2USaxUyqDVn?si=c1a407e411294b71
                                   ^^^^^^^^^^^^^^^^^^^^^^
@@ -63,12 +79,12 @@ On first run, a browser window will open asking you to log in to Spotify and aut
 
 > **Note:** Spotify-curated playlists may return a 404 error and are not supported.
 
-Genre lookup makes one API call per unique artist with a 1 second delay between requests. Expect 1-2 minutes per 100 songs.
+Genre lookup makes one API call per unique artist with a 1-second delay between requests. Expect about 2 minutes per 100 songs.
 
 ## Output
 The script generates two JSON data files:
 
-`music.json` — one entry per track:
+`music.json` -- one entry per track:
 ```json
 [
     {
@@ -81,7 +97,7 @@ The script generates two JSON data files:
 ]
 ```
 
-`genres.json` — artist-to-genre mapping:
+`genres.json` -- artist-to-genre mapping:
 ```json
 {
     "Anthrax": "thrash metal",
@@ -92,15 +108,17 @@ The script generates two JSON data files:
 ## Notes
 - Genre data comes from Last.fm user-applied tags. The highest-voted tag is used. Artists with no tags default to `"unknown"`.
 - Some bands have top tags that are less than informative, such as Metallica's being "metallica."
-- The `.env`, `.cache`, and `lastfm_cache.sqlite` files are excluded from version control via `.gitignore`.
+- Playlists containing podcast episodes or other non-track items will have those items silently skipped -- only tracks are exported.
+- Global Last.fm API failures such as an invalid API key, suspended key, or rate limiting will stop the genre lookup and display an error rather than silently exporting `"unknown"` for every artist.
+- The `.env`, `.cache`, `lastfm_cache.sqlite`, `.venv/`, `.pytest_cache/`, and `.mypy_cache/` are excluded from version control via `.gitignore`.
 - Errors are appended to `log.log` in the project directory.
- 
+
 ## Dependencies
-- **Spotipy** — Python library for the Spotify Web API
-- **python-dotenv** — Loads environment variables from a `.env` file
-- **requests** — HTTP library for the Last.fm API calls
-- **tqdm** — Generates the CLI progress bar
-- **requests-cache** — Caches Last.fm API responses to prevent rate-limiting
+- **Spotipy** -- Python library for the Spotify Web API
+- **python-dotenv** -- Loads environment variables from a `.env` file
+- **requests** -- HTTP library for the Last.fm API calls
+- **tqdm** -- Generates the CLI progress bar
+- **requests-cache** -- Caches Last.fm API responses to prevent rate limiting
 
 ## License
 MIT
