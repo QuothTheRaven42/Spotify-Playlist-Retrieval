@@ -159,5 +159,25 @@ The script generates two JSON data files:
 - **tqdm** -- Generates the CLI progress bar
 - **requests-cache** -- Caches Last.fm API responses to prevent rate limiting
 
+## Under Development:
+- **Replace song dicts with a Track dataclass**
+Dataclasses have autocomplete, catch typos at definition time, and make data contract explicit.
+
+- **Standardize logging (add INFO + structured messages)**
+Only logging at error level, so there's no visibility into normal execution. 
+Adding INFO logs at key milestones (authenticated, fetched N tracks, saved output) would make debugging less blind. 
+Structured messages (including the playlist ID, counts, etc.) would make the log file more useful.
+
+- **Add CLI flags (argparse upgrade)**
+'--output-dir' or '--no-genres' would make the tool meaningfully more flexible.
+
+- **Add retry/backoff for API calls**
+A simple exponential backoff on transient Last.fm errors (codes 8, 16 especially) 
+would make the tool more robust on longer playlists.
+
+- **No performance thinking**
+Sequential API calls = scalability blind spot
+asyncio or concurrent.futures with rate limiting?
+
 ## License
 MIT
