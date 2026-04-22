@@ -1,6 +1,9 @@
 # Spotify Playlist Exporter
 A Python script that exports all tracks from a Spotify playlist to a JSON file, including song title, artist, album, duration, and genre. Genre data is sourced from Last.fm since Spotify has deprecated genre information from their API.
 
+# Why
+I built this tool because I wanted song recommendations for my 1970s metal guitar solos Spotify playlist based on my actual listening history rather than asking blindly. I added the genre tags mainly to show I can integrate multiple APIs into an elegant JSON output while handling and logging any potential errors from either without crashing the script.
+
 ## Features
 - Fetches all tracks from any Spotify playlist (unless curated by Spotify itself)
 - Handles pagination automatically (playlists of any length)
@@ -158,6 +161,26 @@ The script generates two JSON data files:
 - **requests** -- HTTP library for the Last.fm API calls
 - **tqdm** -- Generates the CLI progress bar
 - **requests-cache** -- Caches Last.fm API responses to prevent rate limiting
+
+## Under Development:
+- **Replace song dicts with a Track dataclass**
+Dataclasses have autocomplete, catch typos at definition time, and make data contract explicit.
+
+- **Standardize logging (add INFO + structured messages)**
+Only logging at error level, so there's no visibility into normal execution. 
+Adding INFO logs at key milestones (authenticated, fetched N tracks, saved output) would make debugging less blind. 
+Structured messages (including the playlist ID, counts, etc.) would make the log file more useful.
+
+- **Add CLI flags (argparse upgrade)**
+'--output-dir' or '--no-genres' would make the tool meaningfully more flexible.
+
+- **Add retry/backoff for API calls**
+A simple exponential backoff on transient Last.fm errors (codes 8, 16 especially) 
+would make the tool more robust on longer playlists.
+
+- **No performance thinking**
+Sequential API calls = scalability blind spot
+asyncio or concurrent.futures with rate limiting?
 
 ## License
 MIT
