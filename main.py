@@ -4,9 +4,9 @@ from dotenv import load_dotenv
 import argparse
 import os
 import json
-import requests  # type: ignore[import-untyped]
+import requests
 import time
-from tqdm import tqdm  # type: ignore[import-untyped]
+from tqdm import tqdm
 import requests_cache
 import logging
 
