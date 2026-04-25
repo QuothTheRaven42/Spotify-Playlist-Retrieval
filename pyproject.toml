@@ -32,15 +32,18 @@ Repository = "https://github.com/QuothTheRaven42/Spotify-Playlist-Retrieval"
 py-modules = ["main"]
 
 [tool.pytest.ini_options]
+addopts = "-p no:cacheprovider"
 python_files = ["test_*.py"]
 testpaths = ["."]
 norecursedirs = [
     ".venv",
     ".pytest_cache",
+    ".pytest_cache_local",
     ".pytest_tmp",
     ".pytest_tmp*",
     "tmp*",
     "__pycache__",
     ".mypy_cache",
+    ".idea",
     "pytest-cache-files-*",
 ]

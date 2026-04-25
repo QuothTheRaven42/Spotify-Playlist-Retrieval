@@ -1,133 +1,111 @@
 # Spotify Playlist Exporter
-A Python script that exports all tracks from a Spotify playlist to a JSON file, including song title, artist, album, duration, and genre. Genre data is sourced from Last.fm since Spotify has deprecated genre information from their API.
 
-# Why
-I built this tool because I wanted song recommendations for my 1970s metal guitar solos Spotify playlist based on my actual listening history rather than asking blindly. I added the genre tags mainly to show I can integrate multiple APIs into an elegant JSON output while handling and logging any potential errors from either without crashing the script.
+A small Python CLI that exports tracks from a Spotify playlist and enriches each track with a genre label from Last.fm.
+
+## Why This Exists
+
+I built this for a practical use case: pulling structured data from my own playlists so I could inspect listening patterns and use that data elsewhere. It also gave me a compact project for showing a few core skills that matter in junior portfolio work:
+
+- working with two external APIs
+- handling pagination and mixed-content responses safely
+- writing tests for error paths instead of only the happy path
+- documenting tradeoffs and setup clearly
 
 ## Features
-- Fetches all tracks from any Spotify playlist (unless curated by Spotify itself)
-- Handles pagination automatically (playlists of any length)
-- Skips non-track playlist items (podcast episodes, unavailable tracks)
-- Looks up genre for each unique artist via Last.fm
-- Detects global Last.fm API failures (invalid key, rate limiting) and stops with a clear error
-- **Uses local caching to make subsequent API calls instantly fast**
-- **Displays a live progress bar during data fetching**
-- Exports track data to `music.json`
-- Exports artist-to-genre mapping to `genres.json`
-- Converts track duration from milliseconds to `MM:SS` format
-- Logs errors to `log.log`
+
+- exports playlist tracks to `music.json`
+- exports artist-to-genre mappings to `genres.json`
+- supports playlist IDs and full Spotify playlist URLs
+- skips podcast episodes, unavailable items, and malformed track payloads
+- looks up each unique artist once to avoid redundant Last.fm calls
+- caches Last.fm responses locally for 24 hours
+- prints a progress bar during genre lookup
+- logs handled API and file-write failures to `log.log`
 
 ## Requirements
+
 - Python 3.10+
-- A Spotify Developer account with a registered app
-- A Last.fm API account with an API key
+- Spotify Developer app credentials
+- Last.fm API key
 
-## Installation
+## Setup
 
-1. Clone this repository:
+1. Clone the repository and enter the project directory.
+
 ```bash
 git clone https://github.com/QuothTheRaven42/Spotify-Playlist-Retrieval
 cd Spotify-Playlist-Retrieval
 ```
-2. Create and activate a virtual environment:
+
+2. Create and activate a virtual environment.
+
 ```bash
 python -m venv .venv
 ```
+
 ```bash
 # Windows PowerShell
 .\.venv\Scripts\Activate.ps1
 ```
+
 ```bash
 # macOS / Linux
 source .venv/bin/activate
 ```
-3. Install the project:
+
+3. Install the package.
+
 ```bash
 pip install .
 ```
-4. Create a `.env` file in the project root with your credentials:
+
+4. Create a local `.env` file from the example template.
+
+```powershell
+Copy-Item .env.example .env
 ```
+
+```bash
+# macOS / Linux
+cp .env.example .env
+```
+
+5. Fill in your credentials inside `.env`.
+
+```text
 SPOTIPY_CLIENT_ID=your_spotify_client_id
 SPOTIPY_CLIENT_SECRET=your_spotify_client_secret
 SPOTIPY_REDIRECT_URI=http://127.0.0.1:8888/callback
 LASTFM_API_KEY=your_lastfm_api_key
 ```
 
-## Architecture
-
-The script is organized as a linear pipeline of four functions orchestrated by `main()`:
-
-1. `authenticate()` — loads credentials from `.env` and returns an authorized Spotify client and Last.fm API key
-2. `fetch_tracks()` — pages through the playlist and returns a list of track dicts and a set of unique artist names
-3. `fetch_genres()` — queries Last.fm once per unique artist and returns an artist-to-genre mapping and error metrics
-4. `save_output()` — writes the enriched track list and genre mapping to JSON files
-
-Artist deduplication happens at the `fetch_tracks` stage so that a playlist with 50 Metallica songs only triggers one Last.fm API call. Genre enrichment — merging the mapping back into the track list — happens in `main()` after both fetches are complete.
-
-## Tradeoffs
-
-- **One genre per artist** — Last.fm returns a ranked list of tags, but only the top tag is used. Artists that span genres (e.g., Neil Young) get a single label that may not reflect the current song.
-- **Tag quality varies** — genre data is user-applied and crowdsourced. Some artists have well-agreed-upon tags; others have less than informative tags, such as their own name or country (e.g., "metallica" for Metallica).
-- **Caching trades freshness for speed** — Last.fm responses are cached for 24 hours. Artists whose tags change within that window will return stale data until the cache expires.
-- **1-second rate limit delay** — conservative but reliable. A large playlist takes time; roughly 2 minutes per 100 unique artists.
-- **First artist per track only** — for multi-artist tracks, only the primary artist is used for genre lookup and attribution.
-
-## Development / Testing
-
-To install both runtime and test dependencies:
-```bash
-pip install -e ".[dev]"
-```
-
-If you prefer using the compatibility file:
-```bash
-pip install -r requirements-dev.txt
-```
-
-Run the test suite:
-```bash
-python -m pytest
-```
-
-Tests are also run automatically on push and pull request via GitHub Actions (`.github/workflows/tests.yml`).
-
-## Spotify Developer Setup
-1. Go to the Spotify Developer Dashboard and log in
-2. Create a new app
-3. In the app settings, add `http://127.0.0.1:8888/callback` as a Redirect URI and save
-4. Copy the Client ID and Client Secret into your `.env` file
-
-## Last.fm API Setup
-1. Go to Last.fm API and create an account
-2. Create an API application to receive an API key
-3. Copy the API key into your `.env` file
-
 ## Usage
-Run the script and enter your playlist ID when prompted:
+
+Run the installed console command:
+
 ```bash
 spotify-playlist-retrieval
 ```
-You can also run it without installing the console command:
+
+Or run the script directly:
+
 ```bash
 python main.py
 ```
-The playlist ID is the string at the end of a Spotify playlist URL, without the question mark or anything after it:
+
+You can also pass a playlist ID or a full playlist URL:
+
+```bash
+spotify-playlist-retrieval 2qOyhfKK44u2USaxUyqDVn
+spotify-playlist-retrieval https://open.spotify.com/playlist/2qOyhfKK44u2USaxUyqDVn?si=abc123
 ```
-https://open.spotify.com/playlist/2qOyhfKK44u2USaxUyqDVn?si=c1a407e411294b71
-                                  ^^^^^^^^^^^^^^^^^^^^^^
-                                  This is the playlist ID
-```
 
-On first run, a browser window will open asking you to log in to Spotify and authorize the app. A `.cache` file will be created to store your token for future runs.
-
-> **Note:** Spotify-curated playlists may return a 404 error and are not supported.
-
-Genre lookup makes one API call per unique artist with a 1-second delay between requests. Expect about 2 minutes per 100 songs.
+On first run, Spotify opens a browser window for OAuth approval. Spotipy stores a local `.cache` token file so later runs do not need to re-authorize unless the token expires.
 
 ## Output
-The script generates two JSON data files:
 
-`music.json` -- one entry per track:
+`music.json`
+
 ```json
 [
     {
@@ -140,47 +118,64 @@ The script generates two JSON data files:
 ]
 ```
 
-`genres.json` -- artist-to-genre mapping:
+`genres.json`
+
 ```json
 {
     "Anthrax": "thrash metal",
-    "Jefferson Airplane": "Psychedelic Rock"
+    "Jefferson Airplane": "psychedelic rock"
 }
 ```
 
-## Notes
-- Genre data comes from Last.fm user-applied tags. The highest-voted tag is used. Artists with no tags default to `"unknown"`.
-- Playlists containing podcast episodes or other non-track items will have those items silently skipped -- only tracks are exported.
-- Global Last.fm API failures such as an invalid API key, suspended key, or rate limiting will stop the genre lookup and display an error rather than silently exporting `"unknown"` for every artist.
-- The `.env`, `.cache`, `lastfm_cache.sqlite`, `.venv/`, `.pytest_cache/`, and `.mypy_cache/` are excluded from version control via `.gitignore`.
-- Errors are appended to `log.log` in the project directory.
+## Design Notes
 
-## Dependencies
-- **Spotipy** -- Python library for the Spotify Web API
-- **python-dotenv** -- Loads environment variables from a `.env` file
-- **requests** -- HTTP library for the Last.fm API calls
-- **tqdm** -- Generates the CLI progress bar
-- **requests-cache** -- Caches Last.fm API responses to prevent rate limiting
+- Spotify playlist items are not guaranteed to be normal tracks. The script explicitly skips episodes, null items, and malformed track payloads.
+- Last.fm genres are user-generated tags, so they are useful but imperfect.
+- Only the primary artist is used for genre lookup.
+- The script uses one top tag per artist to keep the output simple and consistent.
+- A 1-second delay is applied to uncached Last.fm requests to stay conservative with rate limits.
 
-## Under Development:
-- **Replace song dicts with a Track dataclass**
-Dataclasses have autocomplete, catch typos at definition time, and make data contract explicit.
+## Testing
 
-- **Standardize logging (add INFO + structured messages)**
-Only logging at error level, so there's no visibility into normal execution. 
-Adding INFO logs at key milestones (authenticated, fetched N tracks, saved output) would make debugging less blind. 
-Structured messages (including the playlist ID, counts, etc.) would make the log file more useful.
+Install development dependencies:
 
-- **Add CLI flags (argparse upgrade)**
-'--output-dir' or '--no-genres' would make the tool meaningfully more flexible.
+```bash
+pip install -e ".[dev]"
+```
 
-- **Add retry/backoff for API calls**
-A simple exponential backoff on transient Last.fm errors (codes 8, 16 especially) 
-would make the tool more robust on longer playlists.
+Or use the compatibility file:
 
-- **No performance thinking**
-Sequential API calls = scalability blind spot
-asyncio or concurrent.futures with rate limiting?
+```bash
+pip install -r requirements-dev.txt
+```
+
+Run tests:
+
+```bash
+python -m pytest
+```
+
+GitHub Actions runs the test suite on pushes and pull requests via `.github/workflows/tests.yml`.
+
+## Repo Hygiene
+
+The following are local-only files and should not be committed:
+
+- `.env`
+- `.cache`
+- `.venv/`
+- `.mypy_cache/`
+- `lastfm_cache.sqlite`
+- `music.json`
+- `genres.json`
+- `log.log`
+
+## Limitations
+
+- Spotify-curated playlists may not be readable through the API.
+- Genre labels are only as good as Last.fm tag quality.
+- Large playlists can still take time on the first uncached run because lookups are intentionally conservative.
 
 ## License
-MIT
+
+MIT. See `LICENSE`.
