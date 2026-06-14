@@ -3,6 +3,8 @@ import json
 import logging
 import os
 import time
+import tkinter as tk
+from tkinter import filedialog
 
 import requests
 import requests_cache
@@ -17,8 +19,12 @@ LASTFM_API_URL = "https://ws.audioscrobbler.com/2.0/"
 LASTFM_CACHE_NAME = "lastfm_cache"
 LASTFM_CACHE_TTL_SECONDS = 86400
 LOG_FILE = "log.log"
-SPOTIFY_SCOPE = "playlist-read-private playlist-read-collaborative"
+SPOTIFY_SCOPE = (
+    "playlist-read-private playlist-read-collaborative "
+    "playlist-modify-private playlist-modify-public"
+)
 UNKNOWN_GENRE = "unknown"
+SPOTIFY_ADD_TRACKS_BATCH_SIZE = 100
 
 SongRecord = dict[str, str]
 GenreMetrics = dict[str, float | int]
@@ -54,28 +60,20 @@ def ms_to_time(ms: int) -> str:
     return f"{minutes:02d}:{seconds:02d}"
 
 
-def authenticate() -> tuple[spotipy.Spotify, str]:
-    """Return an authenticated Spotify client and the Last.fm API key."""
+def _build_spotify_client() -> spotipy.Spotify:
+    """Build an authenticated Spotify client from environment variables."""
     load_dotenv()
 
-    required_keys = (
-        "SPOTIPY_CLIENT_ID",
-        "SPOTIPY_CLIENT_SECRET",
-        "SPOTIPY_REDIRECT_URI",
-        "LASTFM_API_KEY",
-    )
-
+    required_keys = ("SPOTIPY_CLIENT_ID", "SPOTIPY_CLIENT_SECRET", "SPOTIPY_REDIRECT_URI")
     try:
-        client_id, client_secret, redirect_uri, lastfm_api = (
-            os.environ[key] for key in required_keys
-        )
+        client_id, client_secret, redirect_uri = (os.environ[key] for key in required_keys)
     except KeyError as error:
         missing_key = error.args[0]
         raise ValueError(
             f"Missing {missing_key} environment variable. Check your .env file."
         ) from None
 
-    spotify_client = spotipy.Spotify(
+    return spotipy.Spotify(
         auth_manager=SpotifyOAuth(
             client_id=client_id,
             client_secret=client_secret,
@@ -83,7 +81,25 @@ def authenticate() -> tuple[spotipy.Spotify, str]:
             scope=SPOTIFY_SCOPE,
         )
     )
-    return spotify_client, lastfm_api
+
+
+def authenticate() -> tuple[spotipy.Spotify, str]:
+    """Return an authenticated Spotify client and the Last.fm API key."""
+    sp = _build_spotify_client()
+
+    try:
+        lastfm_api = os.environ["LASTFM_API_KEY"]
+    except KeyError:
+        raise ValueError(
+            "Missing LASTFM_API_KEY environment variable. Check your .env file."
+        ) from None
+
+    return sp, lastfm_api
+
+
+def authenticate_for_import() -> spotipy.Spotify:
+    """Return an authenticated Spotify client (import mode; no Last.fm key needed)."""
+    return _build_spotify_client()
 
 
 def normalize_playlist_id(playlist_value: str) -> str:
@@ -120,12 +136,18 @@ def build_song_record(track: dict) -> SongRecord | None:
     if not isinstance(primary_artist, str) or not isinstance(album_name, str):
         return None
 
-    return {
+    record: SongRecord = {
         "song": track_name,
         "artist": primary_artist,
         "album": album_name,
         "duration": ms_to_time(duration_ms),
     }
+
+    uri = track.get("uri")
+    if isinstance(uri, str) and uri:
+        record["uri"] = uri
+
+    return record
 
 
 def fetch_tracks(
@@ -252,14 +274,75 @@ def save_output(songs: list[SongRecord], artists_genres: dict[str, str]) -> None
         json.dump(songs, music_file, indent=4, ensure_ascii=False)
 
 
-def main() -> None:
-    """Export a Spotify playlist and enrich it with Last.fm genres."""
-    parser = argparse.ArgumentParser(
-        description="Export Spotify playlist tracks to JSON"
-    )
-    parser.add_argument("playlist_id", nargs="?", help="Spotify playlist ID or URL")
-    args = parser.parse_args()
+def search_track_uri(sp: spotipy.Spotify, song: str, artist: str) -> str | None:
+    """Search Spotify for a track by name and artist, returning its URI or None."""
+    results = sp.search(q=f"track:{song} artist:{artist}", type="track", limit=1)
+    tracks = results.get("tracks", {}).get("items", [])
+    if tracks and isinstance(tracks[0], dict):
+        return tracks[0].get("uri")
+    return None
 
+
+def _collect_track_uris(
+    sp: spotipy.Spotify, songs: list[SongRecord]
+) -> tuple[list[str], int]:
+    """Search Spotify for each song record and return (uris, not_found_count)."""
+    uris: list[str] = []
+    not_found = 0
+
+    print(f"Searching for {len(songs)} tracks on Spotify...")
+    for song in tqdm(songs, desc="Tracks Searched"):
+        if not isinstance(song, dict):
+            not_found += 1
+            continue
+        existing_uri = song.get("uri", "")
+        if isinstance(existing_uri, str) and existing_uri:
+            uris.append(existing_uri)
+            continue
+        name = song.get("song", "")
+        artist = song.get("artist", "")
+        if not name or not artist:
+            not_found += 1
+            continue
+        uri = search_track_uri(sp, name, artist)
+        if uri:
+            uris.append(uri)
+        else:
+            logging.warning("Track not found on Spotify: %s by %s", name, artist)
+            not_found += 1
+
+    return uris, not_found
+
+
+def _push_uris_to_playlist(
+    sp: spotipy.Spotify, playlist_id: str, uris: list[str]
+) -> None:
+    """Add URIs to a playlist in batches."""
+    for i in range(0, len(uris), SPOTIFY_ADD_TRACKS_BATCH_SIZE):
+        sp.playlist_add_items(playlist_id, uris[i : i + SPOTIFY_ADD_TRACKS_BATCH_SIZE])
+
+
+def create_playlist_from_json(
+    sp: spotipy.Spotify, songs: list[SongRecord], playlist_name: str
+) -> dict[str, int]:
+    """Create a new private Spotify playlist from a list of song records."""
+    playlist = sp.current_user_playlist_create(playlist_name, public=False)
+    uris, not_found = _collect_track_uris(sp, songs)
+    _push_uris_to_playlist(sp, playlist["id"], uris)
+    return {"found": len(uris), "not_found": not_found}
+
+
+def add_tracks_to_existing_playlist(
+    sp: spotipy.Spotify, songs: list[SongRecord], playlist_id: str
+) -> dict[str, int]:
+    """Add songs from a JSON list to an existing Spotify playlist."""
+    uris, not_found = _collect_track_uris(sp, songs)
+    _push_uris_to_playlist(sp, playlist_id, uris)
+    return {"found": len(uris), "not_found": not_found}
+
+
+def _run_export(args) -> None:
+    """Handle the export subcommand."""
     try:
         sp, lastfm_api = authenticate()
     except (SpotifyOauthError, ValueError) as error:
@@ -267,11 +350,10 @@ def main() -> None:
         print("Error: Could not authenticate API data. Please check the .env file.")
         return
 
-    raw_playlist_value = (
-        args.playlist_id
-        if args.playlist_id
-        else input("Enter Spotify playlist ID or URL: ")
-    )
+    raw_playlist_value = getattr(args, "playlist_id", None)
+    if not raw_playlist_value:
+        raw_playlist_value = input("Enter Spotify playlist ID or URL: ")
+
     playlist_id = normalize_playlist_id(raw_playlist_value)
     if not playlist_id:
         print("Error: Playlist ID cannot be blank.")
@@ -321,6 +403,179 @@ def main() -> None:
     print(
         f"Export complete! Playlist data saved to {MUSIC_OUTPUT_FILE} and {GENRES_OUTPUT_FILE}."
     )
+
+
+def _run_import(args) -> None:
+    """Handle the import subcommand."""
+    try:
+        sp = authenticate_for_import()
+    except (SpotifyOauthError, ValueError) as error:
+        logging.error("Failed to authenticate: %s", error)
+        print("Error: Could not authenticate. Please check the .env file.")
+        return
+
+    json_path = getattr(args, "json_file", None)
+    if not json_path:
+        root = tk.Tk()
+        root.withdraw()
+        json_path = filedialog.askopenfilename(
+            title="Select music.json file",
+            filetypes=[("JSON files", "*.json"), ("All files", "*.*")],
+        )
+        root.destroy()
+    if not json_path:
+        print("Error: No file selected.")
+        return
+
+    try:
+        with open(json_path, encoding="utf-8") as f:
+            songs = json.load(f)
+    except FileNotFoundError:
+        print(f"Error: File '{json_path}' not found.")
+        return
+    except (json.JSONDecodeError, OSError) as error:
+        print(f"Error reading JSON file: {error}")
+        return
+
+    if not isinstance(songs, list) or not songs:
+        print("Error: JSON file must contain a non-empty list of songs.")
+        return
+
+    playlist_name = getattr(args, "playlist_name", None)
+    if not playlist_name:
+        playlist_name = input("Enter playlist name: ").strip()
+    if not playlist_name:
+        print("Error: Playlist name cannot be blank.")
+        return
+
+    try:
+        stats = create_playlist_from_json(sp, songs, playlist_name)
+    except spotipy.exceptions.SpotifyException as error:
+        logging.error("Failed to create playlist '%s': %s", playlist_name, error)
+        print(f"Error: Could not create playlist. Spotify said: {error}")
+        return
+
+    print(
+        f"Done! Playlist '{playlist_name}' created with {stats['found']} tracks "
+        f"({stats['not_found']} not found on Spotify)."
+    )
+
+
+def _run_add(args) -> None:
+    """Handle the add subcommand — append songs from JSON to an existing playlist."""
+    try:
+        sp = authenticate_for_import()
+    except (SpotifyOauthError, ValueError) as error:
+        logging.error("Failed to authenticate: %s", error)
+        print("Error: Could not authenticate. Please check the .env file.")
+        return
+
+    json_path = getattr(args, "json_file", None)
+    if not json_path:
+        root = tk.Tk()
+        root.withdraw()
+        json_path = filedialog.askopenfilename(
+            title="Select music.json file",
+            filetypes=[("JSON files", "*.json"), ("All files", "*.*")],
+        )
+        root.destroy()
+    if not json_path:
+        print("Error: No file selected.")
+        return
+
+    try:
+        with open(json_path, encoding="utf-8") as f:
+            songs = json.load(f)
+    except FileNotFoundError:
+        print(f"Error: File '{json_path}' not found.")
+        return
+    except (json.JSONDecodeError, OSError) as error:
+        print(f"Error reading JSON file: {error}")
+        return
+
+    if not isinstance(songs, list) or not songs:
+        print("Error: JSON file must contain a non-empty list of songs.")
+        return
+
+    raw_playlist_value = getattr(args, "playlist_id", None)
+    if not raw_playlist_value:
+        raw_playlist_value = input("Enter Spotify playlist ID or URL: ").strip()
+    playlist_id = normalize_playlist_id(raw_playlist_value)
+    if not playlist_id:
+        print("Error: Playlist ID cannot be blank.")
+        return
+
+    try:
+        stats = add_tracks_to_existing_playlist(sp, songs, playlist_id)
+    except spotipy.exceptions.SpotifyException as error:
+        logging.error("Failed to add tracks to playlist '%s': %s", playlist_id, error)
+        print(f"Error: Could not add tracks to playlist. Spotify said: {error}")
+        return
+
+    print(
+        f"Done! Added {stats['found']} tracks to the playlist "
+        f"({stats['not_found']} not found on Spotify)."
+    )
+
+
+def main() -> None:
+    """Spotify playlist tools: export a playlist to JSON, or create one from JSON."""
+    parser = argparse.ArgumentParser(description="Spotify playlist tools")
+    subparsers = parser.add_subparsers(dest="command")
+
+    export_parser = subparsers.add_parser(
+        "export", help="Export a Spotify playlist to JSON"
+    )
+    export_parser.add_argument(
+        "playlist_id", nargs="?", help="Spotify playlist ID or URL"
+    )
+
+    import_parser = subparsers.add_parser(
+        "import", help="Create a new Spotify playlist from a music.json file"
+    )
+    import_parser.add_argument(
+        "json_file", nargs="?", help="Path to music.json file"
+    )
+    import_parser.add_argument(
+        "playlist_name", nargs="?", help="Name for the new playlist"
+    )
+
+    add_parser = subparsers.add_parser(
+        "add", help="Add songs from a music.json file to an existing playlist"
+    )
+    add_parser.add_argument(
+        "json_file", nargs="?", help="Path to music.json file"
+    )
+    add_parser.add_argument(
+        "playlist_id", nargs="?", help="Spotify playlist ID or URL"
+    )
+
+    args = parser.parse_args()
+
+    command = getattr(args, "command", None)
+
+    if command is None:
+        print("What would you like to do?")
+        print("  1) Export a Spotify playlist to JSON")
+        print("  2) Create a new Spotify playlist from a JSON file")
+        print("  3) Add songs from a JSON file to an existing playlist")
+        choice = input("Enter 1, 2, or 3: ").strip()
+        if choice == "1":
+            command = "export"
+        elif choice == "2":
+            command = "import"
+        elif choice == "3":
+            command = "add"
+        else:
+            print("Invalid choice.")
+            return
+
+    if command == "import":
+        _run_import(args)
+    elif command == "add":
+        _run_add(args)
+    else:
+        _run_export(args)
 
 
 if __name__ == "__main__":

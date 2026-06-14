@@ -1,6 +1,6 @@
-# Spotify Playlist Exporter
+# Spotify Playlist Retrieval
 
-A small Python CLI that exports tracks from a Spotify playlist and enriches each track with a genre label from Last.fm.
+A Python CLI for working with Spotify playlists: export tracks to JSON with genre data, create new playlists from JSON, or add songs from JSON to an existing playlist.
 
 ## Why This Exists
 
@@ -13,7 +13,8 @@ I built this for a practical use case: pulling structured data from my own playl
 
 ## Features
 
-- exports playlist tracks to `music.json`
+**Export**
+- exports playlist tracks to `music.json` with song, artist, album, duration, and genre
 - exports artist-to-genre mappings to `genres.json`
 - supports playlist IDs and full Spotify playlist URLs
 - skips podcast episodes, unavailable items, and malformed track payloads
@@ -22,11 +23,20 @@ I built this for a practical use case: pulling structured data from my own playl
 - prints a progress bar during genre lookup
 - logs handled API and file-write failures to `log.log`
 
+**Import**
+- creates a new private Spotify playlist from a `music.json` file
+- opens a file picker dialog to select the JSON file
+- searches Spotify for each track and adds all found tracks
+
+**Add**
+- appends songs from a `music.json` file to an existing Spotify playlist
+- accepts a playlist ID or full URL
+
 ## Requirements
 
 - Python 3.10+
 - Spotify Developer app credentials
-- Last.fm API key
+- Last.fm API key (export only)
 
 ## Setup
 
@@ -79,28 +89,59 @@ SPOTIPY_REDIRECT_URI=http://127.0.0.1:8888/callback
 LASTFM_API_KEY=your_lastfm_api_key
 ```
 
+> `LASTFM_API_KEY` is only required for the export command.
+
 ## Usage
 
-Run the installed console command:
+### Interactive menu
 
-```bash
-spotify-playlist-retrieval
-```
-
-Or run the script directly:
+Running with no arguments shows a menu:
 
 ```bash
 python main.py
 ```
 
-You can also pass a playlist ID or a full playlist URL:
-
-```bash
-spotify-playlist-retrieval 2qOyhfKK44u2USaxUyqDVn
-spotify-playlist-retrieval https://open.spotify.com/playlist/2qOyhfKK44u2USaxUyqDVn?si=abc123
+```
+What would you like to do?
+  1) Export a Spotify playlist to JSON
+  2) Create a new Spotify playlist from a JSON file
+  3) Add songs from a JSON file to an existing playlist
+Enter 1, 2, or 3:
 ```
 
-On first run, Spotify opens a browser window for OAuth approval. Spotipy stores a local `.cache` token file so later runs do not need to re-authorize unless the token expires.
+### Subcommands
+
+All three modes are also available as direct subcommands.
+
+**Export** a Spotify playlist to JSON:
+
+```bash
+python main.py export 2qOyhfKK44u2USaxUyqDVn
+python main.py export https://open.spotify.com/playlist/2qOyhfKK44u2USaxUyqDVn?si=abc123
+```
+
+Omit the playlist ID to be prompted for it interactively.
+
+**Import** — create a new playlist from a `music.json` file:
+
+```bash
+python main.py import music.json "My New Playlist"
+```
+
+Omit either argument to be prompted. The JSON file can also be selected with a file picker dialog.
+
+**Add** — append songs to an existing playlist:
+
+```bash
+python main.py add music.json 2qOyhfKK44u2USaxUyqDVn
+python main.py add music.json https://open.spotify.com/playlist/2qOyhfKK44u2USaxUyqDVn
+```
+
+Omit either argument to be prompted. The JSON file picker dialog opens automatically if no path is given.
+
+### First-run OAuth
+
+On the first run, Spotify opens a browser window for OAuth approval. Spotipy stores a local `.cache` token file so later runs do not need to re-authorize unless the token expires or the app's scopes change.
 
 ## Output
 
@@ -127,6 +168,8 @@ On first run, Spotify opens a browser window for OAuth approval. Spotipy stores 
 }
 ```
 
+The `music.json` format is the same one accepted by the import and add commands.
+
 ## Design Notes
 
 - Spotify playlist items are not guaranteed to be normal tracks. The script explicitly skips episodes, null items, and malformed track payloads.
@@ -134,6 +177,8 @@ On first run, Spotify opens a browser window for OAuth approval. Spotipy stores 
 - Only the primary artist is used for genre lookup.
 - The script uses one top tag per artist to keep the output simple and consistent.
 - A 1-second delay is applied to uncached Last.fm requests to stay conservative with rate limits.
+- Tracks are added to Spotify in batches of 100, which is the API's per-request limit.
+- Track search uses `track:<name> artist:<name>` queries; some tracks may not be found if titles differ slightly between sources.
 
 ## Testing
 
@@ -175,6 +220,7 @@ The following are local-only files and should not be committed:
 - Spotify-curated playlists may not be readable through the API.
 - Genre labels are only as good as Last.fm tag quality.
 - Large playlists can still take time on the first uncached run because lookups are intentionally conservative.
+- Track search during import/add is best-effort; tracks with unusual titles or live versions may not resolve correctly.
 
 ## License
 
