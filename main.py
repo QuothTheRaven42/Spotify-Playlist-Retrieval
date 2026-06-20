@@ -341,14 +341,14 @@ def add_tracks_to_existing_playlist(
     return {"found": len(uris), "not_found": not_found}
 
 
-def _run_export(args) -> None:
+def _run_export(args) -> bool:
     """Handle the export subcommand."""
     try:
         sp, lastfm_api = authenticate()
     except (SpotifyOauthError, ValueError) as error:
         logging.error("Failed to authenticate Spotify authorization: %s", error)
         print("Error: Could not authenticate API data. Please check the .env file.")
-        return
+        return True
 
     raw_playlist_value = getattr(args, "playlist_id", None)
     if not raw_playlist_value:
@@ -357,7 +357,7 @@ def _run_export(args) -> None:
     playlist_id = normalize_playlist_id(raw_playlist_value)
     if not playlist_id:
         print("Error: Playlist ID cannot be blank.")
-        return
+        return True
 
     try:
         songs, unique_artists = fetch_tracks(sp, playlist_id)
@@ -366,24 +366,24 @@ def _run_export(args) -> None:
         print(
             "Error: Could not retrieve playlist. Verify the playlist ID and that your account has access to it."
         )
-        return
+        return True
 
     if not songs:
         print(
             "Playlist is empty or only contains unsupported items. Nothing to export."
         )
-        return
+        return True
 
     try:
         artists_genres, genre_metrics = fetch_genres(lastfm_api, unique_artists)
     except KeyboardInterrupt:
         print("Export cancelled.")
-        return
+        return True
     except RuntimeError as error:
         logging.error("Last.fm API failure: %s", error)
         print(f"Error: {error}")
         print("Genre lookup aborted. Please try again or check your Last.fm API key.")
-        return
+        return True
 
     print(
         f"{genre_metrics['error_rate'] * 100:.1f}% genre lookup failure rate "
@@ -398,21 +398,22 @@ def _run_export(args) -> None:
     except OSError as error:
         logging.error("Failed to save output for %s: %s", playlist_id, error)
         print("Unable to save file.")
-        return
+        return True
 
     print(
         f"Export complete! Playlist data saved to {MUSIC_OUTPUT_FILE} and {GENRES_OUTPUT_FILE}."
     )
+    return True
 
 
-def _run_import(args) -> None:
+def _run_import(args) -> bool:
     """Handle the import subcommand."""
     try:
         sp = authenticate_for_import()
     except (SpotifyOauthError, ValueError) as error:
         logging.error("Failed to authenticate: %s", error)
         print("Error: Could not authenticate. Please check the .env file.")
-        return
+        return True
 
     json_path = getattr(args, "json_file", None)
     if not json_path:
@@ -425,21 +426,21 @@ def _run_import(args) -> None:
         root.destroy()
     if not json_path:
         print("Error: No file selected.")
-        return
+        return False
 
     try:
         with open(json_path, encoding="utf-8") as f:
             songs = json.load(f)
     except FileNotFoundError:
         print(f"Error: File '{json_path}' not found.")
-        return
+        return True
     except (json.JSONDecodeError, OSError) as error:
         print(f"Error reading JSON file: {error}")
-        return
+        return True
 
     if not isinstance(songs, list) or not songs:
         print("Error: JSON file must contain a non-empty list of songs.")
-        return
+        return True
 
     playlist_name = getattr(args, "playlist_name", None)
     if not playlist_name:
@@ -453,22 +454,23 @@ def _run_import(args) -> None:
     except spotipy.exceptions.SpotifyException as error:
         logging.error("Failed to create playlist '%s': %s", playlist_name, error)
         print(f"Error: Could not create playlist. Spotify said: {error}")
-        return
+        return True
 
     print(
         f"Done! Playlist '{playlist_name}' created with {stats['found']} tracks "
         f"({stats['not_found']} not found on Spotify)."
     )
+    return True
 
 
-def _run_add(args) -> None:
+def _run_add(args) -> bool:
     """Handle the add subcommand — append songs from JSON to an existing playlist."""
     try:
         sp = authenticate_for_import()
     except (SpotifyOauthError, ValueError) as error:
         logging.error("Failed to authenticate: %s", error)
         print("Error: Could not authenticate. Please check the .env file.")
-        return
+        return True
 
     json_path = getattr(args, "json_file", None)
     if not json_path:
@@ -481,21 +483,21 @@ def _run_add(args) -> None:
         root.destroy()
     if not json_path:
         print("Error: No file selected.")
-        return
+        return False
 
     try:
         with open(json_path, encoding="utf-8") as f:
             songs = json.load(f)
     except FileNotFoundError:
         print(f"Error: File '{json_path}' not found.")
-        return
+        return True
     except (json.JSONDecodeError, OSError) as error:
         print(f"Error reading JSON file: {error}")
-        return
+        return True
 
     if not isinstance(songs, list) or not songs:
         print("Error: JSON file must contain a non-empty list of songs.")
-        return
+        return True
 
     raw_playlist_value = getattr(args, "playlist_id", None)
     if not raw_playlist_value:
@@ -503,19 +505,46 @@ def _run_add(args) -> None:
     playlist_id = normalize_playlist_id(raw_playlist_value)
     if not playlist_id:
         print("Error: Playlist ID cannot be blank.")
-        return
+        return True
 
     try:
         stats = add_tracks_to_existing_playlist(sp, songs, playlist_id)
     except spotipy.exceptions.SpotifyException as error:
         logging.error("Failed to add tracks to playlist '%s': %s", playlist_id, error)
         print(f"Error: Could not add tracks to playlist. Spotify said: {error}")
-        return
+        return True
 
     print(
         f"Done! Added {stats['found']} tracks to the playlist "
         f"({stats['not_found']} not found on Spotify)."
     )
+    return True
+
+
+def _run_interactive_menu() -> None:
+    """Display the main menu until the user exits or completes an action."""
+    while True:
+        print("What would you like to do?")
+        print("  1) Export a Spotify playlist to JSON")
+        print("  2) Create a new Spotify playlist from a JSON file")
+        print("  3) Add songs from a JSON file to an existing playlist")
+        print("  4) Exit")
+        choice = input("Enter 1, 2, 3, or 4: ").strip()
+
+        match choice:
+            case "1":
+                if _run_export(argparse.Namespace(playlist_id=None)):
+                    return
+            case "2":
+                if _run_import(argparse.Namespace(json_file=None, playlist_name=None)):
+                    return
+            case "3":
+                if _run_add(argparse.Namespace(json_file=None, playlist_id=None)):
+                    return
+            case "4":
+                return
+            case _:
+                print("Invalid choice.")
 
 
 def main() -> None:
@@ -555,27 +584,16 @@ def main() -> None:
     command = getattr(args, "command", None)
 
     if command is None:
-        print("What would you like to do?")
-        print("  1) Export a Spotify playlist to JSON")
-        print("  2) Create a new Spotify playlist from a JSON file")
-        print("  3) Add songs from a JSON file to an existing playlist")
-        choice = input("Enter 1, 2, or 3: ").strip()
-        if choice == "1":
-            command = "export"
-        elif choice == "2":
-            command = "import"
-        elif choice == "3":
-            command = "add"
-        else:
-            print("Invalid choice.")
-            return
+        _run_interactive_menu()
+        return
 
-    if command == "import":
-        _run_import(args)
-    elif command == "add":
-        _run_add(args)
-    else:
-        _run_export(args)
+    match command:
+        case "import":
+            _run_import(args)
+        case "add":
+            _run_add(args)
+        case _:
+            _run_export(args)
 
 
 if __name__ == "__main__":

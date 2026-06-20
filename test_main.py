@@ -1230,12 +1230,30 @@ def test_main_shows_menu_rejects_invalid_choice(capsys):
             "main.argparse.ArgumentParser.parse_args",
             return_value=Mock(command=None),
         ),
-        patch("builtins.input", return_value="9"),
+        patch("builtins.input", side_effect=["9", "4"]),
     ):
         main()
 
     captured = capsys.readouterr()
     assert "Invalid choice" in captured.out
+
+
+def test_main_menu_returns_after_cancelled_file_dialog(capsys):
+    with (
+        patch(
+            "main.argparse.ArgumentParser.parse_args",
+            return_value=Mock(command=None, json_file=None, playlist_name=None),
+        ),
+        patch("main.authenticate_for_import", return_value=MagicMock()),
+        patch("builtins.input", side_effect=["2", "4"]),
+        patch("main.tk.Tk"),
+        patch("main.filedialog.askopenfilename", return_value=""),
+    ):
+        main()
+
+    captured = capsys.readouterr()
+    assert "No file selected" in captured.out
+    assert captured.out.count("What would you like to do?") == 2
 
 
 # --- add_tracks_to_existing_playlist tests ---
