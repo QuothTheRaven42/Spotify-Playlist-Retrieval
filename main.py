@@ -425,7 +425,7 @@ def _run_import(args) -> bool:
         )
         root.destroy()
     if not json_path:
-        print("Error: No file selected.")
+        print("Error: No file selected.\n")
         return False
 
     try:
