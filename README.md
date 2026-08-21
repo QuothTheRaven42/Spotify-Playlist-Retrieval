@@ -69,6 +69,9 @@ source .venv/bin/activate
 pip install .
 ```
 
+This installs the `spotify-playlist-retrieval` command. You can use that command
+or run `main.py` directly as shown below.
+
 4. Create a local `.env` file from the example template.
 
 ```powershell
@@ -106,7 +109,8 @@ What would you like to do?
   1) Export a Spotify playlist to JSON
   2) Create a new Spotify playlist from a JSON file
   3) Add songs from a JSON file to an existing playlist
-Enter 1, 2, or 3:
+  4) Exit
+Enter 1, 2, 3, or 4:
 ```
 
 ### Subcommands
@@ -118,6 +122,12 @@ All three modes are also available as direct subcommands.
 ```bash
 python main.py export 2qOyhfKK44u2USaxUyqDVn
 python main.py export https://open.spotify.com/playlist/2qOyhfKK44u2USaxUyqDVn?si=abc123
+```
+
+After installation, the equivalent command is:
+
+```bash
+spotify-playlist-retrieval export 2qOyhfKK44u2USaxUyqDVn
 ```
 
 Omit the playlist ID to be prompted for it interactively.
